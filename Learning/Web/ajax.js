@@ -26,7 +26,6 @@ function AjaxRequest() {
     req.open("POST", url, true);
     var header = "headerName";
     var hv ="headervalue"
-
     req.setRequestHeader(header, hv); //向请求添加HTTP头
     req.send("发的数据");
     //异步执行时，在响应事件onreadystatechange中添加就绪执行函数

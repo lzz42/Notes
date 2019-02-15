@@ -25,8 +25,10 @@
     - 4.加载一个程序集并执行其中代码
     - 5.停止CLR
 - 创建CLR COM服务实例
+
 > 使用 MetaHost.h->调用 CLRCreateInstance(MSCorEE.dll) -> 返回 接口ICLRMetaHost -> 调用 GetRuntime(传入CLR版本) -> 返回指针ICLRRuntimeInfo
 > -> 调用方法 GetInstance -> 获取ICLRRuntimeHost接口 ->该接口定义CLR相关操作
+
 - 使用ClrVer.exe检测给定进程中的加载的CLR版本
 - CLR加载到进程中后，不能卸载，除非终止进程
 - 一个进程中可以加载多个版本CLR，兼容运行
@@ -40,6 +42,7 @@
   - 3.AppDomain可以单独保护，可以设置最大权限集；
   - 4.AppDomain可以单独实施配置：加载程序集的方式；
 - 为什么不支持卸载程序集？
+
 > [参考文档](https://blogs.msdn.microsoft.com/jasonz/2004/05/31/why-isnt-there-an-assembly-unload-method/)
 >> 1.可能正在应用程序域中运行该程序集内的代码，在程序集级别跟踪代码引用太昂贵
 >> 2.即使已经跟踪了所有的代码引用，但是释放程序集也只能释放原数据和IL，JIT中的代码还在保留在AppDomain的Loader Heap内，JIT申请的代码在调用buffer内是连续的；
@@ -183,3 +186,5 @@ public override object InitializeLifetimeService()
     - 4.当线程在安全点后，CLR检测线程标识，后抛出ThreadAbortException，该异常被CLR特殊处理；
   - 在cach块尾部，CLR自动重新抛出ThreadAbortException
   - Thread的ResetAbort方法要求被调用者被授予SecurityPermission权限，而且ControlThread标识为true；
+
+  ![ch22.2.1.png](ch22.2.2.png)
