@@ -13,4 +13,3 @@
 - Git
 - Node JS 8.9.1-9.0.0 不含9.0.0 [下载](https://nodejs.org/en/)
 - Yarn [下载](https://yarnpkg.com/en/docs/install#windows-stable)
-- 
