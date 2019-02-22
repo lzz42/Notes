@@ -123,3 +123,4 @@
 * tutorial 教程
 * fences 栅栏、障碍物、
 * scenarios 脚本
+* deploy 部署
