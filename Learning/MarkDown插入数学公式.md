@@ -44,10 +44,23 @@
   - 大括号：$\alpha\{\beta+\gamma\}$
 - 求和：$\sum_0^{10}$
 - 极限：$\lim_{x\to 0}{f(x)}$
-- 积分：$\int_0^\infty{f(x)dx}$
+- 积分：$\int_0^\infty{f(x)dx} \quad \iint \quad \oint \quad \nabla$
 - 分式：$\frac{f(x)}{g(x)}$
 - 根式：$\sqrt[x]{f(x)}$
 - 函数：$\lim_{x\to 0}{\frac{x}{\sin x}}=1$
 - 运算符号：$a+b|a-b|a \times b|a \div b| a\pm b$
 - 比较符号：$a=b|a\neq b|a\approx b|a\leq b|a\geq b$
 - 条件：$\forall \epsilon >0,\exists \delta >0$
+- 省略号:$\dots \quad \cdots$
+- 关系运算符：
+
+|显示|命令|显示|命令|显示|命令|
+|----|----|----|----|----|----|
+|$\pm$|\pm|$\times$|\times|$\div$|\div|
+|$\mid$|\mid|$\nmid$|\nmid|
+|$\circ$|\circ|$\ast$|\ast|$\cdot$|\cdot|
+|$\bigotimes$|\bigotimes|$\bigoplus$|\bigoplus|$\bigodot$|\bigodot|
+|$\leq$|\leq|$\geq$|\geq|$\neq$|\neq|
+|$\uparrow$|\uparrow|$\downarrow$|\downarrow|
+|$\rightarrow$|\rightarrow|$\leftarrow$|\leftarrow|
+|$\longrightarrow$|\longrightarrow|$\longleftarrow$|\longleftarrow|
