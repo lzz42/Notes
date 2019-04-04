@@ -52,6 +52,7 @@
 - 比较符号：$a=b|a\neq b|a\approx b|a\leq b|a\geq b$
 - 条件：$\forall \epsilon >0,\exists \delta >0$
 - 省略号:$\dots \quad \cdots$
+- 等价无穷小：$\sim$ `\sim`
 - 关系运算符：
 
 |显示|命令|显示|命令|显示|命令|
