@@ -3,6 +3,7 @@
 ## 参考资料
 
 - https://www.jianshu.com/p/a0aa94ef8ab2
+- https://www.zybuluo.com/codeep/note/163962
 
 ## 基本语法
 
@@ -62,6 +63,6 @@
 |$\circ$|\circ|$\ast$|\ast|$\cdot$|\cdot|
 |$\bigotimes$|\bigotimes|$\bigoplus$|\bigoplus|$\bigodot$|\bigodot|
 |$\leq$|\leq|$\geq$|\geq|$\neq$|\neq|
-|$\uparrow$|\uparrow|$\downarrow$|\downarrow|
-|$\rightarrow$|\rightarrow|$\leftarrow$|\leftarrow|
+|$\uparrow$|\uparrow|$\downarrow$|\downarrow|$\leftrightarrow$|\leftrightarrow|
+|$\rightarrow$|\rightarrow|$\leftarrow$|\leftarrow|$\Leftrightarrow$|\Leftrightarrow|
 |$\longrightarrow$|\longrightarrow|$\longleftarrow$|\longleftarrow|
