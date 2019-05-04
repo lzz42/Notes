@@ -186,6 +186,8 @@ def CharType():
     res = y.isalpha()  # 是否为纯英文
     res = y.isdigit()  # 是否为整型
     res = y.isidentifier()  # 是否为合法的标识符-变量名
+    # 字符串截取
+    
     return
 
 # 字典类型

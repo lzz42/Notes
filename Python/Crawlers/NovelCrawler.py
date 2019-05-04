@@ -158,18 +158,27 @@ class INovelCrawler:
 
 class DingDianXiaoShuo(INovelCrawler):
     # mURL = 'https://www.booktxt.net/0_362/'
-    mURL = 'https://www.booktxt.net/2_2219/'
+    # mURL = 'https://www.booktxt.net/2_2219/'
+    mURL = 'https://www.dingdiann.com/ddk67087/'
+    mURL0 = 'https://www.dingdiann.com/'
 
     def getPage(self, url):
         # 给请求指定一个请求头来模拟chrome浏览器
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'}
-        req = requests.get(url, headers=headers)
-        # req.encoding = 'gb2312'
-        req.encoding = 'gbk'
-        # req = requests.get(url)
-        soup = BeautifulSoup(req.text, 'lxml')
-        return soup
+        # headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'}
+        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36'}
+        import urllib3
+        urllib3.disable_warnings()
+        try:
+            req = requests.get(url, headers=headers,verify=False)
+            req.encoding = 'utf-8'
+            # req.encoding = 'gbk'
+            # req = requests.get(url)
+            soup = BeautifulSoup(req.text, 'lxml')
+            return soup
+            pass
+        except :
+            print("getPage Exception:",sys.exc_info()[0])
+            pass
 
     def getWebUrl(self):
         return self.mURL
@@ -207,7 +216,18 @@ class DingDianXiaoShuo(INovelCrawler):
                     lis = []
                     res = list_div.find_all('a')
                     for dd in res:
-                        lis.append(indexPageUrl+dd.attrs['href'])
+                        href = dd.attrs['href']
+                        indexPageUrl = self.mURL0
+                        if(indexPageUrl.endswith('/')):
+                            if(href.startswith('/')):
+                                lis.append(indexPageUrl+href[1:])
+                            else:
+                                lis.append(indexPageUrl+href)
+                        else:
+                            if(href.startswith('/')):
+                                lis.append(indexPageUrl+href)
+                            else:
+                                lis.append(indexPageUrl+'/'+href)
                     return lis
             pass
         except:
@@ -221,6 +241,7 @@ class DingDianXiaoShuo(INovelCrawler):
             title = soup2.find('h1')
             if not title is None:
                 cap = '\n\n'+title.text+'\n\n'
+                print(cap)
             if not cc is None:
                 c = cc.text.replace('\xa0\xa0\xa0\xa0', '\n').replace('\ufffd', '').replace(
                     '\u30fb', '').replace('\\u', '').replace('\xa0', '')
@@ -267,12 +288,13 @@ def main2():
         fp = open(f, 'w')
         fp.write(info[0]+'\n')
         fp.write("\nby : "+info[1]+'\n')
-        k = 5
+        k = 12
         for u in list_urls:
-            time.sleep(0.5)
             k = k-1
-            if k < 0:
-                break
+            if k>0:
+                continue
+            print("Get Page URL:"+u)
+            time.sleep(0.5)
             data = dingDianXiaoShuo.getSinglePageData(u)
             if not data is None:
                 # 输出信息
