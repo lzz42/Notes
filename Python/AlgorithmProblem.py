@@ -21,5 +21,5 @@ import time
 
 
 
-# if if __name__ == "__main__":
-#     pass
+if if __name__ == "__main__":
+    pass

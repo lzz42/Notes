@@ -57,29 +57,29 @@
 - 标识符（命名程序实体）：第一个字符必须是字母或者下划线不能是数字
 - 关键字：25个关键字（保留字），36个预定义标识符
 
-|关键字|名称|描述|
-|------|---|---|
-|package,import
-|func,interface,struct
-|const,var,map,chan,range
-|for,continue,break,goto
-|if,else,switch,select,case,default
-|go,return
-|defer,fallthrough
+| 关键字                             | 名称 | 描述 |
+| ---------------------------------- | ---- | ---- |
+| package,import                     |
+| func,interface,struct              |
+| const,var,map,chan,range           |
+| for,continue,break,goto            |
+| if,else,switch,select,case,default |
+| go,return                          |
+| defer,fallthrough                  |
 
 ## 数据类型
 
-|类型名称|描述|值|
-|--------|---|--|
-|布尔型|bool|true/false|
-|数字类型|int/float32/float64|--|
-|字符串类型|单字节连接，Utf-8编码的Unicode|--|
-|派生类型|指针/数组/结构体/Channel类型/函数/切片/接口/map|--|
+| 类型名称   | 描述                                            | 值         |
+| ---------- | ----------------------------------------------- | ---------- |
+| 布尔型     | bool                                            | true/false |
+| 数字类型   | int/float32/float64                             | --         |
+| 字符串类型 | 单字节连接，Utf-8编码的Unicode                  | --         |
+| 派生类型   | 指针/数组/结构体/Channel类型/函数/切片/接口/map | --         |
 
 - 数字类型
-    > 整型`uint8，uint16,uint32,uint64,int8,int16,int32,int64`
-    > 浮点型`float32,float64,complex64(64位实数和虚数)，conplex128(64位实数和虚数)`
-    > 其他数字类型`byte==uint8,rune==int32,uint,int,uintptr无符号整型，用于存放指针`
+    > 整型:`uint8，uint16,uint32,uint64,int8,int16,int32,int64` <br/>
+    > 浮点型:`float32,float64,complex64(64位实数和虚数)，conplex128(64位实数和虚数)` <br/>
+    > 其他数字类型:`byte==uint8,rune==int32,uint,int,uintptr无符号整型，用于存放指针`
 
 ## 语言变量
 
@@ -118,6 +118,7 @@
 - if,if...else
 
 ```GO
+//if...else
 if num := 1; num > 0 {
 //
 }else if num==0 {
@@ -128,6 +129,7 @@ if num := 1; num > 0 {
 - switch...case ：case结束不需要加break
 
 ```GO
+//switch...case
 switch x.(type){
     case int:
     //...
@@ -143,6 +145,7 @@ switch x.(type){
 - select...case :随机选择一个case执行，若没有符合条件的则阻塞
 
 ```GO
+//select...case
 select {
     case statement1:
     //...
@@ -184,6 +187,7 @@ for true{
 func func_name([parameter list])[return types]{
     //func body
 }
+//定义参数为int,int 返回值为int的名为Add的函数
 func Add(int a,int b) int{
  return a+b
 }
@@ -199,11 +203,11 @@ func Add(int a,int b) int{
 - 形式参数：函数定义 `作用域函数体`
 - 初始化局部变量和默认值：
 
-    |类型|默认值|
-    |----|-----|
-    |int|0|
-    |float32|0|
-    |pointer|nil|
+    | 类型    | 默认值 |
+    | ------- | ------ |
+    | int     | 0      |
+    | float32 | 0      |
+    | pointer | nil    |
 
 ### 数组
 

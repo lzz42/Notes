@@ -1,7 +1,7 @@
 import time
 from turtle import *
 
-setup(600, 800, 0, 0)
+setup(800, 800, 0, 0)
 speed(0)
 penup()
 seth(90)
@@ -9,7 +9,7 @@ fd(340)
 seth(0)
 pendown()
 
-speed(5)
+speed(15)
 begin_fill()
 fillcolor('red')
 circle(50, 30)

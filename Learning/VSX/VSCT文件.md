@@ -1,6 +1,7 @@
 # VSCT文件
 
 > [VSCT XML架构参考]:(https://docs.microsoft.com/zh-cn/visualstudio/extensibility/vsct-xml-schema-reference)
+
 - 作用：1.定义用户对象、所需资源以及代码绑定行为：2.提供了命令编译架构元素的表，基于XML表配置文件，其中定义了由VSPackage提供的的IDE的命令元素
 - 命令元素包括：菜单项、菜单、工具栏、组合窗
 - VSCT编译器可以在vsct文件上运行预编译程序，由于是典型的C++预编译程序，所以你可以使用C++文件中的同样的符号来定义自己的包含项和宏命令(macros)
