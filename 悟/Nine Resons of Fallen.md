@@ -4,7 +4,7 @@
 
 ## 2.Procrastinate 拖延
 
-## 3.Tempoarary Enthusiasm 三分热度
+## 3.Temporary Enthusiasm 三分热度
 
 ## 4.Afraid Refuse 害怕拒绝
 
