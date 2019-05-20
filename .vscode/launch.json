@@ -8,8 +8,8 @@
             "name": "Python: Terminal (integrated)",
             "type": "python",
             "request": "launch",
-            // "program": "${workspaceFolder}/Python/LanguageInteroperability/Introp_CSharp.py",
-            "program": "${workspaceFolder}/Python/Turtle/Draw_Axis.py",
+            "program": "${workspaceFolder}/Python/LanguageInteroperability/Introp_CSharp.py",
+            // "program": "${workspaceFolder}/Python/Turtle/Draw_Axis.py",
             
             // "program": "${workspaceFolder}/Python/Crawlers/NovelCrawler.py",
             "console": "integratedTerminal"
