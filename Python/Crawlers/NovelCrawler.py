@@ -7,9 +7,6 @@
 pip install requests
 pip install lxml
 pip install BeautifulSoup4
-python -m pip install requests
-python -m pip install lxml
-python -m pip install BeautifulSoup4
 https://www.cnblogs.com/Albert-Lee/p/6238866.html
 PhatomJS 基于webkit的JS API的隐形浏览器:
 http://phantomjs.org/
@@ -162,8 +159,7 @@ class INovelCrawler:
 class DingDianXiaoShuo(INovelCrawler):
     # mURL = 'https://www.booktxt.net/0_362/'
     # mURL = 'https://www.booktxt.net/2_2219/'
-    # mURL = 'https://www.dingdiann.com/ddk67087/'
-    mURL = 'https://www.dingdiann.com/ddk92482/'
+    mURL = 'https://www.dingdiann.com/ddk67087/'
     mURL0 = 'https://www.dingdiann.com/'
 
     def getPage(self, url):
@@ -174,12 +170,10 @@ class DingDianXiaoShuo(INovelCrawler):
         urllib3.disable_warnings()
         try:
             req = requests.get(url, headers=headers,verify=False)
-            content = req.content.decode(req.apparent_encoding)
-            # req.encoding = 'utf-8'
+            req.encoding = 'utf-8'
             # req.encoding = 'gbk'
             # req = requests.get(url)
-            soup = BeautifulSoup(content, 'lxml')
-            soup.encode(req.apparent_encoding)
+            soup = BeautifulSoup(req.text, 'lxml')
             return soup
             pass
         except :
@@ -286,8 +280,6 @@ def main2():
     dingDianXiaoShuo = DingDianXiaoShuo()
     url = dingDianXiaoShuo.getWebUrl()
     info = dingDianXiaoShuo.getNovelInfo(url)
-    if info is None:
-        return
     list_urls = dingDianXiaoShuo.getNovelAllUrls(url)
     if not list_urls is None:
         dir = os.getcwd()
