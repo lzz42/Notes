@@ -49,7 +49,6 @@
       <dependentAssembly>
           <assemblyIdentity type="win32" name="A" version="1.0.0.0" processorArchitecture="x86" publicKeyToken="0000000000000000"/>
           <assemblyIdentity type="win32" name="B" version="1.0.0.0" processorArchitecture="x86" publicKeyToken="0000000000000000"/>
-          <assemblyIdentity type="win32" name="C" version="1.0.0.0" processorArchitecture="x86" publicKeyToken="0000000000000000"/>
       </dependentAssembly>
     </dependency>
     <!-- 描述依赖文件 -->
@@ -57,11 +56,8 @@
       <typelib></typelib>
     </file>
     <file name="Lib\B.dll" ></file>
-    <file name="Lib\C.dll" ></file>
     <file name="sampleu.dll" hash="3eab067f82504bf271ed38112a4ccdf46094eb5a" hashalg="SHA1">
         <comClass description="Font Property Page" clsid="{0BE35200-8F91-11CE-9DE3-00AA004BB851}"/>
-        <comClass description="Color Property Page" clsid="{0BE35201-8F91-11CE-9DE3-00AA004BB851}"/>
-        <comClass description="Picture Property Page" clsid="{0BE35202-8F91-11CE-9DE3-00AA004BB851}"/>
     </file>
     <file name="bar.dll" hash="ac72753e5bb20446d88a48c8f0aaae769a962338" hashalg="SHA1"/>
     <file name="foo.dll" hash="a7312a1f6cfb46433001e0540458de60adcd5ec5" hashalg="SHA1">
@@ -72,8 +68,6 @@
     </file>
     <file name="sampledll.dll" hash="ba62960ceb15073d2598379307aad84f3a73dfcb" hashalg="SHA1"/>
     <windowClass>ComboBoxEx32</windowClass>
-    <windowClass>sample_trackbar32</windowClass>
-    <windowClass>sample_updown32</windowClass>
     <comInterfaceExternalProxyStub>    </comInterfaceExternalProxyStub>
 </assembly>
 ```
