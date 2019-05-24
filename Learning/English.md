@@ -124,3 +124,5 @@
 * fences 栅栏、障碍物、
 * scenarios 脚本
 * deploy 部署
+* duplicate v 重复 复制
+* side-by-side 并行
