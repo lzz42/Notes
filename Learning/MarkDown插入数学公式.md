@@ -2,13 +2,13 @@
 
 ## 参考资料
 
-- https://www.jianshu.com/p/a0aa94ef8ab2
 - https://www.zybuluo.com/codeep/note/163962
 - https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference?page=1&tab=votes#tab-top
 - https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference?page=2&tab=votes#tab-top
 - http://docs.mathjax.org/en/latest/tex.html#supported-latex-commands
 - https://www.matheretter.de/rechner/latex/
 - https://blog.csdn.net/qq_39422642/article/details/78276002#2-9-%E6%9D%A1%E4%BB%B6%E5%81%8F%E5%AF%BC
+- [LaTex](https://www.latex-project.org/)
 
 ## 基本语法
 
