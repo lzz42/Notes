@@ -169,11 +169,12 @@ class DingDianXiaoShuo(INovelCrawler):
     def getPage(self, url):
         # 给请求指定一个请求头来模拟chrome浏览器
         # headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'}
-        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36'}
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36'}
         import urllib3
         urllib3.disable_warnings()
         try:
-            req = requests.get(url, headers=headers,verify=False)
+            req = requests.get(url, headers=headers, verify=False)
             content = req.content.decode(req.apparent_encoding)
             # req.encoding = 'utf-8'
             # req.encoding = 'gbk'
@@ -182,8 +183,8 @@ class DingDianXiaoShuo(INovelCrawler):
             soup.encode(req.apparent_encoding)
             return soup
             pass
-        except :
-            print("getPage Exception:",sys.exc_info()[0])
+        except:
+            print("getPage Exception:", sys.exc_info()[0])
             pass
 
     def getWebUrl(self):
@@ -299,7 +300,7 @@ def main2():
         k = 12
         for u in list_urls:
             k = k-1
-            if k>0:
+            if k > 0:
                 continue
             print("Get Page URL:"+u)
             time.sleep(0.5)

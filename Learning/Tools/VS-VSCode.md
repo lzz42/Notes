@@ -14,3 +14,20 @@
   - 2.代码上下移动行：Alt+(上键)，Alt+(下键)
   - 3.注释：Ctrl+/,取消注释：Shift+Ctrl+/
   - 4.提示完成或者纠正错误或者全部修改:Alt+Enter
+
+## 通用
+
+- 快捷键：
+- 拆分分组：Ctrl+\
+- 选择拆分的分组：Ctrl+[数字]
+- 切换编辑器：Ctrl+PageDowm/PageUp
+- 进入/退出禅模式：Shift+Alt+Enter
+- 选择语言模式：Ctrl+k,M
+
+## C++
+
+- [](https://blog.csdn.net/c_duoduo/article/details/51615381)
+- [](https://blog.csdn.net/LK274857347/article/details/83068498)
+- [](https://www.cnblogs.com/qcssmd/p/5302052.html)
+- http://prdownloads.sourceforge.net/mingw/gcc-core-6.3.0-1-mingw32-bin.tar.xz?download
+- http://tdm-gcc.tdragon.net/download

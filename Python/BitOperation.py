@@ -39,19 +39,43 @@ def FindNoRepeatNumber(arr):
     i = 0
     while i < len(arr):
         a = a ^ arr[i]
-        i+=1
+        i += 1
     print("Not Repeat Number is {0}.".format(a))
     pass
 
-def Pow(m,n):
+
+def Pow(m, n):
     # m^n
     i = 0
     r = 0
     while i < n:
         r = r * m
-        i+=1
-    print("{0}^{1} is {2}.".format(m,n,r))
-    #  
+        i += 1
+    print("Traditional{0}^{1} is {2}.".format(m, n, r))
+    #
+    sum = 1
+    tmp = m
+    nt = n
+    while nt!=0:
+        if nt&1 == 1:
+            sum *=tmp
+        tmp *=tmp
+        nt = nt>>1
+    print("Bit {0}^{1} is {2}.".format(m, nt, r))
+    pass
+
+
+def PowderTwoNotLargeN(n):
+    i = 0
+    while i < 5:
+        # Get 1 2 4 8 16 32
+        t = 1 >> i
+        i += 1
+        n |= n >> t
+    return (n + 1) >> 1
+
+def FindN(n):
+    
     pass
 
 if __name__ == "__main__":

@@ -9,7 +9,7 @@
 3.导入第三方DLL  clr.FindAssembly([dll file])
 4.添加dll路径 sys.path.append(DLL_Path)
 5.添加dll命名空间 clr.AddReference([name space name])
-6.使用C#内开发的类
+6.使用C#内的自定义类
 """
 
 import os
@@ -49,7 +49,7 @@ def loadAssembly():
     d11 = Dictionary[int, str]()
     d22 = Dictionary[int, float]()
     d33 = Dictionary[int, String]()
-    # Fileds and Properties
+    # Use Fileds and Properties
     name = Environment.MachineName
     print(name)
     Environment.ExitCode = 1
@@ -70,7 +70,7 @@ def loadAssembly():
     # Delegate and Events 委托和事件
     d = AssemblyLoadEventHandler(assembly_load_handler)
     AppDomain.CurrentDomain.AssemblyLoad += d
-    # 事件
+    # 订阅事件
     object.SomeEvent += d
     object.SomeEvent -= d
     # fire events
@@ -115,6 +115,7 @@ def test_UI():
     sys.path.append(DLL_Path)  # 加载c#dll文件路径
     clr.AddReference("AutoIt_Client")  # 添加DLL命名空间
     from AutoIt_Client import *  # 导入命名空间
+    
     # 测按钮
     btn = PY_Call.GetButton()
     btn.Text = Environment.MachineName
