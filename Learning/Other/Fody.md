@@ -1,5 +1,9 @@
 # Fody
 
+## 介绍
+
+- FOdy:用于将C#程序引用的多个动态库压缩到原引用的Exe或DLL中，而不影响使用；
+
 ## 使用
 
 - 1.VS工程添加Nuget包：Costura.Fody -v 4.0.0(对于Coret:dotnet add DotNetCore package Costura.Fody -v 4.0.0)
