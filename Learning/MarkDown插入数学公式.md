@@ -17,19 +17,19 @@
 
 ## 希腊字母表
 
-|显示|命令|显示|命令|
-|----|----|----|----|
-|$\alpha$|\alpha|$\beta$|\beta|
-|$\gamma$|\gamma|$\delta$|\delta|
-|$\epsilon$|\epsilon|$\zeta$|\zeta|
-|$\eta$|\eta|$\theta$|\theta|
-|$\iota$|\iota|$\kappa$|\kappa|
-|$\lambda$|\lambda|$\mu$|\mu|
-|$\xi$|\xi|$\nu$|\nu|
-|$\pi$|\pi|$\rho$|\rho|
-|$\sigma$|\sigma|$\tau$|\tau|
-|$\phi$|\phi|$\chi$|\chi|
-|$\psi$|\psi|$\omega$|\omega|
+| 显示       | 命令     | 显示     | 命令   |
+| ---------- | -------- | -------- | ------ |
+| $\alpha$   | \alpha   | $\beta$  | \beta  |
+| $\gamma$   | \gamma   | $\delta$ | \delta |
+| $\epsilon$ | \epsilon | $\zeta$  | \zeta  |
+| $\eta$     | \eta     | $\theta$ | \theta |
+| $\iota$    | \iota    | $\kappa$ | \kappa |
+| $\lambda$  | \lambda  | $\mu$    | \mu    |
+| $\xi$      | \xi      | $\nu$    | \nu    |
+| $\pi$      | \pi      | $\rho$   | \rho   |
+| $\sigma$   | \sigma   | $\tau$   | \tau   |
+| $\phi$     | \phi     | $\chi$   | \chi   |
+| $\psi$     | \psi     | $\omega$ | \omega |
 
 - 大写：$\Omega$ - `$\Omega$`
 - 斜体：$\varOmega$ - `$\varOmega$`
@@ -71,13 +71,13 @@
 
 ## 其他字符
 
-|显示|命令|显示|命令|显示|命令|
-|----|----|----|----|----|----|
-|$\pm$|\pm|$\times$|\times|$\div$|\div|
-|$\mid$|\mid|$\nmid$|\nmid|
-|$\circ$|\circ|$\ast$|\ast|$\cdot$|\cdot|
-|$\bigotimes$|\bigotimes|$\bigoplus$|\bigoplus|$\bigodot$|\bigodot|
-|$\leq$|\leq|$\geq$|\geq|$\neq$|\neq|
-|$\uparrow$|\uparrow|$\downarrow$|\downarrow|$\leftrightarrow$|\leftrightarrow|
-|$\rightarrow$|\rightarrow|$\leftarrow$|\leftarrow|$\Leftrightarrow$|\Leftrightarrow|
-|$\longrightarrow$|\longrightarrow|$\longleftarrow$|\longleftarrow|
+| 显示              | 命令            | 显示             | 命令           | 显示              | 命令            |
+| ----------------- | --------------- | ---------------- | -------------- | ----------------- | --------------- |
+| $\pm$             | \pm             | $\times$         | \times         | $\div$            | \div            |
+| $\mid$            | \mid            | $\nmid$          | \nmid          |
+| $\circ$           | \circ           | $\ast$           | \ast           | $\cdot$           | \cdot           |
+| $\bigotimes$      | \bigotimes      | $\bigoplus$      | \bigoplus      | $\bigodot$        | \bigodot        |
+| $\leq$            | \leq            | $\geq$           | \geq           | $\neq$            | \neq            |
+| $\uparrow$        | \uparrow        | $\downarrow$     | \downarrow     | $\leftrightarrow$ | \leftrightarrow |
+| $\rightarrow$     | \rightarrow     | $\leftarrow$     | \leftarrow     | $\Leftrightarrow$ | \Leftrightarrow |
+| $\longrightarrow$ | \longrightarrow | $\longleftarrow$ | \longleftarrow |

@@ -18,7 +18,10 @@
   - dotnet restore [root/project.json]
 - dotnet build
 - dotnet run
-- dotnet publish
-- dotnet test
+- dotnet test [project]
 - dotnet pack
+- dotnet publish [project]
+
+## VSCode and DotNetCore
+
 - 
