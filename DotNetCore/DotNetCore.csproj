@@ -3,7 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <OutputType>Exe</OutputType>
-    <StartupObject>DotNetCore.CompareTwoFile</StartupObject>
+    <!-- <StartupObject>DotNetCore.CompareTwoFile</StartupObject> -->
+    <StartupObject>DotNetCore.CheckCodingType</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>

@@ -14,115 +14,15 @@ Selenium:pip install selenium
 '''
 
 # 导入http请求库
-import requests
-import lxml
 import os
 import re
 import time
 import sys
+import requests
+import lxml
 import chardet
 import urllib3
 from bs4 import BeautifulSoup
-
-URL = 'https://www.booktxt.net/0_362/'
-# URL = 'https://www.booktxt.net/1_1562/'
-
-# itchat: https://itchat.readthedocs.io/zh/latest/
-
-
-def requestsTest():
-    # get
-    # 给请求指定一个请求头来模拟chrome浏览器
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'}
-    rep = requests.get(URL, headers=headers)
-    rep = requests.post(URL)
-
-
-def BeautifulSoupTest():
-    soup = BeautifulSoup('htmltext', 'html.parser')
-    print(soup.prettify())
-    # find title
-    title = soup.title
-
-
-def getTotalPage(url):
-    # 给请求指定一个请求头来模拟chrome浏览器
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'}
-    req = requests.get(url, headers=headers)
-    # req.encoding = 'gb2312'
-    req.encoding = 'gbk'
-    # req = requests.get(url)
-    soup = BeautifulSoup(req.text, 'lxml')
-    return soup
-
-
-def getNovelInfo(soup):
-    infoDiv = soup.find('div', id='info')
-    novelName = 'None'
-    novelAuthor = 'Nobody'
-    if not infoDiv is None:
-        h1 = infoDiv.find('h1')
-        if not h1 is None:
-            novelName = h1.text
-        for p in infoDiv.find_all('p'):
-            if not p.text is None:
-                if p.text.startswith("作\xa0\xa0\xa0\xa0者："):
-                    novelAuthor = p.text.replace('作\xa0\xa0\xa0\xa0者：', '')
-                    break
-    return (novelName, novelAuthor)
-
-
-def getAllIndexes(soup):
-    list_div = soup.find('div', id='list')
-    lis = []
-    res = list_div.find_all('a')
-    for dd in res:
-        lis.append(dd.attrs['href'])
-    return lis
-
-
-def main():
-    print("Python Novel Crawler")
-    soup = getTotalPage(URL)
-    lis = getAllIndexes(soup)
-    dir = os.getcwd()
-    tc = time.strftime('%Y%m%d%H%M', time.localtime(time.time()))
-    info = getNovelInfo(soup)
-    f = dir+"\\" + info[0] + "_" + tc + ".txt"
-    fp = open(f, 'w')
-    fp.write(info[0]+'\n')
-    fp.write("\nby : "+info[1]+'\n')
-    print(info[0])
-    print(info[1])
-    i = 0
-    k = 0
-    for l in lis:
-        i = i+1
-        # 跳过前面倒序的几章
-        if i < 9:
-            continue
-        k = k+1
-        # if k > 3:
-        #     break
-        # 此处睡眠 1S 防止过频繁的访问被网站禁IP
-        time.sleep(0.5)
-        url = URL+"/" + l
-        soup2 = getTotalPage(url)
-        cc = soup2.find('div', id='content')
-        title = soup2.find('h1')
-        if not cc is None:
-            c = cc.text.replace('\xa0\xa0\xa0\xa0', '\n').replace('\ufffd', '').replace(
-                '\u30fb', '').replace('\\u', '').replace('\xa0', '')
-            cap = '\n\n第' + str(k)+'章 '+title.text+'\n\n'
-            print(cap)
-            fp.write(cap)
-            fp.write(c)
-            fp.flush()
-    fp.close()
-    print("ALL DONE !!!")
-
 
 # 爬虫接口
 # -------------------------------------------------------------
@@ -249,8 +149,6 @@ class DingDianXiaoShuo(INovelCrawler):
             pass
         return None
 
-# 顶点小说 https://www.dingdiann.com/
-
 
 class BiqugeCrawler(INovelCrawler):
     URL = ''
@@ -258,7 +156,7 @@ class BiqugeCrawler(INovelCrawler):
     URLS = []
 
     def hasCarwlPage(self):
-        if self.URLS != None & len(self.URLS) > 0:
+        if self.URLS != None and len(self.URLS) > 0:
             return len(self.URLS) > self.Index
         return False
         pass
@@ -272,10 +170,10 @@ class BiqugeCrawler(INovelCrawler):
         # urllib3.disable_warnings()
         try:
             # req = requests.get(url, headers=headers, verify=False)
-            req = requests.get(self.URL, headers=headers)
-            req.encoding = 'utf-8'
-            print("This Web Coding is %s"%(chardet.detect(req)))
-            # req.encoding = 'gbk'
+            req = requests.get(url, headers=headers)
+            # req.encoding = 'utf-8'
+            # print("This Web Coding is %s"%(chardet.detect(req)))
+            req.encoding = 'gbk'
             # req = requests.get(url)
             soup = BeautifulSoup(req.text, 'lxml')
             return soup
@@ -286,16 +184,12 @@ class BiqugeCrawler(INovelCrawler):
 
     def getWebUrl(self):
         # 给请求指定一个请求头来模拟chrome浏览器
-        # headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'}
         headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36'}
-        import urllib3
         urllib3.disable_warnings()
         try:
             req = requests.get(self.URL, headers=headers, verify=False)
-            req.encoding = 'gbk'
-            txt = urllib3.response()
-            print("This Web Coding is %s" % (chardet.detect(req)))
+            # req.encoding = 'gbk'
             soup = BeautifulSoup(req.text, 'lxml')
             return soup
             pass
@@ -318,9 +212,9 @@ class BiqugeCrawler(INovelCrawler):
                         novelName = h1.text
                     for p in infoDiv.find_all('p'):
                         if not p.text is None:
-                            if p.text.startswith("作\xa0\xa0\xa0\xa0者："):
+                            if p.text.startswith("作者"):
                                 novelAuthor = p.text.replace(
-                                    '作\xa0\xa0\xa0\xa0者：', '')
+                                    '作者', '')
                                 break
                 return (novelName, novelAuthor)
             pass
@@ -341,16 +235,19 @@ class BiqugeCrawler(INovelCrawler):
                     for dd in res:
                         href = dd.attrs['href']
                         url = self.URL
-                        if(url.endswith('/')):
-                            if(href.startswith('/')):
-                                lis.append(url+href[1:])
+                        if not url.startswith(url):
+                            if(url.endswith('/')):
+                                if(href.startswith('/')):
+                                    lis.append(url+href[1:])
+                                else:
+                                    lis.append(url+href)
                             else:
-                                lis.append(url+href)
+                                if(href.startswith('/')):
+                                    lis.append(url+href)
+                                else:
+                                    lis.append(url+'/'+href)
                         else:
-                            if(href.startswith('/')):
-                                lis.append(url+href)
-                            else:
-                                lis.append(url+'/'+href)
+                            lis.append(href)
                     for li in lis:
                         self.URLS.append(li)
                     return lis
@@ -432,6 +329,7 @@ def main3():
         kt = crawler.hasCarwlPage()
         while kt:
             kt = crawler.hasCarwlPage()
+            time.sleep(0.5)
             data = crawler.getSinglePageData()
             if not data is None:
                 # 输出信息

@@ -56,21 +56,72 @@ def find_Perfect_Number():
     #
     pass
 
-
-def fibonacci_Sequence():
+# 斐波那契数列
+def fibonacci_Sequence(n=100):
     a = 0
     b = 1
-    for i in range(1,100):
+    for i in range(1,n):
         a=a^b
         b=a^b
         a=a^b
         print(b)
         b=a+b
+    return b
     pass
+
+# yield
+
+def yieldfunc():
+    m = 100
+    while True:
+        m-=1
+        print(m)
+        yield m
+
+
+import os
+
+
+def print_board(board):
+    print(board['TL'] + '|' + board['TM'] + '|' + board['TR'])
+    print('-+-+-')
+    print(board['ML'] + '|' + board['MM'] + '|' + board['MR'])
+    print('-+-+-')
+    print(board['BL'] + '|' + board['BM'] + '|' + board['BR'])
+
+
+def main():
+    init_board = {
+        'TL': ' ', 'TM': ' ', 'TR': ' ',
+        'ML': ' ', 'MM': ' ', 'MR': ' ',
+        'BL': ' ', 'BM': ' ', 'BR': ' '
+    }
+    begin = True
+    while begin:
+        curr_board = init_board.copy()
+        begin = False
+        turn = 'x'
+        counter = 0
+        os.system('clear')
+        print_board(curr_board)
+        while counter < 9:
+            move = input('轮到%s走棋, 请输入位置: ' % turn)
+            if curr_board[move] == ' ':
+                counter += 1
+                curr_board[move] = turn
+                if turn == 'x':
+                    turn = 'o'
+                else:
+                    turn = 'x'
+            os.system('clear')
+            print_board(curr_board)
+        choice = input('再玩一局?(yes|no)')
+        begin = choice == 'yes'
 
 
 if __name__ == "__main__":
     # find_Narcissistic_number()
     # find_Perfect_Number()
-    fibonacci_Sequence()
+    # fibonacci_Sequence()
+    main()
     pass
