@@ -8,12 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- <PackageReference Include="Costura.Fody" Version="4.0.0" /> -->
-    <!-- <PackageReference Include="newtonsoft.json" Version="12.0.0.0" /> -->
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="MediaInfoDotNet" Version="0.7.79.40925" />
+    <PackageReference Include="Costura.Fody" Version="4.0.0" />
+    <PackageReference Include="fody" Version="5.1.1">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
   
 </Project>

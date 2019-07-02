@@ -110,6 +110,6 @@ venv.bak/
 [Bb]uild/
 [Bb]in/
 [Oo]bj/
-DotNetCore/.vs/DotNetCore/DesignTimeBuild/.dtbcache
-DotNetCore/.vs/DotNetCore/v16/.suo
-DotNetCore/.vs/DotNetCore/v16/Server/sqlite3/storage.ide
+DotNetCore/.vs
+DotNetCore/.vs/
+DotNetCore/DotNetCore.csproj.user
