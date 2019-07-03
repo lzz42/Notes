@@ -27,11 +27,13 @@ from bs4 import BeautifulSoup
 # 爬虫接口
 # -------------------------------------------------------------
 
+
 class INovelCrawler:
     URL = ''
     Index = 0
     URLS = []
     # 是否还有要爬取的页面
+
     def hasCarwlPage(): pass
 
     # 获取网站网址
@@ -48,9 +50,9 @@ class INovelCrawler:
 
 # -------------------------------------------------------------
 
+
+
 # 顶点小说https://www.booktxt.net
-
-
 class DingDianXiaoShuo(INovelCrawler):
     URL = 'https://www.dingdiann.com/ddk67087/'
     mURL0 = 'https://www.dingdiann.com/'
@@ -149,7 +151,7 @@ class DingDianXiaoShuo(INovelCrawler):
             pass
         return None
 
-
+# 笔趣阁小说
 class BiqugeCrawler(INovelCrawler):
     URL = ''
     Index = 0
@@ -159,6 +161,10 @@ class BiqugeCrawler(INovelCrawler):
         if self.URLS != None and len(self.URLS) > 0:
             return len(self.URLS) > self.Index
         return False
+        pass
+
+    def nextPage(self):
+        self.Index += 1
         pass
 
     # 获取网站
@@ -171,9 +177,9 @@ class BiqugeCrawler(INovelCrawler):
         try:
             # req = requests.get(url, headers=headers, verify=False)
             req = requests.get(url, headers=headers)
-            # req.encoding = 'utf-8'
+            req.encoding = 'utf-8'
             # print("This Web Coding is %s"%(chardet.detect(req)))
-            req.encoding = 'gbk'
+            # req.encoding = 'gbk'
             # req = requests.get(url)
             soup = BeautifulSoup(req.text, 'lxml')
             return soup
@@ -189,7 +195,7 @@ class BiqugeCrawler(INovelCrawler):
         urllib3.disable_warnings()
         try:
             req = requests.get(self.URL, headers=headers, verify=False)
-            # req.encoding = 'gbk'
+            req.encoding = 'gb2312'
             soup = BeautifulSoup(req.text, 'lxml')
             return soup
             pass
@@ -235,14 +241,14 @@ class BiqugeCrawler(INovelCrawler):
                     for dd in res:
                         href = dd.attrs['href']
                         url = self.URL
-                        if not url.startswith(url):
-                            if(url.endswith('/')):
+                        if not href.startswith(url):
+                            if(href.endswith('/')):
                                 if(href.startswith('/')):
                                     lis.append(url+href[1:])
                                 else:
                                     lis.append(url+href)
                             else:
-                                if(href.startswith('/')):
+                                if(href.endswith('/')):
                                     lis.append(url+href)
                                 else:
                                     lis.append(url+'/'+href)
@@ -316,7 +322,8 @@ def main2():
 def main3():
     print("Python Novel Crawler")
     crawler = BiqugeCrawler()
-    crawler.URL = 'https://www.biquge5.com/0_63/'
+    # crawler.URL = 'https://www.biquge5.com/0_63/'
+    crawler.URL = 'https://www.biquge.info/1_1245/'
     info = crawler.getNovelInfo()
     urls = crawler.getNovelAllUrls()
     if not urls is None:
@@ -327,8 +334,13 @@ def main3():
         fp.write(info[0]+'\n')
         fp.write("\nby : "+info[1]+'\n')
         kt = crawler.hasCarwlPage()
+        k = 450
         while kt:
             kt = crawler.hasCarwlPage()
+            k -= 1
+            if k > 0:
+                crawler.nextPage()
+                continue
             time.sleep(0.5)
             data = crawler.getSinglePageData()
             if not data is None:

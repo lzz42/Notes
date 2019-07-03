@@ -112,4 +112,7 @@ venv.bak/
 [Oo]bj/
 DotNetCore/.vs
 DotNetCore/.vs/
+DotNetCore/MSTest/
 DotNetCore/DotNetCore.csproj.user
+MarkMath/node_modules
+[Oo]ut[Aa]pp

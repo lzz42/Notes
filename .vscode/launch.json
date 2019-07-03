@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "node",
+            "request": "launch",
+            "name": "Electron Main",
+            "runtimeExecutable": "${workspaceFolder}/MarkMath/node_modules/.bin/electron",
+            "program": "${workspaceFolder}/MarkMath/main.js"
+        },
+        {
             "name": ".NET Core Launch (console)",
             "type": "coreclr",
             "request": "launch",
@@ -21,8 +28,8 @@
             "request": "launch",
             // "program": "${workspaceFolder}/Python/LanguageInteroperability/Introp_CSharp.py",
             // "program": "${workspaceFolder}/Python/Turtle/Draw_Axis.py",
-            // "program": "${workspaceFolder}/Python/Crawlers/NovelCrawler.py",
-            "program": "${workspaceFolder}/Python/API/BaiduTranslate.py",
+            "program": "${workspaceFolder}/Python/Crawlers/NovelCrawler.py",
+            // "program": "${workspaceFolder}/Python/API/BaiduTranslate.py",
             // Python\RestFulAPI\BaiduTranslate.py
             "console": "integratedTerminal"
         },
