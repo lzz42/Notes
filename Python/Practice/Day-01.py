@@ -118,10 +118,23 @@ def main():
         choice = input('再玩一局?(yes|no)')
         begin = choice == 'yes'
 
+def regex():
+    import re
+    inputStr='''
+    refs/heads/7.1a3_
+    '''
+    import re
+    result = re.findall(r"\s+<.*@.*>\s+", inputStr)
+    for r in result:
+        print(r)
+        pass
+
+
 
 if __name__ == "__main__":
     # find_Narcissistic_number()
     # find_Perfect_Number()
     # fibonacci_Sequence()
-    main()
+    # main()
+    regex()
     pass
