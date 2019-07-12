@@ -68,6 +68,37 @@ PM> Install-Package Costura.Fody
 </Weavers>
 ```
 
+### Costura.Fody原理
+
+- 涉及两个问题：
+- 1.如何在VS对csproj工程进行编译时，将引用的DLL文件添加到输出的DLL或Exe的资源中？
+  - 参考：
+    - [Jeffrey Richter's suggestion of using embedded resources as a method of merging assemblies](https://blogs.msdn.microsoft.com/microsoft_press/2010/02/03/jeffrey-richter-excerpt-2-from-clr-via-c-third-edition/)
+    - CLR via C# Chapter 23
+  - 解释：
+    - 1.将Exe或DLL依赖的DLL作为嵌入的资源引用到工程中；
+    - 2.运行时，CLR找不到所以依赖的DLL时，可以订阅`AppDomain’s ResolveAssembly event`事件，在该事件回调中，从嵌入的资源文件中读取依赖的DLL，进行加载；
+
+```C#
+AppDomain.CurrentDomain.AssemblyResolve += (sender, args) => {
+   String resourceName = "AssemblyLoadingAndReflection." +
+      new AssemblyName(args.Name).Name + ".dll";
+   using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)) {
+      Byte[] assemblyData = new Byte[stream.Length];
+      stream.Read(assemblyData, 0, assemblyData.Length);
+      return Assembly.Load(assemblyData);
+   }
+};
+```
+
+- 2.如何在不修改任何原程序代码情况下，在程序运行或DLL被调用时，让主程序或DLL找到所引用的DLL？
+  - 参考：
+  - [Einar Egilsson's suggestion using cecil to create module initializers](http://einaregilsson.com/module-initializers-in-csharp/)
+  - https://github.com/kzu/InjectModuleInitializer
+  - 解释：
+  > 模块的初始化函数在，名称为.cctor的全局函数，使用`SpecialName`和`RTSSpecialName`进行特性标记，该构造函数在模块第一次加载时，优先于该模块的任何代码被调用；
+  使用Mono.Cecil创建一个小程序，该程序向一个已存在的程序集注入一个模块初始化器，该初始化器内，调用一个外部函数；
+
 ## 使用Fody进行AOP - 属性 方法拦截
 
 ### 介绍

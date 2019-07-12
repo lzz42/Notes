@@ -54,4 +54,16 @@
 
 ### 回调函数
 
-- 
+- 异步编程依托与回调函数
+
+### 事件循环
+
+- 事件驱动模型
+  - 使用步骤：
+  - 1.引入events`var events = require("eventes);"`
+  - 2.创建EventEmitter对象：`var emitter = events.EventEmitter();`；
+  - 3.绑定事件以及处理程序：`emitter.on('eventName',eventHandler);`
+  - 4.合适的时机触发事件：`emitter.emit('eventName');`
+- EventEmitter对象
+  - 1.添加监听器：`addListener(event,listener)`
+  - 2.为指定

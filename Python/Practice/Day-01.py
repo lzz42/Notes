@@ -57,24 +57,26 @@ def find_Perfect_Number():
     pass
 
 # 斐波那契数列
+
+
 def fibonacci_Sequence(n=100):
     a = 0
     b = 1
-    for i in range(1,n):
-        a=a^b
-        b=a^b
-        a=a^b
+    for i in range(1, n):
+        a = a ^ b
+        b = a ^ b
+        a = a ^ b
         print(b)
-        b=a+b
+        b = a+b
     return b
     pass
 
-# yield
 
+# yield
 def yieldfunc():
     m = 100
     while True:
-        m-=1
+        m -= 1
         print(m)
         yield m
 
@@ -118,9 +120,10 @@ def main():
         choice = input('再玩一局?(yes|no)')
         begin = choice == 'yes'
 
+
 def regex():
     import re
-    inputStr='''
+    inputStr = '''
     refs/heads/7.1a3_
     '''
     import re
@@ -128,7 +131,6 @@ def regex():
     for r in result:
         print(r)
         pass
-
 
 
 if __name__ == "__main__":
