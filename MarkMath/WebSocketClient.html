@@ -1,0 +1,265 @@
+﻿<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>WebSocket客户端</title>
+</head>
+
+<script>
+    var socket;
+    // var M_Web_Socket_Url = "ws://10.3.1.243:80/portal/websocket?appName=MSG_PUSH&userId=0001Z8100000000LVJQQ";
+    var M_Web_Socket_Url = "ws://172.18.44.177:80/portal/websocket?appName=MSG_PUSH&userId=0001Z8100000000PB3F7";
+    var contentDiv = null;
+    var sendText = null;
+
+    function BodyOnLoad() {
+        var obj = findElementById("url");
+        if (obj != null && obj != undefined) {
+            obj.value = M_Web_Socket_Url;
+        }
+        var temp = Test();
+        var obj = findElementById("infoDiv");
+        if (obj != null && obj != undefined) {
+            if (temp) {
+                obj.innerText = "当前浏览器支持websocket!"
+            } else {
+                obj.innerText = "当前浏览器不支持websocket!"
+            }
+        }
+    }
+
+    function Test() {
+        if (typeof (WebSocket) == "undefined") {
+            return false;
+        }
+        return true;
+    }
+
+    function ConnectWS(url) {
+        try {
+            socket = new WebSocket(url);
+            socket.onopen = OnOnpen;
+            socket.onmessage = OnMsg;
+            socket.onclose = OnClose;
+            socket.onerror = OnError;
+            console.debug("尝试连接Url:" + url);
+            AppendTextToDiv("尝试连接Url:" + url);
+        } catch (e) {
+            console.error(e);
+            AppendTextToDiv(e);
+        }
+    }
+
+    function OnOnpen() {
+        console.info("websocket open!");
+        AppendTextToDiv("websocket open!");
+    }
+
+    function OnClose() {
+        if (socket != null) {
+            console.info("WebSocket close!");
+            AppendTextToDiv("socket close!");
+            var checkStr = GetCheckStatus("checkbox_autoConnect");
+            if (checkStr != null && checkStr != undefined) {
+                if (checkStr == true || checkStr == "on") {
+                    Connect();
+                }
+            } else {
+                return;
+            }
+        }
+    }
+
+    function OnMsg(msg) {
+        var mprint = "";
+        if (msg != null && msg != undefined)
+            mprint = "收到消息,Msg:" + msg.data;
+        else {
+            mprint = "收到空消息";
+        }
+        console.debug(mprint);
+        AppendTextToDiv(mprint);
+    }
+
+    function send(msg) {
+        if (socket != null) {
+            try {
+                socket.send(msg);
+                console.debug("Msg Send Ok! Msg:" + msg);
+                AppendTextToDiv("Msg Send Ok! Msg:" + msg);
+            } catch (error) {
+                console.error(error);
+                AppendTextToDiv(error);
+            }
+        }
+    }
+
+    function CloseWS() {
+        if (socket != null && socket != undefined) {
+            socket.close();
+        }
+    }
+
+    function OnError(error) {
+        console.debug("websocket 错误!");
+        AppendTextToDiv("websocket 错误!" + error);
+    }
+
+    function Connect() {
+        var url = GetUrlInput("url");
+        ConnectWS(url);
+    }
+
+    function CheckStatus() {
+        if (socket != null && socket != undefined) {
+            var status = socket.readyState;
+            var str;
+            if (status == undefined) {
+                str = "ReadyState: undefined;";
+            } else {
+
+                switch (status) {
+                    case 0:
+                        str = "连接尚未建立";
+                        break;
+                    case 1:
+                        str = "连接已建立";
+                        break;
+                    case 2:
+                        str = "连接正在进行关闭";
+                        break;
+                    case 3:
+                        str = "连接已经关闭或者连接不能打开";
+                        break;
+                    default:
+                        str = "未知状态:" + status;
+                        break;
+                }
+            }
+            console.info("连接状态：" + str);
+            AppendTextToDiv("连接状态：" + str);
+        }
+    }
+
+    function GetUrlInput(id) {
+        var obj = findElementById(id);
+        if (obj != null && obj != undefined) {
+            return obj.value;
+        }
+        return null;
+    }
+
+    function GetCheckStatus(id) {
+        var obj = findElementById(id);
+        if (obj != null && obj != undefined) {
+            return obj.checked;
+        }
+        return null;
+    }
+
+    function findElementById(id) {
+        if (id == undefined || id == null || id == "") {
+            return undefined;
+        }
+        var obj = document.getElementById(id);
+        return obj;
+    }
+
+    function AppendTextToDiv(msg) {
+        if (contentDiv == null || contentDiv == undefined) {
+            contentDiv = findElementById("contentDiv");
+        }
+        if (contentDiv != null && contentDiv != undefined) {
+            contentDiv.innerText += msg + "\n";
+        }
+    }
+
+    function ClearContext() {
+        if (contentDiv != null && contentDiv != undefined) {
+            contentDiv.innerText = "";
+        }
+    }
+
+    function SendText() {
+        if (sendText == null || sendText == undefined) {
+            sendText = findElementById("sendTxt");
+        }
+        if (sendText != null && sendText != undefined) {
+            try {
+                var temp = sendText.value;
+                send(temp);
+                console.debug("发送成功！Msg:" + temp);
+                AppendTextToDiv("发送成功！Msg:" + temp);
+            } catch (error) {
+                console.debug("发送错误！Error:" + error);
+                AppendTextToDiv("发送错误！Error:" + error);
+
+            }
+        }
+    }
+</script>
+
+<style>
+
+    /* button.ButtonSytle {
+        background-color: green;
+        width: 100px;
+        height: 80px;
+    } */
+
+    .MainDivStyle {
+        align-items: baseline;
+        left: 2%;
+        top: 3%;
+        width: 80%;
+        position: relative;
+        margin: 10px;
+    }
+
+    .ContentStyle {
+        height: 70%;
+        width: 96%;
+        left: 2%;
+        position: relative;
+        background-color: lightblue;
+        margin: 20px;
+        overflow: auto;
+        z-index: -99;
+    }
+
+    li.LiStype {
+        margin: 10px;
+    }
+</style>
+
+<body onload="BodyOnLoad()">
+    <ul class="MainDivStyle">
+        <li>
+            <div id="infoDiv">...</div>
+        </li>
+        <li>
+            <form item-width="400">
+                URL:
+                <input type="text" name="urlN" id="url" width="900" size="150">
+            </form>
+        </li>
+        <li>
+            <button onclick="Connect()">连接</button>
+            <input type="checkbox" id="checkbox_autoConnect" />
+            <label>自动重连</label>
+            <button onclick="CloseWS()">关闭</button>
+            <button onclick="CheckStatus()">检测WS状态</button>
+        </li>
+        <li>
+            <button id="sendBtn" onclick="SendText();">发送</button>
+            <input type="text" name="sendText" id="sendTxt" size="150" />
+        </li>
+        <li>
+            <button onclick="ClearContext()">清空内容</button>
+        </li>
+    </ul>
+    <div id="contentDiv" class="ContentStyle">
+    </div>
+</body>
+
+</html>

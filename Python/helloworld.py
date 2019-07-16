@@ -68,6 +68,7 @@ def baseKnowledge():
             pass
     for i in range(5):
         print(i)
+    
 
 
 def Variable():

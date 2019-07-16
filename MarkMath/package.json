@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "package":"electron-packager ./ markmath --win --out ../OutApp --arch=x64 --asar"
+    "package":"electron-packager ./ markmath --win --out ../OutApp --arch=x64 --asar --overwrite"
   },
   "keywords": [
     "markdown",

@@ -22,7 +22,7 @@ function createWindow() {
 
 
     // load index.html file
-    win.loadFile('./index.html')
+    win.loadFile('./WebSocketClient.html')
 
     // 打开开发者工具。
     win.webContents.openDevTools()

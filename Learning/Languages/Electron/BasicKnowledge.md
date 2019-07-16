@@ -26,3 +26,4 @@
 ## 参考资料
 
 - [打包发布](https://segmentfault.com/a/1190000013924153)
+- `npm run package`

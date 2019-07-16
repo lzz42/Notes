@@ -214,6 +214,5 @@ namespace DotNetCore
             Console.WriteLine("End Test CompareTowFile....");
             Console.WriteLine("Version::" + Environment.Version.ToString());
         }
-
     }
 }
