@@ -16,7 +16,7 @@ def JudgeEvenOrOddNumber(num):
     else:
         print("{0} is Even.".format(num))
     pass
-
+    
 
 def SwapTwoNumber(x, y):
     print("Before Swap X:{0},Y:{1}.".format(x, y))

@@ -68,7 +68,6 @@ def baseKnowledge():
             pass
     for i in range(5):
         print(i)
-    
 
 
 def Variable():
@@ -99,6 +98,7 @@ def Variable():
     print(type(d))
 
 # 数组
+
 
 def ListType():
     # 列表
@@ -138,6 +138,8 @@ def ListType():
     tupl = (1, 2, 3, 4)
 
 # 字符操作
+
+
 def CharType():
     x = 'who are you'
     xcap = x.capitalize()
@@ -188,7 +190,7 @@ def CharType():
     res = y.isdigit()  # 是否为整型
     res = y.isidentifier()  # 是否为合法的标识符-变量名
     # 字符串截取
-    
+
     return
 
 # 字典类型
