@@ -1,4 +1,6 @@
-# 关于Visual Studio
+# 关于Visual Studio and VSCode
+
+## Visual Studio
 
 ## 常见问题
 
@@ -15,17 +17,29 @@
   - 3.注释：Ctrl+/,取消注释：Shift+Ctrl+/
   - 4.提示完成或者纠正错误或者全部修改:Alt+Enter
   - 5.查找方法属性：`Alt+\`
+  - 附加到进程：Ctrl+Alt+P
+  - 启动调试：F5
+  - 直接启动不调试:Ctrl+F5
+  - 生成解决方案:Ctrl+Shift+B
+  - 取消生成:Ctrl+Break
+  - 转到定义：F12
+  - 查找帮助：F1
+  - 查找所有引用：Shift+F12
 
-## 通用
+## VSCode
+
+### 通用
 
 - 快捷键：
+- 打开终端：Ctrl+`
 - 拆分分组：Ctrl+\
 - 选择拆分的分组：Ctrl+[数字]
 - 切换编辑器：Ctrl+PageDown/PageUp
 - 进入/退出禅模式：Shift+Alt+Enter
 - 选择语言模式：Ctrl+k,M
+- 打开命名面板：Ctrl+Shift+P
 
-## C++
+### C++
 
 - [](https://blog.csdn.net/c_duoduo/article/details/51615381)
 - [](https://blog.csdn.net/LK274857347/article/details/83068498)
