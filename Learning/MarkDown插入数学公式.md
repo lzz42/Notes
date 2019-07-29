@@ -69,6 +69,10 @@
 - $\check{ab}$ - \check{ab}
 - $\grave{ab}$ - \grave{ab}
 
+## 分段函数
+
+- $$ f(n)= \begin{cases} n/2, & \text {if $n$ is even} \\ 3n+1, & \text{if $n$ is odd} \end{cases} $$
+
 ## 其他字符
 
 | 显示              | 命令            | 显示             | 命令           | 显示              | 命令            |
