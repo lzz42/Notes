@@ -9,7 +9,7 @@ fd(340)
 seth(0)
 pendown()
 
-speed(15)
+speed(2)
 begin_fill()
 fillcolor('red')
 circle(50, 30)
