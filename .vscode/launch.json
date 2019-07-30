@@ -35,27 +35,6 @@
             "console": "integratedTerminal"
         },
         {
-            "name": "(Windows) Launch",
-            "preLaunchTask": "build",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}/${fileBasenameNoExtension}.exe",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "externalConsole": true,
-            "MIMode": "gdb",
-            "miDebuggerPath": "C:/cygwin64/bin",
-            "setupCommands": [
-                {
-                    "description":"Enable pretty-printing for gbd",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                }
-            ]
-        },
-        {
             "name": "Python: Current File (Integrated Terminal)",
             "type": "python",
             "request": "launch",
