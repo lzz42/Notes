@@ -5,6 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "(Windows) Launch gcc",
+            "preLaunchTask": "gccbuild",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/Reading/算法/算法导论/Part-01 BasicKnowledge.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false
+        },
+        {
             "type": "node",
             "request": "launch",
             "name": "Electron Main",
