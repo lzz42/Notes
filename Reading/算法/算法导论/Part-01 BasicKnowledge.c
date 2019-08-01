@@ -22,6 +22,49 @@ void printArray(char c, int a[])
     printf(".\n");
 }
 
+//打印二维矩阵
+/*
+    int A[2][2] = {{1, 2}, {3, 4}};
+    int *PA[2];
+    PA[0] = A[0];
+    PA[1] = A[1];
+    printMatrixP('A', PA, 2, 2);
+*/
+void printMatrixP(char c, int **a, int row, int col)
+{
+    int i = row - 1, j = col - 1;
+    printf("%c %d x %d Matrix:\n", c, i + 1, j + 1);
+    for (int ii = 0; ii <= i; ii++)
+    {
+        for (int jj = 0; jj <= j; jj++)
+        {
+            printf("%d\t", a[ii][jj]);
+        }
+        printf("\n");
+    }
+}
+
+//打印二维矩阵
+/*
+    int A[2][2] = {{1, 2}, {3, 4}};
+    printMatrixEx('A', (int *)A, 2, 2);
+*/
+void printMatrix(char c, int *a, int row, int col)
+{
+    int i = row - 1, j = col - 1;
+    printf("%c %d x %d Matrix:\n", c, i + 1, j + 1);
+    int t=0;
+    for (int ii = 0; ii <= i; ii++)
+    {
+        for (int jj = 0; jj <= j; jj++)
+        {
+            printf("%d\t", a[t]);
+            t++;
+        }
+        printf("\n");
+    }
+}
+
 //插入排序算法
 void InsertSort(int a[])
 {
@@ -250,6 +293,55 @@ void Find_Maximum_Subarray_5(int a[], struct MaxSubarrayResult *result)
     result->right_index = rIndex;
 }
 
+void Square_Matrix_Multiply(int **A, int **B, int **C)
+{
+    int n = 0;
+    while (A[0][n] != '\0')
+    {
+        n++;
+    }
+    n--;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            for (int k = 0; k < n; k++)
+            {
+                C[i][j] = C[i][j] + A[i][k] * B[k][j];
+            }
+        }
+    }
+}
+
+void Square_Matrix_Multiply(int **A, int **B, int **C)
+{
+    int n = 0;
+    while (A[0][n] != '\0')
+    {
+        n++;
+    }
+    n--;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            for (int k = 0; k < n; k++)
+            {
+                C[i][j] = C[i][j] + A[i][k] * B[k][j];
+            }
+        }
+    }
+}
+
+void Square_Matrix_Multiply_Test()
+{
+    int A[2][2] = {{1, 2}, {3, 4}};
+    printMatrixEx('A', (int *)A, 2, 2);
+    int B[3][3] = {{1, 2, 3}, {3, 4, 5}, {6, 7, 8}};
+    printMatrixEx('B', (int *)B, 3, 3);
+    
+}
+
 void sortTest()
 {
     int A[9] = {12, 24, 36, 3, 9, 16, 17, 11, '\0'};
@@ -303,6 +395,7 @@ void findMaxSubArrayTest()
 int main()
 {
     // sortTest();
-    findMaxSubArrayTest();
+    // findMaxSubArrayTest();
+    Square_Matrix_Multiply_Test();
     return 0;
 }
