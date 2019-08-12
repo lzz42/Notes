@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <limits.h>
 #include <math.h>
 
@@ -20,49 +21,6 @@ void printArray(char c, int a[])
         i++;
     }
     printf(".\n");
-}
-
-//打印二维矩阵
-/*
-    int A[2][2] = {{1, 2}, {3, 4}};
-    int *PA[2];
-    PA[0] = A[0];
-    PA[1] = A[1];
-    printMatrixP('A', PA, 2, 2);
-*/
-void printMatrixP(char c, int **a, int row, int col)
-{
-    int i = row - 1, j = col - 1;
-    printf("%c %d x %d Matrix:\n", c, i + 1, j + 1);
-    for (int ii = 0; ii <= i; ii++)
-    {
-        for (int jj = 0; jj <= j; jj++)
-        {
-            printf("%d\t", a[ii][jj]);
-        }
-        printf("\n");
-    }
-}
-
-//打印二维矩阵
-/*
-    int A[2][2] = {{1, 2}, {3, 4}};
-    printMatrixEx('A', (int *)A, 2, 2);
-*/
-void printMatrix(char c, int *a, int row, int col)
-{
-    int i = row - 1, j = col - 1;
-    printf("%c %d x %d Matrix:\n", c, i + 1, j + 1);
-    int t=0;
-    for (int ii = 0; ii <= i; ii++)
-    {
-        for (int jj = 0; jj <= j; jj++)
-        {
-            printf("%d\t", a[t]);
-            t++;
-        }
-        printf("\n");
-    }
 }
 
 //插入排序算法
@@ -293,23 +251,70 @@ void Find_Maximum_Subarray_5(int a[], struct MaxSubarrayResult *result)
     result->right_index = rIndex;
 }
 
-void Square_Matrix_Multiply(int **A, int **B, int **C)
+//打印二维矩阵
+/*
+    int A[2][2] = {{1, 2}, {3, 4}};
+    int *PA[2];
+    PA[0] = A[0];
+    PA[1] = A[1];
+    printMatrixP('A', PA, 2, 2);
+*/
+void printMatrixP(char c, int **a, int row, int col)
 {
-    int n = 0;
-    while (A[0][n] != '\0')
+    int i = row - 1, j = col - 1;
+    printf("%c %d x %d Matrix:\n", c, i + 1, j + 1);
+    for (int ii = 0; ii <= i; ii++)
     {
-        n++;
-    }
-    n--;
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < n; j++)
+        for (int jj = 0; jj <= j; jj++)
         {
-            for (int k = 0; k < n; k++)
-            {
-                C[i][j] = C[i][j] + A[i][k] * B[k][j];
-            }
+            printf("%d\t", a[ii][jj]);
         }
+        printf("\n");
+    }
+}
+
+//打印二维矩阵
+/*
+    int A[2][2] = {{1, 2}, {3, 4}};
+    printMatrix('A', (int *)A, 2, 2);
+*/
+void printMatrix(char c, int *a, int row, int col)
+{
+    int i = row - 1, j = col - 1;
+    printf("%c %d x %d Matrix:\n", c, i + 1, j + 1);
+    int t = 0;
+    for (int ii = 0; ii <= i; ii++)
+    {
+        for (int jj = 0; jj <= j; jj++)
+        {
+            printf("%d\t", a[t]);
+            t++;
+        }
+        printf("\n");
+    }
+
+    // int **mtr;
+    // mtr = (int **)malloc(row * sizeof(int *));
+    // for (i = 0; i < row; i++)
+    // {
+    //     mtr[i] = (int *)malloc(col * sizeof(int)); //动态二维数组的建立（行列限制内存大小）
+    // }
+    // for (int m = 0; m < row; m++)
+    // {
+    //     for (int n = 0; n < col; n++)
+    //     {
+    //         mtr[m][n] = a[m * row + n];
+    //     }
+    // }
+    // printMatrixP('X', mtr, row, col);
+}
+
+void Matrix_Malloc(int **mtr, int row, int col)
+{
+    mtr = (int **)malloc(row * sizeof(int *));
+    for (int i = 0; i < row; i++)
+    {
+        mtr[i] = (int *)malloc(col * sizeof(int));
     }
 }
 
@@ -331,15 +336,149 @@ void Square_Matrix_Multiply(int **A, int **B, int **C)
             }
         }
     }
+}
+
+void Expand_Matrix_AddOne(int **M, int n)
+{
+}
+
+void Expand_Matrix_SubOne(int **M, int n)
+{
+}
+
+int **Matrix_Copy(int **M, int srow, int scol, int r, int c)
+{
+    int **S;
+    //为子矩阵申请空间
+    Matrix_Malloc(S, r, c);
+    //复制数据
+    for (int i = 0; i < r; i++)
+    {
+        for (int j = 0; j < c; j++)
+        {
+            S[i][j] = M[i + srow][j + scol];
+        }
+    }
+}
+
+int **Matrix_Add(int **A, int **B)
+{
+    int n = 0;
+    while (A[0][n] != '\0')
+    {
+        n++;
+    }
+    n--;
+    int **S;
+    Matrix_Malloc(S, n, n);
+    for (int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+            S[i][i] =A[i][i] + B[i][i];
+        }
+    }
+}
+
+int **Matrix_Sub(int **A, int **B)
+{    
+    int n = 0;
+    while (A[0][n] != '\0')
+    {
+        n++;
+    }
+    n--;
+    int **S;
+    Matrix_Malloc(S, n, n);
+    for (int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+            S[i][i] =A[i][i] - B[i][i];
+        }
+    }
+}
+
+int **Matrix_Combine(int **C11, int **C12, int **C21, int **C22)
+{
+    int n1 = 0,n1 = 0,n1 = 0,n1 = 0;
+    while (C11[0][n1] != '\0')
+    {
+        n1++;
+    }
+    n1--;
+
+}
+
+int **Square_Matrix_Multiply_Strassen(int **A, int **B)
+{
+    int n = 0;
+    while (A[0][n] != '\0')
+    {
+        n++;
+    }
+    n--;
+    int **C;
+    if (n == 1)
+    {
+        Matrix_Malloc(C, 1, 1);
+        C[0][0] = A[0][0] * B[0][0];
+    }
+    else
+    {
+        int k = n;
+        //矩阵大小为奇数 补1
+        if (n % 2 == 1)
+        {
+            Expand_Matrix_AddOne(A, n);
+            Expand_Matrix_AddOne(B, n);
+            k++;
+        }
+        int l = k / 2;
+        int **A11 = Matrix_Copy(A, 0, 0, l, l);
+        int **A12 = Matrix_Copy(A, 0, l, l, l);
+        int **A21 = Matrix_Copy(A, l, 0, l, l);
+        int **A22 = Matrix_Copy(A, l, l, l, l);
+        int **B11 = Matrix_Copy(B, 0, 0, l, l);
+        int **B12 = Matrix_Copy(B, 0, l, l, l);
+        int **B21 = Matrix_Copy(B, l, 0, l, l);
+        int **B22 = Matrix_Copy(B, l, l, l, l);
+        int **S1 = Matrix_Sub(B12, B22);
+        int **S2 = Matrix_Add(A11, A12);
+        int **S3 = Matrix_Add(A21, A22);
+        int **S4 = Matrix_Sub(B21, B11);
+        int **S5 = Matrix_Add(A11, A22);
+        int **S6 = Matrix_Add(B11, B22);
+        int **S7 = Matrix_Sub(A12, A22);
+        int **S8 = Matrix_Add(B21, B22);
+        int **S9 = Matrix_Sub(A11, B21);
+        int **S10 = Matrix_Add(B11, B12);
+        int **P1 = Square_Matrix_Multiply_Strassen(A11, S1);
+        int **P2 = Square_Matrix_Multiply_Strassen(S2, B22);
+        int **P3 = Square_Matrix_Multiply_Strassen(S3, B11);
+        int **P4 = Square_Matrix_Multiply_Strassen(A22, S4);
+        int **P5 = Square_Matrix_Multiply_Strassen(S5, S6);
+        int **P6 = Square_Matrix_Multiply_Strassen(S7, S8);
+        int **P7 = Square_Matrix_Multiply_Strassen(S9, S10);
+        int **C11 = Matrix_Sub(Matrix_Add(P5, P4), Matrix_Sub(P2, P6));
+        int **C12 = Matrix_Add(P1, P2);
+        int **C21 = Matrix_Add(P3, P4);
+        int **C22 = Matrix_Sub(Matrix_Add(P5, P1), Matrix_Add(P3, P7));
+        C = Matrix_Combine(C11, C12, C21, C22);
+        if (k > n)
+        {
+            Expand_Matrix_SubOne(C, k);
+        }
+    }
+    return C;
 }
 
 void Square_Matrix_Multiply_Test()
 {
     int A[2][2] = {{1, 2}, {3, 4}};
-    printMatrixEx('A', (int *)A, 2, 2);
+    printMatrix('A', (int *)A, 2, 2);
     int B[3][3] = {{1, 2, 3}, {3, 4, 5}, {6, 7, 8}};
-    printMatrixEx('B', (int *)B, 3, 3);
-    
+    printMatrix('B', (int *)B, 3, 3);
 }
 
 void sortTest()
