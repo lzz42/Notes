@@ -62,6 +62,21 @@
 - 关系运算符：
 - 偏导：\partial $\partial$
 
+集合运算符： 
+∅：\emptyset 
+∈：\in 
+∉：\notin 
+⊂：\subset 
+⊃ ：\supset 
+⊆ ：\subseteq 
+⊇ ：\supseteq 
+⋂ ：\bigcap 
+⋃ ：\bigcup 
+⋁ ：\bigvee 
+⋀ ：\bigwedge 
+⨄ ：\biguplus 
+⨆：\bigsqcup
+
 ## 带帽符号
 
 - $\hat{ab}$ - \hat{ab}
