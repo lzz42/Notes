@@ -44,6 +44,11 @@ URLX4 = URLXA+"/20181216/IdYeq4aP/800kb/hls/1euHM6166000.ts"
 # 根据url参数获取请求到的soup结果对象
 
 
+# <video class="dplayer-video dplayer-video-current" webkit-playsinline="" playsinline="" crossorigin="anonymous" preload="metadata" src="blob:https://www.dt870.com/6498aa73-d5a2-4ffb-a4c3-137fff4bb4fc">
+    
+</video>
+
+
 def getPage(url):
     # 给请求指定一个请求头来模拟chrome浏览器
     try:
