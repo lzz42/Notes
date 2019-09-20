@@ -38,11 +38,12 @@
             "name": "Python: Terminal (integrated)",
             "type": "python",
             "request": "launch",
+            "program": "${workspaceFolder}/Python/AutoScan.py",
             // "program": "${workspaceFolder}/Python/LanguageInteroperability/Introp_CSharp.py",
             // "program": "${workspaceFolder}/Python/Turtle/Draw_Axis.py",
             // "program": "${workspaceFolder}/Python/Crawlers/NovelCrawler.py",
             // "program": "${workspaceFolder}/Python/Practice/Day-01.py",
-            "program": "${workspaceFolder}/Python/Process/UITest.py",
+            // "program": "${workspaceFolder}/Python/Process/UITest.py",
             // "program": "${workspaceFolder}/Python/API/BaiduTranslate.py",
             // Python\RestFulAPI\BaiduTranslate.py
             "console": "integratedTerminal"
