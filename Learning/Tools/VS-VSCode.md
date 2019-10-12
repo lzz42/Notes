@@ -27,6 +27,7 @@
   - 查找所有引用：Shift+F12
 - csproj文件禁用版本确定性错误：
   - 编辑csproj文件 去掉属性  `<Deterministic>true</Deterministic>`
+  - 或改为`<Deterministic>false</Deterministic>`
 
 ## VSCode
 
