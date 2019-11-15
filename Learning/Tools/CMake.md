@@ -25,3 +25,8 @@
 
 - Cygwin [下载](https://cygwin.com/install.html)
 - MinGw [下载](http://www.mingw.org/)
+
+## GCC
+
+- 编译c源代码
+- `gcc -o [out].exe [src].c`
