@@ -12,13 +12,19 @@ import time
 #     while len(lis)>1:
 #         for i in lis:
 #             if i==m:
-                
+
 #     pass
 
 
 # def main():
 
-
+def QuickSort(arry):
+    if arry.Lenght <= 0:
+        return arry
+    pvoid = arry[0]
+    low = arry.findAll(t= > t <= pvoid)
+    hight = arry.findAll(t= > t > pvoid)
+    return QuickSort(low)+pvoid+QuickSort(hight)
 
 
 if if __name__ == "__main__":
