@@ -8,19 +8,85 @@ void printArray(char c, int a[])
 {
     int i = 0;
     printf("%c=", c);
-    while (a[i]!='\0')
+    while (a[i] != '\0')
     {
         if (i == 0)
         {
-            printf("%3d",  a[i]);
+            printf("%3d", a[i]);
         }
         else
         {
-            printf(",%3d",  a[i]);
+            printf(",%3d", a[i]);
         }
         i++;
     }
     printf(".\n");
+}
+//打印二维矩阵
+/*
+    int A[2][2] = {{1, 2}, {3, 4}};
+    int *PA[2];
+    PA[0] = A[0];
+    PA[1] = A[1];
+    printMatrixP('A', PA, 2, 2);
+*/
+void printMatrixP(char c, int **a, int row, int col)
+{
+    int i = row - 1, j = col - 1;
+    printf("%c %d x %d Matrix:\n", c, i + 1, j + 1);
+    for (int ii = 0; ii <= i; ii++)
+    {
+        for (int jj = 0; jj <= j; jj++)
+        {
+            printf("%d\t", a[ii][jj]);
+        }
+        printf("\n");
+    }
+}
+
+//打印二维矩阵
+/*
+    int A[2][2] = {{1, 2}, {3, 4}};
+    printMatrix('A', (int *)A, 2, 2);
+*/
+void printMatrix(char c, int *a, int row, int col)
+{
+    int i = row - 1, j = col - 1;
+    printf("%c %d x %d Matrix:\n", c, i + 1, j + 1);
+    int t = 0;
+    for (int ii = 0; ii <= i; ii++)
+    {
+        for (int jj = 0; jj <= j; jj++)
+        {
+            printf("%3d\t", a[t]);
+            t++;
+        }
+        printf("\n");
+    }
+
+    // int **mtr;
+    // mtr = (int **)malloc(row * sizeof(int *));
+    // for (i = 0; i < row; i++)
+    // {
+    //     mtr[i] = (int *)malloc(col * sizeof(int)); //动态二维数组的建立（行列限制内存大小）
+    // }
+    // for (int m = 0; m < row; m++)
+    // {
+    //     for (int n = 0; n < col; n++)
+    //     {
+    //         mtr[m][n] = a[m * row + n];
+    //     }
+    // }
+    // printMatrixP('X', mtr, row, col);
+}
+
+void Matrix_Malloc(int **mtr, int row, int col)
+{
+    mtr = (int **)malloc(row * sizeof(int *));
+    for (int i = 0; i < row; i++)
+    {
+        mtr[i] = (int *)malloc(col * sizeof(int));
+    }
 }
 
 //最大子数组结果
@@ -169,73 +235,6 @@ void Find_Maximum_Subarray_5(int a[], struct MaxSubarrayResult *result)
     result->sum = sum;
     result->left_index = lIndex;
     result->right_index = rIndex;
-}
-
-//打印二维矩阵
-/*
-    int A[2][2] = {{1, 2}, {3, 4}};
-    int *PA[2];
-    PA[0] = A[0];
-    PA[1] = A[1];
-    printMatrixP('A', PA, 2, 2);
-*/
-void printMatrixP(char c, int **a, int row, int col)
-{
-    int i = row - 1, j = col - 1;
-    printf("%c %d x %d Matrix:\n", c, i + 1, j + 1);
-    for (int ii = 0; ii <= i; ii++)
-    {
-        for (int jj = 0; jj <= j; jj++)
-        {
-            printf("%d\t", a[ii][jj]);
-        }
-        printf("\n");
-    }
-}
-
-//打印二维矩阵
-/*
-    int A[2][2] = {{1, 2}, {3, 4}};
-    printMatrix('A', (int *)A, 2, 2);
-*/
-void printMatrix(char c, int *a, int row, int col)
-{
-    int i = row - 1, j = col - 1;
-    printf("%c %d x %d Matrix:\n", c, i + 1, j + 1);
-    int t = 0;
-    for (int ii = 0; ii <= i; ii++)
-    {
-        for (int jj = 0; jj <= j; jj++)
-        {
-            printf("%3d\t", a[t]);
-            t++;
-        }
-        printf("\n");
-    }
-
-    // int **mtr;
-    // mtr = (int **)malloc(row * sizeof(int *));
-    // for (i = 0; i < row; i++)
-    // {
-    //     mtr[i] = (int *)malloc(col * sizeof(int)); //动态二维数组的建立（行列限制内存大小）
-    // }
-    // for (int m = 0; m < row; m++)
-    // {
-    //     for (int n = 0; n < col; n++)
-    //     {
-    //         mtr[m][n] = a[m * row + n];
-    //     }
-    // }
-    // printMatrixP('X', mtr, row, col);
-}
-
-void Matrix_Malloc(int **mtr, int row, int col)
-{
-    mtr = (int **)malloc(row * sizeof(int *));
-    for (int i = 0; i < row; i++)
-    {
-        mtr[i] = (int *)malloc(col * sizeof(int));
-    }
 }
 
 void Square_Matrix_Multiply(int **A, int **B, int **C)
