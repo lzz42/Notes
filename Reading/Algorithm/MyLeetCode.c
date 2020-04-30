@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <limits.h>
 #include <math.h>
+#define UseSort
+#include "../Algorithm/IntroductionToAlgorithm/SortAlgorithm.c"
 
 //O(log(m+n))
 double findMedianSortedArrays(int *nums1, int nums1Size, int *nums2, int nums2Size)
@@ -110,6 +112,7 @@ double findMedianSortedArraysEx(int *nums1, int nums1Size, int *nums2, int nums2
             h1 = h2;
             l2 = l1;
         }
+        // printf("\t %d \t %d \t %d \t %d \t %d\n", s1, s2, h1, l2, l);
         if (s1 > s2)
         {
             if (l % 2 == 1)
@@ -129,7 +132,7 @@ double findMedianSortedArraysEx(int *nums1, int nums1Size, int *nums2, int nums2
         {
             if (l % 2 == 1)
             {
-                return n2[l / 2 - s1];
+                return n2[l / 2 - s1 + 1];
             }
             else
             {
@@ -137,7 +140,53 @@ double findMedianSortedArraysEx(int *nums1, int nums1Size, int *nums2, int nums2
             }
         }
     }
+    else
+    {
+        int d = nums1Size - 1, u = 0;
+        int t = 0;
+        int dd = nums1[d] - nums2[u];
+        while (nums1[d] > nums2[u])
+        {
+            if (t % 2 == 0)
+            {
+                d--;
+            }
+            else
+            {
+                u++;
+            }
+            t++;
+        }
+        return (nums1[d] + nums2[u]) / 2.0;
+    }
     return -3.14;
+}
+
+double FindMidNumber(int *n1, int l1, int *n2, int l2)
+{
+    int *m = (int *)malloc(sizeof(int) * (l1 + l2));
+    for (int i = 0; i < l1; i++)
+    {
+        m[i] = n1[i];
+    }
+    for (int i = 0; i < l2; i++)
+    {
+        m[l1 + i] = n2[i];
+    }
+    MergeSortEx(m, l1 + l2);
+    printArrayEx("SsS", m, l1 + l2);
+    double dd = 0;
+    if ((l1 + l2) % 2 == 1)
+    {
+        int d1 = m[(l1 + l2) / 2];
+        dd = d1;
+    }
+    else
+    {
+        int d1 = (l1 + l2) / 2;
+        dd = (m[d1 - 1] + m[d1]) / 2.0;
+    }
+    printf("The Mid is %2f \n", dd);
 }
 
 int main(char arg[])
@@ -147,11 +196,10 @@ int main(char arg[])
     int c[3] = {15, 17, 18};
     int d[4] = {15, 17, 18, 19};
     int a1[3] = {2, 7, 8};
-    int c1[7] = {9, 12, 13, 14,15, 17, 18};
-
+    int c1[7] = {9, 12, 13, 14, 15, 17, 18};
+    int c2[6] = {9, 12, 13, 14, 15, 17};
     // printf("the Mid is %2f \n", findMedianSortedArrays(a, 7, b, 7));
     // printf("the Mid is %2f \n", findMedianSortedArrays(b, 7, a, 7));
-
     printf("the Mid is %2f \n", findMedianSortedArraysEx(a, 7, c, 3));
     printf("the Mid is %2f \n", findMedianSortedArraysEx(c, 3, a, 7));
     printf("the Mid is %2f \n", findMedianSortedArraysEx(a1, 3, c1, 7));
@@ -159,4 +207,11 @@ int main(char arg[])
 
     printf("the Mid is %2f \n", findMedianSortedArraysEx(a, 7, d, 4));
     printf("the Mid is %2f \n", findMedianSortedArraysEx(d, 4, a, 7));
+    printf("the Mid is %2f \n", findMedianSortedArraysEx(a, 7, c1, 7));
+    printf("the Mid is %2f \n", findMedianSortedArraysEx(a, 7, c2, 6));
+    FindMidNumber(a, 7, c, 3);
+    FindMidNumber(a1, 3, c1, 7);
+    FindMidNumber(a, 7, d, 4);
+    FindMidNumber(a, 7, c1, 7);
+    FindMidNumber(a, 7, c2, 6);
 }

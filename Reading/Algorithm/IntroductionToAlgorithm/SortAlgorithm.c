@@ -43,6 +43,35 @@ void printArray(char c[], int a[])
     }
     printf(".\n");
 }
+
+//打印数组
+void printArrayEx(char c[], int *a, int len)
+{
+    int i = 0;
+    while (c[i] != '\0')
+    {
+        printf("%c", c[i]);
+        i++;
+    }
+    i = 0;
+    printf("%c", '\t');
+    printf("%c", '=');
+    i = 0;
+    while (i < len)
+    {
+        if (i == 0)
+        {
+            printf("%3d", a[i]);
+        }
+        else
+        {
+            printf(",%3d", a[i]);
+        }
+        i++;
+    }
+    printf(".\n");
+}
+
 //插入排序算法
 void InsertSort(int a[])
 {
@@ -135,6 +164,11 @@ void Merge_Sort(int a[], int p, int r)
             j++;
         }
     }
+}
+
+void MergeSortEx(int *n, int len)
+{
+    Merge_Sort(n, 0, len - 1);
 }
 
 // 归并排序入口
@@ -238,6 +272,7 @@ int BinaryFind(int sa[], int target, int *index)
     return 0;
 }
 
+#ifndef UseSort
 int main(char arg[])
 {
     int a[] = {122, 56, 77, 1, 8, 6, 568, 33, 12, 55, 21, 22, 14, 18, 9, '\0'};
@@ -272,3 +307,4 @@ int main(char arg[])
         printf("Faild Find %2d \n", tar);
     }
 }
+#endif

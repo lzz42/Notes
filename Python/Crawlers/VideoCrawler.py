@@ -32,7 +32,8 @@ URL2 = "http://www.79yy.cn/show/32276.html"
 # 视频播放页
 URL3 = "http://www.79yy.cn/play/32276/0/0.html"
 # 视频真实播放地址
-URLX = "http://api.yyxzpc.cn/mdparse/m3u8.php?id=https://cn2.zuidadianying.com/20181216/IdYeq4aP/index.m3u8"
+# URLX = "http://api.yyxzpc.cn/mdparse/m3u8.php?id=https://cn2.zuidadianying.com/20181216/IdYeq4aP/index.m3u8"
+URLX = "http://cn7.kankia.com/hls/20191215/3be291c06e063532dc742a342bae0f46/1576392898/index.m3u8"
 # m3u8 视频第一层地址
 URLX2 = "https://cn2.zuidadianying.com/20181216/IdYeq4aP/index.m3u8"
 URLXA = "https://cn2.zuidadianying.com"
@@ -43,10 +44,8 @@ URLX4 = URLXA+"/20181216/IdYeq4aP/800kb/hls/1euHM6166000.ts"
 
 # 根据url参数获取请求到的soup结果对象
 
-
 # <video class="dplayer-video dplayer-video-current" webkit-playsinline="" playsinline="" crossorigin="anonymous" preload="metadata" src="blob:https://www.dt870.com/6498aa73-d5a2-4ffb-a4c3-137fff4bb4fc">
-    
-</video>
+# </video>
 
 
 def getPage(url):
@@ -145,6 +144,7 @@ def findRealPlayUrl(url):
 
 def getDownLoadUrls_m3u8(url):
     # URLX = "http://api.yyxzpc.cn/mdparse/m3u8.php?id=https://cn2.zuidadianying.com/20181216/IdYeq4aP/index.m3u8"
+    # url = "https://jx.wlzy.tv/jx.php?url=http://cn7.kankia.com/hls/20191215/3be291c06e063532dc742a342bae0f46/1576392898/index.m3u8"
     p1 = url.find('?id=')
     if p1 is -1:
         return
