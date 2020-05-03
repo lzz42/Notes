@@ -39,7 +39,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/DotNetCore/bin/Debug/netcoreapp2.2/DotNetCore.dll",
+            "program": "${workspaceFolder}/DotNetCore/bin/Debug/netcoreapp3.1/DotNetCore.exe",
             "args": [],
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,

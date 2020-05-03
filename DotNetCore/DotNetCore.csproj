@@ -1,18 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <OutputType>Exe</OutputType>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <!-- <StartupObject>DotNetCore.CompareTwoFile</StartupObject> -->
-    <StartupObject>DotNetCore.CheckCodingType</StartupObject>
+    <!-- <StartupObject>DotNetCore.CheckCodingType</StartupObject> -->
+    <StartupObject>UseIntrinsics.Use_Intrinsics</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Costura.Fody" Version="4.0.0" />
-    <PackageReference Include="fody" Version="5.1.1">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
   </ItemGroup>
   
 </Project>

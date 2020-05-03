@@ -1,14 +1,12 @@
 using System;
 using System.IO;
 using System.Reflection;
-using System.Buffers;
-using System.Text;
 
 namespace DotNetCore
 {
     public class CheckCodingType
     {
-        internal class EncodingDetect
+        internal class EncodingDetect 
         {
             public static readonly byte[] UTF8Bom = { 0xEF, 0xBB, 0xBF };
             public static readonly byte[] UTF16LeBom = { 0xFF, 0xFE };
@@ -76,7 +74,8 @@ namespace DotNetCore
         {
             var dir = Assembly.GetExecutingAssembly().Location;
             var f1 = Path.Combine(dir,"utf8");
-
+            Console.WriteLine(f1);
+            Console.WriteLine("helo world");
         }
     }
 }
