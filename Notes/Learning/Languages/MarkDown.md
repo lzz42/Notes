@@ -16,3 +16,9 @@
   - [html2text](https://pypi.org/project/html2text/)
 - .Net库：
   - [marddig](https://github.com/lunet-io/markdig)
+
+### 如何根据Markdown生成静态html网页
+
+- https://walkccc.github.io/CLRS/
+- https://www.mkdocs.org/
+- https://squidfunk.github.io/mkdocs-material/

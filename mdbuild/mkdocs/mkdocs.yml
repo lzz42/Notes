@@ -1,0 +1,6 @@
+site_name: 我的说明文档
+nav:
+    - 高等数学: Studying/Math.md
+    - 计算机网络: Studying/Math.md
+    # - 索引: index.md
+theme_dir: 'theme'
