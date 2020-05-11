@@ -1,6 +1,17 @@
-site_name: 我的说明文档
+site_name: 我的文档
 nav:
-    - 高等数学: Studying/Math.md
-    - 计算机网络: Studying/Math.md
-    # - 索引: index.md
+    - 目录: 'index.md'
+    - '数学': 
+        - '高等数学': 'math.md'
+        - '线性代数': 'math.md'
+        - '概率统计': 'math.md'
+    - 关于: 'about.md'
+# theme : readthedocs
 theme_dir: 'theme'
+title: My Document
+summary: A brief description of my document.
+authors:
+    - Waylan Limberg
+    - Tom Christie
+date: 2018-07-10
+some_url: https://example.com
