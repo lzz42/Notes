@@ -20,6 +20,11 @@ COPY $(TargetName).vsix %name%
 
 ## 常用命令
 
+- 查看某个变量是否存在或者查看已存在变量的路径
+- where [CMD]
+
+## 常用命令
+
 - copy
 
 ```Text
