@@ -253,8 +253,26 @@ print("Reverse : "..string.reverse(s))
 print("Format :"..string.format( "this number is %d",998 ))
 print("Char to string :"..string.char(99,100,101,106))
 print("Char to number :"..string.byte('A'))
+print("Char to number index :"..string.byte('ABC',2))
 print("Length :"..string.len(s))
 print("Rep :"..string.rep(s,2))
+
+print("--- string format ---")
+print("%c "..string.format( "%c",83))
+print("%d %i %u "..string.format( "%d %i %u",-8.3,-8.4,-8.5))
+print("%f %e %E "..string.format( "%f %e %E",8.003,8.004,8.005))
+print("%f %g %G "..string.format( "%f %g %G",8.003,8.004,8.005))
+print("%d %o %x %X "..string.format( "%d %o %x %X",78,78,78,78))
+print("%s %5s %2.1s %q "..string.format( "%s %5s %2.3s %q ","ABCD","ABCD","ABCD","AB\tCD"))
+
+print("--- string pattern match ---")
+print("string.find() string.gmatch() string.gsub() string.match()")
+local match =[[
+    . 与任何字符匹配
+    %a 与任何字母匹配
+    %c 与任何控制字符匹配
+]]
+print()
 
 -- 启用lua 交互模式
 -- lua -i 或者 lua

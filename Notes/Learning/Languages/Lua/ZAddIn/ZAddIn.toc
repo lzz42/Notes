@@ -1,0 +1,18 @@
+## Interface: [WOW Version]
+## Title: ZAddIn Test Version
+## Notes: ZAddIn Test Version
+## Title-zhCN: ZAddIn 测试版
+## Notes-zhCN: ZAddIn 测试版
+## RequiredDeps: 需要加载的其他插件
+## Dependencies: 需要加载的其他插件
+## OptionalDeps：可选的需要加载的插件
+## LoadOnDemand：1[值为1时表示不需要游戏开始时进行加载，而是在需要时进行加载]
+## LoadWith:需要加载的其他插件[当LoadOnDemand值为1时，该条目内插件会随本插件一起加载]
+## LoadManagers:若当前条目插件不存在，则自动加载本插件；若有一个存在则按照LoadOnDemand=1处理
+## SavedVariables:以逗号分割的变量，保存在硬盘上
+## SavedVariablesPerCharacter:以逗号分割的变量，区分不同角色
+## Author：作者名字：Z
+## Version: 1.0.0.0
+# 注释内容一下加载指定的lua或者xml文件
+ZAddIn.lua
+ZAddIn.xml
