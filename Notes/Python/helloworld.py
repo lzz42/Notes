@@ -70,36 +70,43 @@ def baseKnowledge():
         print(i)
 
 # 没有switch case 语法 可使用以下方式进行替换
+
+
 def case_1():
     pass
+
 
 def case_2():
     pass
 
+
 def case_3():
     pass
+
 
 def case_default():
     pass
 
-def switchCase(self,value):
-    functions ={
-        1:case_1,
-        2:case_2,
-        3:case_3,
+
+def switchCase(self, value):
+    functions = {
+        1: case_1,
+        2: case_2,
+        3: case_3,
     }
     func = functions[value]
-    if func!=None:
+    if func != None:
         func()
     else:
         case_default()
     # 或者使用getattr
-    method_name='case_'+str(value)
-    method = getattr(self,method_name)
-    if method!=None:
+    method_name = 'case_'+str(value)
+    method = getattr(self, method_name)
+    if method != None:
         method()
     else:
         case_default()
+
 
 def Variable():
     # 变量类型
@@ -241,6 +248,17 @@ def DictionaryType():
     # dic2 = {'a'：11,'b':22,'c':33}
     # dic.update(dic2)
     return
+# 基础类型转换
+
+
+def Convert():
+    # 转为整形
+    r = int(x[, base])
+    r = long(x[, base])
+    r = float(x)
+    r = str(x)
+    r = char(x)
+
 
 # 集合类型
 

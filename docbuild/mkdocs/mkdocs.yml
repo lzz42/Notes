@@ -11,7 +11,9 @@ theme_dir: 'theme'
 title: My Document
 summary: A brief description of my document.
 authors:
-    - Waylan Limberg
-    - Tom Christie
+    - Author001
+    - Author002
 date: 2018-07-10
 some_url: https://example.com
+use_directory_urls: true
+dev_addr: 0.0.0.0:8859

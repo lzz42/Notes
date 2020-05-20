@@ -7,12 +7,14 @@
 
 ## 更新pip源到国内镜像
 
+- 指定源的命令 -i [Source URL]
+  - EG:``pip install mkdocs -i https://pypi.tuna.tsinghua.edu.cn/simple/``
 - 国内镜像源地址
-  - 豆瓣 <https://pypi.doubanio.com/simple/>
-  - 阿里云    <https://mirrors.aliyun.com/pypi/simple/>
+  - 豆瓣   https://pypi.doubanio.com/simple/
+  - 阿里云  https://mirrors.aliyun.com/pypi/simple/
   - 清华大学：
-    - <https://pypi.tuna.tsinghua.edu.cn/simple/>
-  - <https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/>
+  https://pypi.tuna.tsinghua.edu.cn/simple/
+  https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/
 - 临时使用：`pip install [some-package] -i [Mirrir Address]`
 - 设置为默认：
   - `pip install pip -U`
