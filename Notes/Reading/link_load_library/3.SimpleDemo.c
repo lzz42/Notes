@@ -52,8 +52,13 @@ int main(void)
     int a=1;
     int b;
     func1(static_var+static_var2+a+b);
+    #ifdef __cplusplus
+    printf("Used C++ Compiler");
+    #endif
     return a;
 }
+
+__attribute__((weak)) int global_int_var = 19;
 
 __attribute__((section("Name"))) 
 int Name(int rr){
