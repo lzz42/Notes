@@ -23,25 +23,25 @@ CONTENTS:该段在文件中存在
 
 #include <stdio.h>
 
-int printf(const char* format,...);
+int printf(const char *format, ...);
 
 int global_init_var = 84;
-int global_uninit_var ;
+int global_uninit_var;
 
 // extern char __executable_start[];
-extern char __CTOR_LIST__[],__DTOR_LIST__[];
-extern char etext[];//,_etext[];//,__etext[];
+extern char __CTOR_LIST__[], __DTOR_LIST__[];
+extern char etext[]; //,_etext[];//,__etext[];
 // extern char edata[],_edata[];
-extern char end[];//,_end[];
+extern char end[]; //,_end[];
 
 void func1(int i)
 {
-    printf("%d\n",i);
+    printf("%d\n", i);
     // printf("Exec Start: \t%X \n",__executable_start);
-    printf("Exec Start: \t%X\t%X \n",__CTOR_LIST__,__DTOR_LIST__);
-    printf("Text End: \t%X \tX \t\n",etext);
+    printf("Exec Start: \t%X\t%X \n", __CTOR_LIST__, __DTOR_LIST__);
+    printf("Text End: \t%X \tX \t\n", etext);
     // printf("Data End: \t%X \t%X \n",edata,_edata);
-    printf("Exec End: \t%X \tX \n",end);
+    printf("Exec End: \t%X \tX \n", end);
 }
 
 int main(void)
@@ -49,18 +49,18 @@ int main(void)
     static int static_var = 85;
     static int static_var2;
 
-    int a=1;
+    int a = 1;
     int b;
-    func1(static_var+static_var2+a+b);
-    #ifdef __cplusplus
+    func1(static_var + static_var2 + a + b);
+#ifdef __cplusplus
     printf("Used C++ Compiler");
-    #endif
+#endif
     return a;
 }
 
 __attribute__((weak)) int global_int_var = 19;
 
-__attribute__((section("Name"))) 
-int Name(int rr){
+__attribute__((section("Name"))) int Name(int rr)
+{
     return rr * 100;
 }
