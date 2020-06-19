@@ -1,4 +1,4 @@
-# MarkDown中插入数学公式
+# MarkDown数学符号
 
 ## 参考资料
 
@@ -34,7 +34,7 @@
 - 大写：$\Omega$ - `$\Omega$`
 - 斜体：$\varOmega$ - `$\varOmega$`
 
-## 其他
+## 常见数学符号
 
 - 上标：$\Omega^\Pi$ - `$\Omega^\Pi$`
 - 下标：$\Omega_0$ - `$\Omega_0$`
@@ -48,12 +48,12 @@
   - 中括号：$\alpha[\beta+\gamma]$
   - 尖括号：$\alpha\langle\beta+\gamma\rangle$
   - 大括号：$\alpha\{\beta+\gamma\}$
-- 求和：$\sum_0^{10}$
-- 极限：$\lim_{x\to 0}{f(x)}$
-- 积分：$\int_0^\infty{f(x)dx} \quad \iint \quad \oint \quad \nabla$
-- 分式：$\frac{f(x)}{g(x)}$
-- 根式：$\sqrt[x]{f(x)}$
-- 函数：$\lim_{x\to 0}{\frac{x}{\sin x}}=1$
+- 求和：$\sum_0^{10}$ -`\sum_0^{10}`
+- 极限：$\lim_{x \to 0}{f(x)}$ - `\lim_{x \to 0}{f(x)}`
+- 积分：$\int_0^\infty{f(x)dx} \quad \iint \quad \oint \quad \nabla$ - `\int_0^\infty{f(x)dx} \quad \iint \quad \oint \quad \nabla`
+- 分式：$\frac{f(x)}{g(x)}$ - `\frac{f(x)}{g(x)}`
+- 根式：$\sqrt[x]{f(x)}$ - `\sqrt[x]{f(x)}`
+- 函数：$\lim_{x \to 0}{\frac{x}{\sin x}}=1$
 - 运算符号：$a+b|a-b|a \times b|a \div b| a\pm b$
 - 比较符号：$a=b|a\neq b|a\approx b|a\leq b|a\geq b$
 - 条件：$\forall \epsilon >0,\exists \delta >0$
@@ -62,31 +62,50 @@
 - 关系运算符：
 - 偏导：\partial $\partial$
 
-集合运算符： 
-∅：\emptyset 
-∈：\in 
-∉：\notin 
-⊂：\subset 
-⊃ ：\supset 
-⊆ ：\subseteq 
-⊇ ：\supseteq 
-⋂ ：\bigcap 
-⋃ ：\bigcup 
-⋁ ：\bigvee 
-⋀ ：\bigwedge 
-⨄ ：\biguplus 
-⨆：\bigsqcup
+## 格式
+
+$$
+
+f(x)=ax+b \qquad \quad \text{注释文字}  换行  \\
+f(x)=ax+b \qquad \quad \text{注释文字}  换行 \\
+\tag{行标}
+
+$$
+
+## 集合运算符
+
+$$
+∅：\emptyset \\
+∈：\in \\
+∉：\notin \\
+⊂：\subset \\
+⊃ ：\supset \\
+⊆ ：\subseteq \\
+⊇ ：\supseteq \\
+⋂ ：\bigcap \\
+⋃ ：\bigcup \\
+⋁ ：\bigvee \\
+⋀ ：\bigwedge \\
+⨄ ：\biguplus \\
+⨆：\bigsqcup \\
+$$
 
 ## 带帽符号
 
-- $\hat{ab}$ - \hat{ab}
-- $\tilde{ab}$ - \tilde{ab}
-- $\check{ab}$ - \check{ab}
-- $\grave{ab}$ - \grave{ab}
+- $\hat{ab}$    - `\hat{ab}`
+- $\tilde{ab}$  - `\tilde{ab}`
+- $\check{ab}$  - `\check{ab}`
+- $\grave{ab}$  - `\grave{ab}`
 
 ## 分段函数
 
-- $$ f(n)= \begin{cases} n/2, & \text {if $n$ is even} \\ 3n+1, & \text{if $n$ is odd} \end{cases} $$
+$$
+f(n)=
+\begin{cases}
+n/2,  & \text {if $n$ is even} \\
+3n+1, & \text {if $n$ is odd} \\
+\end{cases} \\
+$$
 
 ## 其他字符
 
@@ -100,3 +119,22 @@
 | $\uparrow$        | \uparrow        | $\downarrow$     | \downarrow     | $\leftrightarrow$ | \leftrightarrow |
 | $\rightarrow$     | \rightarrow     | $\leftarrow$     | \leftarrow     | $\Leftrightarrow$ | \Leftrightarrow |
 | $\longrightarrow$ | \longrightarrow | $\longleftarrow$ | \longleftarrow |
+
+## 字体
+
+- `\字体 {需要转换字体的内容}`
+- `\字体列表`：
+  - 罗马体 \rm
+  - 粗体 \bf
+  - 等线体 \sf
+  - 花体 \cal
+  - 数学斜体 \mit
+
+$$
+正常：f(x)dx =\alpha x^3 + bx^2 + cx + d \\
+罗马体: {\rm {f(x)dx=\alpha x^3 + bx^2 + cx + d}}\\
+粗体: {\bf  {f(x)dx=\alpha x^3 + bx^2 + cx + d}}\\
+花体: {\cal {f(x)dx=\alpha x^3 + bx^2 + cx + d}}\\
+等线体:{\sf {f(x)dx=\alpha x^3 + bx^2 + cx + d}}\\
+数学斜体: {\mit {f(x)dx=\alpha x^3 + bx^2 + cx + d}}\\
+$$

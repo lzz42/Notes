@@ -1,0 +1,40 @@
+# 使用log
+
+## 使用spdlog
+
+- https://github.com/gabime/spdlog
+- https://github.com/gabime/spdlog/wiki/1.-QuickStart
+- 日志类型
+  - 控制台日志：将日志信息显示在控制台中
+    - `auto console = spd::stdout_color_mt("console");`
+  - 普通文件日志：日志文件会被一直写入一直变大
+    - `auto my_logger = spd::basic_logger_mt("basic_logger", "logs/basic-log.txt");`
+  - 滚动文件日志：日志文件超出一定大小后，删除当前日志所有内容并重新写入
+    - `auto rotating_logger = spd::rotating_logger_mt("some_logger_name", "logs/rotating.txt", 256, 3);`
+  - 每日文件日志：根据日期，每天创建一个日志
+    - `auto daily_logger = spd::daily_logger_mt("daily_logger", "logs/daily.txt", 2, 30);`
+
+### 常见用法
+
+- 初始化环境信息：`spdlog::cfg::load_env_levels();`
+- 设置全局日志等级：`spdlog::set_level(spdlog::level::info);`
+  - 可以通过命令行参数读取日志等级，`spdlog::cfg::load_argv_levels(args, argv);`，参数：SPDLOG_LEVEL=info,mylogger=trace
+- 设置输出的日志格式：
+  - 对所有loggers生效：`spdlog::set_pattern("[%H:%M:%S %z] [%^%L%$] [thread %t] %v");`
+  - 恢复默认日志格式：`spdlog::set_pattern("%+");`
+- 支持后台写入：
+  - 启用后台写入:`spdlog::enable_backtrace(10);`
+  - 禁用后台写入：`spdlog::disable_backtrace();`
+
+### 输出日志格式
+
+- 设置方式：`spdlog::set_pattern("[%H:%M:%S %z] [%^%L%$] [thread %t] %v");`
+- 恢复默认格式：`spdlog::set_pattern("%+");`
+- 格式谓语：
+  - 
+
+
+### 控制台输出日志
+
+- 添加引用：
+- 
