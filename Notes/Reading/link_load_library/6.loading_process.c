@@ -36,6 +36,30 @@ void print_maximum_number_mlloc()
     printf("Max malloc size is : %f G\n", g);
 }
 
+#include <sys/types.h>
+#include <unistd.h>
+int mini_bash(){
+    char buf[1000]={0};
+    pid_t pid;
+    while (1)
+    {
+        printf("mini bash$");
+        scanf("%s",buf);
+        pid = fork();
+        if(pid==0){
+            if(execlp(buf,0)<0){
+                printf("exec error\n");
+            }
+        }else if(pid >0){
+            int status;
+            waitpid(pid,&status,0);
+        }else{
+            printf("fork error \n");
+        }
+    }
+    return 0;
+}
+
 int main(int argc, char *argv[])
 {
     print_maximum_number_mlloc();
