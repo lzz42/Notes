@@ -36,31 +36,38 @@ void print_maximum_number_mlloc()
     printf("Max malloc size is : %f G\n", g);
 }
 
-#include <sys/types.h>
-#include <unistd.h>
-int mini_bash(){
-    char buf[1000]={0};
-    pid_t pid;
-    while (1)
-    {
-        printf("mini bash$");
-        scanf("%s",buf);
-        pid = fork();
-        if(pid==0){
-            if(execlp(buf,0)<0){
-                printf("exec error\n");
-            }
-        }else if(pid >0){
-            int status;
-            waitpid(pid,&status,0);
-        }else{
-            printf("fork error \n");
-        }
-    }
-    return 0;
+// #include <sys/types.h>
+// #include <unistd.h>
+// int mini_bash(){
+//     char buf[1000]={0};
+//     pid_t pid;
+//     while (1)
+//     {
+//         printf("mini bash$");
+//         scanf("%s",buf);
+//         pid = fork();
+//         if(pid==0){
+//             if(execlp(buf,0)<0){
+//                 printf("exec error\n");
+//             }
+//         }else if(pid >0){
+//             int status;
+//             waitpid(pid,&status,0);
+//         }else{
+//             printf("fork error \n");
+//         }
+//     }
+//     return 0;
+// }
+
+#include "3.dynamicLink.h"
+void get_max_malloc_shared(){
+    int max = get_maximum_number_malloc_shared();
+    printf("Max malloc size is (Shared): %u bytes\n", max);
 }
 
 int main(int argc, char *argv[])
 {
     print_maximum_number_mlloc();
+    get_max_malloc_shared();
 }

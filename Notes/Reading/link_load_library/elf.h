@@ -125,3 +125,12 @@ enum Sh_Flag{
     // 可以执行
     SHF_EXECINSTR = 1,
 };
+
+//.dynamic
+struct Elf32_Dyn{
+    Elf32_Sword d_tag;
+    union{
+        Elf32_Word d_val;
+        Elf32_Addr d_ptr;
+    }d_un;
+};
