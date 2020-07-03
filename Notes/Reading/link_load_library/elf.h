@@ -134,3 +134,13 @@ struct Elf32_Dyn{
         Elf32_Addr d_ptr;
     }d_un;
 };
+
+//堆栈中的动态链接器的辅助信息数组的结构体
+typedef struct{
+    uint32_t a_type;
+    union //union 历史遗留问题
+    {
+        uint32_t a_val;
+    } a_un;
+    
+}Elf32_auxv_t;

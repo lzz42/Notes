@@ -66,8 +66,41 @@ void get_max_malloc_shared(){
     printf("Max malloc size is (Shared): %u bytes\n", max);
 }
 
+
+//打印堆栈中的初始化信息
+#include <stdio.h>
+#include <elf.h>
+void print_all_stack_info(int argc,char *argv[]){
+    int * p =(int*)argv;
+    int i;
+    Elf32_auxv_t* aux;
+    printf("Argument Count:\t%d\n",*(p-1));
+    for (int i = 0; i < *(p-1); ++i)
+    {
+        printf("Argument \t%d:\t%s\n",i,*(p+i));
+    }
+    p+=i;
+    p++;
+    printf("Environment:\n");
+    while (*p)
+    {
+        printf("%s\n",*p);
+        p++;
+    }
+    p++;
+    printf("Auxiliary Vectors:\n");
+    aux =(Elf32_auxv_t*)p;
+    while (auv->a_type!=AT_NULL)
+    {
+        printf("Type: %2d  Value: %x\n",aux->a_type,aux->a_un.a_val);
+        aux++;
+    }
+}
+
+
 int main(int argc, char *argv[])
 {
-    print_maximum_number_mlloc();
-    get_max_malloc_shared();
+    // print_maximum_number_mlloc();
+    // get_max_malloc_shared();
+    print_all_stack_info(argc,argv);
 }
