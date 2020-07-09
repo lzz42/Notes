@@ -123,6 +123,7 @@ exit_runso:
 
 /*
     runso
+    共享库显示运行时加载
 */
 #include <dlfcn.h>
 #define SETUP_STACK                                           \
@@ -206,6 +207,42 @@ int runso(int argc, char *argv[])
     }
 exit_runso:
     dlclose(handle);
+}
+
+/* PE DLL */
+// 导出函数
+__declspec(dllexport) int add(int x, int y)
+{
+    return x + y;
+}
+
+/* DLL 显示运行时加载 */
+
+#include <Windows.h>
+#include <stdio.h>
+typedef int (*Func)(int, int);
+
+int rundll(int argc, char *argv[])
+{
+    Func func;
+    int res;
+    HINSTANCE histanceLib = LoadLibrary("libc.dll");
+    if (histanceLib == NULL)
+    {
+        printf("Error:LoadLibrary Error.\n");
+        return -1;
+    }
+    func = (Func)GetProcAddress(histanceLib, "add");
+    if (func == NULL)
+    {
+        printf("Error:find add Error.\n");
+        FreeLibrary(histanceLib);
+        return -1;
+    }
+    res = func(11, 22);
+    FreeLibrary(histanceLib);
+    printf("Result is %d.\n", res);
+    return 0;
 }
 
 int main(int argc, char *argv[])
