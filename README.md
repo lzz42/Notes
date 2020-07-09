@@ -16,5 +16,5 @@ Reading &amp; Learning &amp; Studying
 
 ## 文档浏览
 
-- [使用mkdocs构建本地浏览网站](../Notes/Learning/Languages/MarkDown本地浏览.md)
-- [使用docfx构建本地浏览网站](../Notes/Learning/Languages/MarkDown本地浏览.md)
+- [使用mkdocs构建本地浏览网站](./Notes/Learning/Languages/MarkDown本地浏览.md)
+- [使用docfx构建本地浏览网站](./Notes/Learning/Languages/MarkDown本地浏览.md)
