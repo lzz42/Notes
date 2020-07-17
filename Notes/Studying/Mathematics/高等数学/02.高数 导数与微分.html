@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>02.高数 导数与微分.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%E9%AB%98%E6%95%B0-%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E5%AF%BC%E6%95%B0%E4%B8%8E%E5%BE%AE%E5%88%86">高数 第二章 导数与微分</h1>
+<h2 id="%E5%AF%BC%E6%95%B0">导数</h2>
+<ul>
+<li>定义</li>
+</ul>
+<p>$$
+f'(x)= \lim_{\Delta x \to 0}{\frac{\Delta y}{\Delta x}}=\lim_{\Delta x \to 0}{\frac{f(x_0 +\Delta x) - f(x_0)}{\Delta x}}\\
+$$</p>
+<p>$$
+{y'\Big|_{x=x_0} \quad or \quad \frac{dy}{dx} \Big|_{x=x_0} \quad or \quad \frac{df(x))}{dx} \Big|_{x=x_0} }
+$$</p>
+<ul>
+<li>两种形式：</li>
+</ul>
+<p>$$
+f'(x_0) = \lim_{h \to 0}{\frac{f(x_0+h) - f(x_0)}{h}}\\
+f'(x_0) = \lim_{x \to x_0}{\frac{f(x) - f(x_0)}{x - x_0}}
+$$</p>
+<ul>
+<li>常见导数公式：
+<ul>
+<li>$$(C)' = 0 \tag{常数导数为0}$$</li>
+<li>$$(x^n)' = nx^{n-1},(x^\mu)' = \mu x^{\mu -1}$$</li>
+<li>$$(\sin x)' = \cos x$$</li>
+<li>$$(\cos x)' = - \sin x$$</li>
+<li>$$(a^x)' = a^x \ln a \quad (e^x)' = e^x$$</li>
+<li>$$(\log_a{x})' = \frac{1}{x \ln a} \quad (\ln x)' = \frac{1}{x}$$</li>
+</ul>
+</li>
+<li>单侧导数：
+<ul>
+<li>定义</li>
+<li>在闭区间可导定义</li>
+</ul>
+</li>
+<li>导数的几何意义 - 切线的斜率</li>
+<li>函数可导性与连续性
+<ul>
+<li>可导必连续</li>
+<li>连续不一定可导</li>
+</ul>
+</li>
+</ul>
+<h2 id="%E5%87%BD%E6%95%B0%E7%9A%84%E6%B1%82%E5%AF%BC%E6%B3%95%E5%88%99">函数的求导法则</h2>
+<ul>
+<li>函数的和、差、积、商的求导法则
+<ul>
+<li>定理1：
+<ul>
+<li>$$[u(x) \pm v(s)]' = u'(x) \pm v'(x)$$</li>
+<li>$$[u(x)v(x)]' = u'(x)v(x) + u(x)v'(x)$$</li>
+<li>$$\left[ \frac{u(x)}{v(x)} \right]' = \frac{u'(x)v(x) - u(x)v'(x)}{v^2(x)} \quad (v(x) \neq 0)$$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>反函数的求导法则
+<ul>
+<li>定理2：$y=f(x)在区间I_y内单调、可导且f'(x) \neq 0$
+<ul>
+<li>$$[f^{-1}(x)]' = \frac{1}{f'(x)} \quad 或 \quad \frac{dy}{dx} = \frac{1}{ \frac{dx}{dy} }$$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>复合函数的求导法则
+<ul>
+<li>定理3：
+<ul>
+<li>$$y = f[g(x)] \quad 导数为: \frac{dy}{dx} = f'(u) \cdot u'(x) \ 或 \  \frac{dy}{dx} = \frac{dy}{du} \cdot \frac{du}{dx}$$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>基本求导法则与导数公式
+<ul>
+<li>1.常用和基本初等函数的求导公式
+<ul>
+<li>$$(C)' = 0 \quad (x^\mu)' = \mu x^{\mu -1}$$</li>
+<li>$$(\sin x)' = \cos x \quad (\cos x)' = -\sin x \quad (\tan x)' = (\sec x)^2$$</li>
+<li>$$(\cot x)' = -(\csc x)^2 \quad (\sec x)' = \sec x \tan x \quad (\csc x)' = -\csc x \cot x$$</li>
+<li>$$(a^x)' = a^x \ln a \quad (a&gt;0,a \neq 1) \quad (e^x)' = e^x$$</li>
+<li>$$(\log_a{x})' = \frac{1}{x\ln a} \quad (\ln x)' = \frac{1}{x}$$</li>
+<li>$$(\arcsin x)' = \frac{1}{\sqrt{1 - x^2}} \quad (\arccos x)' = - \frac{1}{\sqrt{1 - x^2}}$$</li>
+<li>$$(\arctan x)' = \frac{1}{1 + x^2} \quad (arccot\ x)' = - \frac{1}{1 + x^2}$$</li>
+</ul>
+</li>
+<li>2.函数的和、差、积、商的求导法则
+<ul>
+<li>$u = u(x),v = v(x),都可导$</li>
+<li>$$(u \pm v)' = u' \pm v' \quad (Cu)' = Cu' \quad (uv)' = u'v + uv' \quad \left[ \frac{u}{v} \right] = \frac{u'v - uv'}{v^2}$$</li>
+</ul>
+</li>
+<li>3.反函数的求导法则
+<ul>
+<li>$y=f(x)在区间I_y内单调、可导且f'(x) \neq 0$</li>
+<li>$$[f^{-1}(x)]' = \frac{1}{f'(x)} \quad \frac{dy}{dx} = \frac{1}{\frac{dx}{dy}}$$</li>
+</ul>
+</li>
+<li>4.复合函数的求导法则
+<ul>
+<li>$$\frac{dy}{dx} = \frac{dy}{du} \cdot \frac{du}{dx} \quad y'(x) = f'(u) \cdot g'(x)$$</li>
+</ul>
+</li>
+<li>5.双曲函数以及反双曲函数导数：
+<ul>
+<li>$$(\sh x)' = \ch x \quad (\ch x)' = \sh x \quad (\th x)' = \frac{1}{(\ch x)^2}$$</li>
+<li>$$(arsh x)' = \frac{1}{\sqrt{1+x^2}} \quad (arch x)' = \frac{1}{\sqrt{x^2 - 1}} \quad (arth x)' = \frac{1}{1 - x^2}$$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="%E9%AB%98%E9%98%B6%E5%AF%BC%E6%95%B0">高阶导数</h2>
+<ul>
+<li>定义：二阶导数，n阶导数</li>
+<li>初等函数的n阶导数：
+<ul>
+<li>$$(e^x)^{(n)} = e^x$$</li>
+<li>$$(\sin x)^{(n)} = \sin {\left( x + n \cdot \frac{\pi}{2} \right)} \quad (\cos x)^{(n)} = \cos { \left( x + n \cdot \frac{\pi}{2} \right) }$$</li>
+<li>$$(\ln (1 + x))^{(n)} = (-1)^{n-1} \frac{(n-1)!}{(1 + x)^n}$$</li>
+<li>$$(x^\mu)^{(n)} = \mu(\mu - 1)(\mu - 2)\dots (\mu -n - 1)x^{\mu - n} \quad (x^n)^{(n)} = n! \quad (x^n)^{(n+k)} = 0 \ (k=1,2,3\dots)$$</li>
+<li>$$(u \pm v)^{(n)} = u^{(n)} \pm v^{(n)}$$</li>
+<li>$$(uv)'' = u''v + 2u'v' + uv'' \quad (uv)''' = u'''v + 3u''v' + 3u'v'' + uv'''$$</li>
+<li>$$(uv)^{(n)} = u^{(n)}v + nu^{(n-1)}v' + \frac{n(n-1)}{2!}u^{(n-2)}v'' + \dots + u^0v^{(n)} = \sum_{k=0}^nC_n^k u^{(n-k)}v^{(k)} \quad \tag{莱布尼茨公式}$$</li>
+<li>$$C_n^{k} = \frac{n(n-1)(n-2)\cdots(n-k+1)}{k!}$$</li>
+</ul>
+</li>
+</ul>
+<h2 id="%E9%9A%90%E5%87%BD%E6%95%B0%E5%8F%8A%E7%94%B1%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E6%89%80%E7%A1%AE%E5%AE%9A%E7%9A%84%E5%87%BD%E6%95%B0%E7%9A%84%E5%AF%BC%E6%95%B0-%E7%9B%B8%E5%85%B3%E5%8F%98%E5%8C%96%E7%8E%87">隐函数及由参数方程所确定的函数的导数 相关变化率</h2>
+<ul>
+<li>隐函数的导数
+<ul>
+<li>定义：显函数定义、隐函数定义、什么是隐函数的显化</li>
+<li>隐函数求导过程：
+<ul>
+<li>1.在y=f(x)两边求导数；</li>
+<li>2.计算等号两边导数；</li>
+<li>3.解出所需导数 $\frac{dy}{dx}$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>求隐函数：$e^y + xy - e = 0$的一阶导数$\frac{dy}{dx}$<br>
+1.方程两边求导数：$\frac{d}{dx}(e^y + xy - e) =(0)'$<br>
+2.方程两边计算导数：左边=$e^y \frac{dy}{dx} + y + x \frac{dy}{dx}$,右边=(0)' = 0<br>
+3.所以$e^y \frac{dy}{dx} + y + x \frac{dy}{dx} = 0$<br>
+4.从而：$\frac{dy}{dx} = - \frac{y}{x + e^y}$<br></p>
+</blockquote>
+<ul>
+<li>对数求导法(一般用于幂指函数 $y = u^v (u &gt; 0)$)：
+<ul>
+<li>1.在y=f(x)两边去对数</li>
+<li>2.然后求y的导数</li>
+</ul>
+</li>
+</ul>
+<p>$$
+y = u^v = e^{v\ln u} \\
+y' = e^{v\ln u}\left(v'\ln u + \frac{vu'}{u}  \right) = u^v \left( v'\ln u + \frac{vu'}{u} \right)
+$$</p>
+<ul>
+<li>由参数方程所确定的函数的导数
+<ul>
+<li>定义：参数方程：</li>
+<li>$$\begin{cases} x= \phi (t), &amp; \text {x是t的函数} \ y = \psi (t) &amp; \text {y是t的函数} \end{cases} $$</li>
+<li>则其导数为：
+<ul>
+<li>$$\frac{dy}{dx} = \frac{dy}{dt} \cdot \frac{dt}{dx} = \frac{\psi' (t)}{\phi' (t)} \tag{一阶导数}$$</li>
+<li>$$\frac{d^2y}{d^2x} = \frac{\psi''(t)\phi'(t) - \psi'(t)\phi''(t)}{\phi'^3(x)} \tag{二阶导数}$$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>相关变化率</li>
+</ul>
+<h2 id="%E5%87%BD%E6%95%B0%E7%9A%84%E5%BE%AE%E5%88%86">函数的微分</h2>
+<ul>
+<li>微分的定义：
+<ul>
+<li>$设函数y=f(x)在某区间内有定义，x_0以及x_0+\Delta x 在该区间内，若函数的增量：\Delta y = f(x+\Delta x) - f(x_0) 可表示为 \Delta y = A\Delta x + o(\Delta x),A是不依赖于\Delta x的常数,则称函数y=f(x)在点x_0是可微的，而A\Delta x 叫做函数y=f(x)在点x_0相当于自变量增量\Delta x的微分,记作dy，即dy=A\Delta x$</li>
+<li>$$A = \lim_{\Delta x \to 0}{\frac{\Delta y}{\Delta x}} = f'(x_0)$$</li>
+<li>函数f(x)在点$x_0$可微的 充分必要条件 是 函数f(x)在点$x_0$可导,其微分为$dy = f'(x_0)\Delta x$</li>
+<li>$$\Delta y = dy + o(dy)$$</li>
+<li>名词术语：主部、线性主部、函数的微分、自变量的微分</li>
+</ul>
+</li>
+<li>微分的几何意义：
+<ul>
+<li>在某点附近，用切线段来近似代替曲线段；即在局部范围内用线性函数近似代替非线性函数</li>
+</ul>
+</li>
+<li>基本初等函数的微分公式
+<ul>
+<li>函数的微分表达式：
+<ul>
+<li>$$dy = f'(x)dx$$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>导数公式</th>
+<th>微分公式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$y'=f'(x)$</td>
+<td>$dy = df(x) = f'(x)dx$</td>
+</tr>
+<tr>
+<td>$(x^\mu)' = \mu x^{\mu -1}$</td>
+<td>$d(x^\mu) = \mu x^{\mu - 1}dx$</td>
+</tr>
+<tr>
+<td>$(\sin x)' = \cos x$</td>
+<td>$d(\sin x) = \cos xdx$</td>
+</tr>
+<tr>
+<td>$(\cos x)' = -\sin x$</td>
+<td>$d(\cos x) = -\sin xdx$</td>
+</tr>
+<tr>
+<td>$(\tan x)' = \sec^2 x$</td>
+<td>$d(\tan x) = \sec^2 xdx$</td>
+</tr>
+<tr>
+<td>$(\cot x)' = -\csc^2 x$</td>
+<td>$d(\cot x) = -\csc^2 xdx$</td>
+</tr>
+<tr>
+<td>$(\sec x)' = \sec x \tan x$</td>
+<td>$d(\sec x) =\sec x \tan x dx$</td>
+</tr>
+<tr>
+<td>$(\csc x)' = -\csc x \cot x$</td>
+<td>$d(\csc x) = -\csc x \cot x dx$</td>
+</tr>
+<tr>
+<td>$(a^x)' = a^x \ln a\ (a&gt;0\ and\ a \neq 0)$</td>
+<td>$d(a^x) = a^x\ln a dx \ (a&gt;0\ and\ a\neq 0)$</td>
+</tr>
+<tr>
+<td>$(e^x)' = e^x$</td>
+<td>$d(e^x) = e^xdx$</td>
+</tr>
+<tr>
+<td>$(\log_a{x})' = \frac{1}{x\ln a}\ (a&gt;0\ and\ a \neq 1)$</td>
+<td>$d(\log_a{x}) = \frac{1}{x\ln a}dx \ (a&gt;0 \ and \ a \neq 1)$</td>
+</tr>
+<tr>
+<td>$(\ln x)' = \frac{1}{x}$</td>
+<td>$d(\ln x) = \frac{1}{x}dx$</td>
+</tr>
+<tr>
+<td>$(\arcsin x)' = \frac{1}{\sqrt{1-x^2}}$</td>
+<td>$d(\arcsin x) = \frac{1}{\sqrt{1-x^2}} dx$</td>
+</tr>
+<tr>
+<td>$(\arccos x)' = -\frac{1}{\sqrt{1-x^2}}$</td>
+<td>$d(\arccos x) = -\frac{1}{\sqrt{1-x^2}}dx$</td>
+</tr>
+<tr>
+<td>$(\arctan x)' = \frac{1}{1 + x^2}$</td>
+<td>$d(\arctan x) = \frac{1}{1+x^2}dx$</td>
+</tr>
+<tr>
+<td>$(arccot\ x)' = - \frac{1}{1 + x^2}$</td>
+<td>$d(arccot\ x) = -\frac{1}{1 + x^2}dx$</td>
+</tr>
+<tr>
+<td>$(\sh x)' = \ch x$</td>
+<td>$d(\sh x) = \ch{x}dx$</td>
+</tr>
+<tr>
+<td>$(\ch x)' = \sh x$</td>
+<td>$d(\ch x) = \sh{x}dx$</td>
+</tr>
+<tr>
+<td>$(\th x)' = \frac{1}{(\ch x)^2}$</td>
+<td>$d(\th x) = \frac{1}{(\ch x)^2}dx$</td>
+</tr>
+<tr>
+<td>$(arsh x)'=\frac{1}{\sqrt{x^2+1}}$</td>
+<td>$d(arsh x) = \frac{1}{\sqrt{x^2 + 1}}$dx</td>
+</tr>
+<tr>
+<td>$(arch x)' = \frac{1}{\sqrt{x^2 - 1}}$</td>
+<td>$d(arch x) = \frac{1}{\sqrt{x^2 - 1}}dx$</td>
+</tr>
+<tr>
+<td>$(arth x)' = \frac{1}{1 - x^2}$</td>
+<td>$d(arth x) = \frac{1}{1 - x^2}dx$</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>函数和差积商的微分法则</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>求导法则</th>
+<th>微分法则</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$(u \pm v)' = u' \pm v'$</td>
+<td>$d(u \pm v) = du \pm dv$</td>
+</tr>
+<tr>
+<td>$(Cu)' = Cu'$</td>
+<td>$d(Cu) = Cdu$</td>
+</tr>
+<tr>
+<td>$(uv)' = u'v + uv'$</td>
+<td>$d(uv) = udv + vdu$</td>
+</tr>
+<tr>
+<td>$(\frac{u}{v})' = \frac{u'v-uv'}{v^2}\ (v \neq 0)$</td>
+<td>$d(\frac{u}{v}) = \frac{vdu - udv}{v^2}\ (v \neq 0)$</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>复合函数的微分法则
+<ul>
+<li>微分形式不变性：$y=f(u),u=g(x),y=f[g(x)],dy =f'(u)du = f'(u)g'(x)dx$</li>
+<li>Tip:根据微分求原始函数时需要加常数C，$d(f(x)+C) = f'(x)dx$</li>
+</ul>
+</li>
+<li>微分在近似计算中的应用
+<ul>
+<li>函数的近似计算：$当 \Delta x 很小时，\Delta y \approx dy = f'(x)\Delta x$</li>
+<li>即：$\Delta y = f(x_0 + \Delta x) - f(x_0) \approx f'(x_0)\Delta x$</li>
+<li>那么:$f(x_0 + \Delta x) \approx f(x_0) + f'(x_0)\Delta x$</li>
+<li>令$x = x_0 + \Delta x ,则 f(x) \approx f(x_0) + f'(x_0)(x - x_0)$</li>
+<li>即：用曲线$y=f(x),在点(x_0,f(x_0))处的切线来近似代替该曲线$</li>
+<li>当x取0时，$f(x) \approx f(0) + f'(0)x$</li>
+<li>常用的在工程上是近似公式：
+<ul>
+<li>$$(1 + x)^\alpha \approx 1 + \alpha x \quad (\alpha \in R)$$</li>
+<li>$$ \sin x \approx x \quad (x用弧度单位表示)$$</li>
+<li>$$ \tan x \approx x \quad (x用弧度单位表示)$$</li>
+<li>$$ e^x \approx 1 + x$$</li>
+<li>$$\ln (1 + x) \approx x$$</li>
+</ul>
+</li>
+<li>误差估计：
+<ul>
+<li>术语名称：
+<ul>
+<li>间接测量误差，绝对误差=$|A-a|$,相对误差=$\frac{|A - a|}{|a|}$ , 绝对误差限=$\delta _A = |A - a|$ , 相对误差限 = $\frac{\delta_A}{a}$</li>
+</ul>
+</li>
+<li>一般，若y=f(x)的直接测量值为x,若要计算y,x的绝对误差限为$\delta_x,即 |\Delta x| \leq \delta_x,$</li>
+<li>当$y' \neq 0 时，y的绝对误差\Delta y \approx |dy| = |y'| \cdot |\Delta x| \leq |y'|\cdot \delta_x,则y的绝对误差限为：\delta_y = |y'|\cdot \delta_x,$</li>
+<li>y的相对误差限：</li>
+<li>$$\frac{\delta_y}{|y|} = \left|\frac{y'}{y} \right| \cdot \delta_x$$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98">课后习题</h2>
+<ul>
+<li>2-3
+<ul>
+<li>4.$试从\frac{dx}{dy} = \frac{1}{y'}导出：$
+<blockquote>
+<p>$$(1)\frac{d^2x}{dy^2} = -\frac{y''}{(y')^3}$$
+$$(2)\frac{d^3x}{dy^3} = \frac{3(y'')^2 - y'y'''}{(y')^5}$$</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>$$
+\begin{aligned}
+\frac{\partial}{\partial \theta_j} J(\theta) &amp; = \frac{\partial}{\partial \theta_j}[-\frac{1}{m}\sum_{i=1}^{m}[-y^{(i)}\log_a{(1+e^{-\theta{^T}x^{(i)}})} - (1-y^{(i)})\log_a{(1 + e^{\theta ^T x^{(i)}})}]]\\
+&amp; = -\frac{1}{m}\sum_{i=1}^{m}[\frac{\partial}{\partial \theta_j} (-y^{(i)}\log_a{(1+e^{-\theta{^T}x^{(i)}})} - (1-y^{(i)})\log_a{(1 + e^{\theta ^T x^{(i)}})})]\\
+&amp; = -\frac{1}{m}\sum_{i=1}^{m}[-y^{(i)}\frac{\partial}{\partial \theta_j}(\log_a{(1+e^{-\theta{^T}x^{(i)}})}) - (1-y^{(i)})\frac{\partial}{\partial \theta_j}(\log_a{(1 + e^{\theta ^T x^{(i)}})})]\\
+&amp; = -\frac{1}{m}\sum_{i=1}^{m}[-y^{(i)}\frac{\partial}{\partial \theta_j}(\log_a{(1+e^{-\theta{^T}x^{(i)}})}) - (1-y^{(i)})\frac{\partial}{\partial \theta_j}(\log_a{(1 + e^{\theta ^T x^{(i)}})})]\\
+\end{aligned}
+$$</p>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({ tex2jax: {inlineMath: [['$', '$']]}, messageStyle: "none" });
+</script>
+</body>
+</html>

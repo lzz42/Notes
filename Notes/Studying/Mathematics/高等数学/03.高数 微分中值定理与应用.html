@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>03.高数 微分中值定理与应用.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%E7%AC%AC%E4%B8%89%E7%AB%A0-%E5%BE%AE%E5%88%86%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8">第三章 微分中值定理与应用</h1>
+<h2 id="%E7%AC%AC%E4%B8%80%E8%8A%82-%E5%BE%AE%E5%88%86%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86">第一节 微分中值定理</h2>
+<h2 id="%E7%BD%97%E5%B0%94%E5%AE%9A%E7%90%86rolle">罗尔定理Rolle</h2>
+<ul>
+<li><code>费马引理</code>Fermat：
+<blockquote>
+<p>$若函数f(x)在x_0的某邻域U(x_0)内有定义，且在x_0处可导，\\quad 若对于任意x\in U(x_0),有f(x)\leq f(x_0)\quad (或f(x) \geq f(x_0))\ \quad 则f'(x_0) = 0$</p>
+<blockquote>
+<p>证明：$函数f(x)的可导条件和极限的保号性$</p>
+</blockquote>
+</blockquote>
+</li>
+<li><code>罗尔定理</code>：
+<blockquote>
+<p>$若函数f(x)满足：\ \quad (1) 在闭区间[a,b]内连续;\ \quad (2) 在开区间(a,b)可导;\ \quad (3) 在区间端点处的值相等,即f(a)=f(b)\ 那么在开区间(a,b)内至少存在一点\xi (a&lt;\xi &lt;b),使得f'(\xi)=0$</p>
+<blockquote>
+<p>证明：列举情况，根据费马引理证明</p>
+</blockquote>
+</blockquote>
+</li>
+<li><code>拉格朗日中值定理</code> 又称为拉格朗日中值定理、微分中值定理：
+<blockquote>
+<p>$若函数f(x)满足：\ \quad (1) 在闭区间[a,b]内连续;\ \quad (2) 在开区间(a,b)可导;\ 那么在开区间(a,b)内至少存在一点\xi (a&lt;\xi &lt;b),使等式f(a) - f(b) = f'(\xi)(a - b)成立.$</p>
+<blockquote>
+<p>定理的几何意义：弧上至少存在一点的切线平行于端点弦<br/>
+证明:$利用辅助函数\varphi(x) 使证明变形为罗尔定理,即：\varphi(a)=\varphi(b),\显然当a = b时，定理成立\当a \neq b 时，断点连线的直线方程为:L(s) = f(a) + \frac{f(b) - f(a)}{b - a}(x - a),令\varphi(x) = f(x) - L(x),显然：\varphi(a) = \varphi(b)，\此时对\varphi(x)应用罗尔定理，则在(a,b)内至少存在一点\xi使得\varphi'(\xi)=0成立,\f'(\xi) - L'(\xi) = 0\f'(\xi) - \frac{f(b) - f(a)}{b - a} = 0,\f'(\xi) = \frac{f(b) - f(a)}{b - a}\f(b) - f(a) = f'(\xi)(b - a)$</p>
+</blockquote>
+</blockquote>
+</li>
+<li>逆命题同样成立
+<ul>
+<li><code>定理</code> $如果函数f(x)在区间I上的导数恒为0，那么f(x)在区间I上是一个常数.$
+<blockquote>
+<p>证明：$在区间I上任取两点x_1,x_2,根据微分中值定理，都有f(x_1) - f(x_2) = f'(\xi)(x_1 - x_2) = 0，即f(x_1)=f(x_2),显然f(x)在区间I上为一个常数。$</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><code>柯西中值定理</code>
+<ul>
+<li>$若函数f(x)、F(x)满足\quad \(1)\ 在闭区间[a,b]上连续；\(2)\ 在开区间(a,b)上可导；\(3) \ 对于任一x\in(a,b),F'(x) \neq 0,\那么在(a,b)内至少存在一点\xi,使等式\ \qquad \frac{f(a) - f(b)}{F(a) - F(b)} = \frac{f'(\xi)}{F'(\xi)}\成立.$</li>
+</ul>
+<blockquote>
+<p>证明：<code>构建辅助函数</code>：$Y = f(a) + \frac{f(b) - f(a)}{F(b) - F(a)}[F(x) - F(a)]$</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="%E7%AC%AC%E4%BA%8C%E8%8A%82-%E6%B4%9B%E5%BF%85%E8%BE%BE%E6%B3%95%E5%88%99">第二节 洛必达法则</h2>
+<ul>
+<li>概念：未定式，即：$\frac{0}{0} \qquad \frac{\infty}{\infty}$</li>
+<li>定理1：设
+<ul>
+<li>(1)$当 x \to a 时，函数f(x)以及F(x)都趋于零；$</li>
+<li>(2)$在点a的某去心领域内，f'(x)以及F'(x)都存在，且F'(x)\neq 0；$</li>
+<li>(3)$\lim_{x \to a}{\frac{f'(x)}{F'(x)}}存在(或为无穷大)；$</li>
+<li>$$那么 \qquad \lim_{x \to a}{\frac{f(x)}{F(x)}} = \lim_{x \to a}{\frac{f'(x)}{F'(x)}}$$</li>
+<li>即称为洛必达法则(L'Hospital)</li>
+</ul>
+<blockquote>
+<p>证明:利用柯西中值定理证明</p>
+</blockquote>
+</li>
+<li><code>注意：使用洛必达法则的前提条件是，极限为未定式</code></li>
+<li>定理2：设
+<ul>
+<li>(1)$当x \to \infty时，函数f(x)以及F(x)都趋于零；$</li>
+<li>(2)$当|x|&gt;N时，f'(x)以及F'(x)都存在，且F'(x) \neq 0；$</li>
+<li>(3)$\lim_{x \to \infty}{\frac{f'(x)}{F'(x)}}存在(或为无穷大)；$</li>
+<li>$$那么 \qquad \lim_{x \to \infty}{\frac{f(x)}{F(x)}} = \lim_{x \to \infty}{\frac{f'(x)}{F'(x)}}$$</li>
+</ul>
+</li>
+<li>函数的增大速度：$当x \to \infty时， 指数函数(e^{\lambda x})&gt;幂函数(x^n)&gt;对数函数(\ln{x})$</li>
+</ul>
+<h2 id="%E7%AC%AC%E4%B8%89%E8%8A%82-%E6%B3%B0%E5%8B%92%E5%85%AC%E5%BC%8F">第三节 泰勒公式</h2>
+<ul>
+<li>使用多项式来近似表达函数</li>
+<li>问题：
+<ul>
+<li>$函数f(x)在x_0的开区间内具有n+1阶导数，试找到关于x-x_0的n次多项式\ P_n(x) = a_0 + a_1(x-x_0) + a_2(x-x_0)^2+ \cdots + a_n(x-x_0)^n,\来近似表达f(x),且 |f(x) - P_n(x)| = o((x - x_0)^n),\以及|f(x) - P_n(x)|的具体表达式$</li>
+</ul>
+<blockquote>
+<p>$假设P_n(x)在x_0处函数值以及n阶导与f(x)相等\即：P_n(x_0) = f(x_0),P'_n(x_0) = f'(x_0),\cdots ,P^{(n)}_n(x_0) = f^{(n)}(x_0)\因此，a_0 = f(x_0),a_1=f'(x_0),2!a_2=f''(x_0),\cdots,n!a_n=f^{(n)}(x_0)\从而P_n(x) = f(x_0)+f'(x_0)(x-x_0)+\frac{f''(x_0)}{2!}(x-x_0)^2+\cdots+\frac{f^{(n)}}{n!}(x-x_0)^n$</p>
+</blockquote>
+<ul>
+<li><code>泰勒(Taylor)中值定理</code>
+<ul>
+<li>$如果函数f(x)在含有x_0的某个开区间(a,b)内具有直到n+1阶的导数,则对任一x\in(a,b),有\f(x)=f(x_0)+f'(x_0)(x-x_0)+\frac{f''(x_0)}{2!}(x-x_0)^2+\cdots+\frac{f^{(n)}}{n!}(x-x_0)^n + R_n(x)\其中\R_n(x) = \frac{f^{(n+1)}(\xi)}{(n+1)!}(x-x_0)^{n+1}\其中\xi是x_0与x之间的某个值$</li>
+</ul>
+<blockquote>
+<p>证明：$由已知f(x) = P_n(x) + R_n(x)$ </br>
+即证明：$R_n(x) = f(x)-P_n(x),且P_n^{(n+1)}(x)=0,R_n^{(n+1)}(x)=f^{(n+1)}(x)$
+$且R_n(x_0)=R_n'(x_0)=R_n''(x_0)=\cdots=R_n^{(n)}(x_0) = 0$</br>
+$对于函数R_n(x)和(x - x_0)^{n+1},在以x_0和x为断点区间上使用柯西中值定理，$</br>
+$$\frac{R_n(x)}{(x - x_0)^{n+1}} = \frac{R_n(x) - R_n(x_0)}{(x - x_0)^{n+1} - 0} = \frac{R_n'(\xi_1)}{(n+1)(\xi_1 - x_0)^{n}} \qquad \xi_1 \in x_0到x之间$$
+再次使用柯西中值定理，n次后
+$$ \frac{R_n(x)}{(x - x_0)^{n+1}} = \frac{R_n^{(n+1)}(\xi)}{(n+1)!}  \qquad \xi \in x_0到x之间$$
+$即\frac{R_n(x)}{(x - x_0)^{n+1}} = \frac{f^{(n+1)}(\xi)}{(n+1)!}，从而$</br>
+$$R_n(x) = \frac{f^{(n+1)}(\xi)}{(n + 1)!} \qquad \xi \in x_0到x之间 \tag{4}$$</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><code>拉格朗日余项</code> - (4)$R_n(x)$</li>
+<li><code>泰勒多项式</code> - $P_n(x)$</li>
+<li>n=0时，$f(x) = f(x_0) + f'(\xi)(x-x_0)$</li>
+<li>误差$|R_n(x)|$：$\frac{M}{(n+1)!}|(x-x_0)^{n+1}|,当x \in (a,b)时，|f^{(n+1)}(x)| \leq M$</li>
+<li><code>佩亚诺型余项</code>：$R_n(x) = o((x-x_0)^n)$</li>
+<li><code>麦克劳林公式</code>：$若取x_0=0,\xi = \theta x \ (0&lt;\theta&lt;1), f(x) = f(0)+f'(0)x+\frac{f''(0)}{2!}x^2+\cdots+\frac{f^{(n)}}{n!}x^n+\frac{f^{(n+1)}(\theta x)}{(n+1)!}x^{n+1} \quad (0&lt;\theta&lt;1)$</li>
+<li>麦克劳林公式下的误差：$|R_n(x)| = \frac{M}{(n+1)!}|x|^{n+1}$</li>
+<li>应用：</li>
+<li>$y=e^x,e^x = 1 + x+ \frac{x^2}{2!}+\cdots+\frac{x^n}{n!}+\frac{e^{\theta x}}{(n+1)!}x^{n+1}$</li>
+<li>$y=\sin x,\sin x = x-\frac{x^3}{3!}+\frac{x^5}{5!}+\cdots+(-1)^{m-1}\frac{1}{(2m-1)!}x^{2m-1} + R_{2m}(x) \quad (m \in N^+)\quad R_{2m} = \frac{\sin{(\theta x+ (2m+1)\frac{\pi}{2})}}{(2m+1)!}x^{2m+1} \quad (0&lt;\theta&lt;1)$</li>
+<li>$y=\cos x,\cos x = 1 + \frac{1}{2!}x^2+\frac{1}{4!}x^4+\cdots+(-1)^m\frac{1}{(2m)!}x^{2m}+ R_{2m+1}(x)\qquad R_{2m+1} = \frac{\cos(\theta x + (m+1)\pi)}{(2m+2)!}x^{2m+2} \quad (0&lt;\theta&lt;1)$</li>
+<li>$y=\ln{(1+x)} =  x -\frac{1}{2}x^2+\frac{1}{3}x^3+\cdots+(-1)^{n-1}\frac{1}{n}x^n+R_n(x),R_n(x) = \frac{(-1)^n}{(n+1)(1+\theta x)^{n+1}}x^{n+1} \qquad (0&lt;\theta&lt;1)$</li>
+<li>$(1+x)^a = 1 + ax + \frac{a(a-1)}{2!}x^2+\cdots+\frac{a(a-1)(a-2)\cdots(a-n+1)}{n!}x^n+R_n(x),R_n(x) = \frac{a(a-1)(a-2)\cdots(a-n+1)(a-n)}{(n+1)!}(1+\theta x)^{a-n-1} x^{n+1} \qquad (0&lt;\theta&lt;1)$</li>
+</ul>
+<h2 id="%E7%AC%AC%E5%9B%9B%E8%8A%82-%E5%87%BD%E6%95%B0%E7%9A%84%E5%8D%95%E8%B0%83%E6%80%A7%E4%B8%8E%E6%9B%B2%E7%BA%BF%E7%9A%84%E5%87%B9%E5%87%B8%E6%80%A7">第四节 函数的单调性与曲线的凹凸性</h2>
+<ul>
+<li>函数单调性判断方法</li>
+<li><code>定理1</code> $设函数f(x)在[a,b]上连续,在(a,b)可导：$
+<ul>
+<li>(1) $若在(a,b)内f'(x)&gt;0,那么函数f(x)在[a,b]内单调增加；$</li>
+<li>(2) $若在(a,b)内f'(x)&lt;0,那么函数f(x)在[a,b]内单调减少；$</li>
+</ul>
+</li>
+<li>曲线的凹凸性
+<ul>
+<li>定义：
+<blockquote>
+<p>$设f(x)在区间I上连续，如果对I上任意两点x_1,x_2,恒有$&lt;\br&gt;
+$f(\frac{x_1+x_2}{2}) &gt; \frac{f(x_1)+f(x_2)}{2}$&lt;\br&gt;
+$那么称函数f(x)在I上的图形是凹的；若$&lt;\br&gt;
+$f(\frac{x_1+x_2}{2}) &lt; \frac{f(x_1)+f(x_2)}{2}$&lt;\br&gt;
+$那么称函数f(x)在区间I上的图形是凸的$</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><code>定理2</code> $设f(x)在区间I上连续，在(a,b)内具有一阶和二阶导数：$
+<ul>
+<li>(1) $若在(a,b)内f''(x)&gt;0,则f(x)在[a,b]上的图形是凹的；$</li>
+<li>(2) $若在(a,b)内f''(x)&lt;0,则f(x)在[a,b]上的图形是凸的；$</li>
+</ul>
+</li>
+<li><code>拐点</code>：$函数f(x)在区间I上是连续的,x_0是区间I上一点，若函数f(x)在点(x_0,f(x_0))时，曲线的凹凸性改变了，则称点(x_0,f(x_0))为函数f(x)的拐点$
+<ul>
+<li>寻找拐点：
+<ul>
+<li>1.$求f''(x)$</li>
+<li>2.$令f''(x)=0，求实根,以及f''(x)在区间I上不存在的点$</li>
+<li>3.$判断(2)中点两侧f''(x)是否异号，若异号则为拐点，否则不是$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="%E7%AC%AC%E4%BA%94%E8%8A%82-%E5%87%BD%E6%95%B0%E7%9A%84%E6%9E%81%E5%80%BC%E4%B8%8E%E6%9C%80%E5%A4%A7%E5%80%BC%E6%9C%80%E5%B0%8F%E5%80%BC">第五节 函数的极值与最大值最小值</h2>
+<ul>
+<li>定义：函数的极值：
+<blockquote>
+<p>$设函数f(x)在点x_0的某邻域U(x_0)内有定义，若对于去心邻域U^0(x_0)内任一x有:$</br>
+$f(x)&lt;f(x_0)(或 f(x)&gt;f(x_0)),则称f(x_0)是f(x)的一个极大值（或极小值），统称为极值$</p>
+</blockquote>
+</li>
+<li><code>定理1（必要条件）</code>：
+<ul>
+<li>$函数f(x)在x_0处可导，且在x_0处取得极值，那么\quad f'(x_0) = 0$</li>
+<li>函数的极值点必定是其驻点。但驻点不一定是极值点。</li>
+</ul>
+</li>
+<li><code>定理2（第一充分条件）</code>：$函数f(x)在x_0处连续,且在x_0的某去心邻域U^0(x_0,\delta)内可导$
+<ul>
+<li>$(1) 若 x \in(x_0-\delta,x_0)时,f'(x) &gt; 0,而x \in (x_0,x_0+\delta)时，f'(x) &lt; 0 ，则f(x)在x_0处取得极大值；$</li>
+<li>$(2) 若 x \in(x_0-\delta,x_0)时,f'(x) &lt; 0,而x \in (x_0,x_0+\delta)时，f'(x) &gt; 0 ，则f(x)在x_0处取得极小值；$</li>
+<li>$(3) 若 x \in U^0(x_0,\delta)时,f'(x) 符号不变,则f(x)在x_0处没有极值；$</li>
+</ul>
+</li>
+<li>求极值：
+<ul>
+<li>1.$求出导数f'(x);$</li>
+<li>2.$求出f(x)的全部驻点和不可导点;$</li>
+<li>3.$考察f'(x)的符号在每个驻点或不可导点的左右临近情况;$</li>
+<li>4.$求出各个极值点的函数值，即为函数的极值;$</li>
+</ul>
+</li>
+<li><code>定理3(第二充分条件)</code>：$设函数f(x)在x_0处具有二阶导数且f'(x_0) = 0,f''(x_0) \neq 0,那么：$
+<ul>
+<li>$(1) 当f''(x_0) &lt; 0 时，函数f(x)在x_0处取得极大值;$</li>
+<li>$(2) 当f''(x_0) &gt; 0 时，函数f(x)在x_0处取得极小值;$</li>
+</ul>
+</li>
+</ul>
+<h2 id="%E7%AC%AC%E5%85%AD%E8%8A%82-%E5%87%BD%E6%95%B0%E5%9B%BE%E5%83%8F%E7%9A%84%E6%8F%8F%E7%BB%98">第六节 函数图像的描绘</h2>
+<ul>
+<li>函数的上升与下降（单调性）与极值点：函数一阶导数的符号</li>
+<li>函数的凹凸性与拐点：函数二阶导数的符号</li>
+<li>导数绘图一般步骤
+<ul>
+<li>1.确定函数定义域以及特性，求出一阶导数和二阶导数；</li>
+<li>2.确定一阶二阶导数为0的点、间断点以及导数不存在的点，分割定义域；</li>
+<li>3.根据一阶二阶导数的符号，确定分割的定义域内图形的升降、凹凸、极值点、拐点；</li>
+<li>4.确定函数的水平、垂直渐近线以及变化趋势；</li>
+<li>5.计算导数为0的点以及函数值</li>
+</ul>
+</li>
+</ul>
+<h2 id="%E7%AC%AC%E4%B8%83%E8%8A%82-%E6%9B%B2%E7%8E%87">第七节 曲率</h2>
+<ul>
+<li>弧微分
+<ul>
+<li>定义：$有向弧段\gt{a,b}$</li>
+<li>弧微分公式：$ds=\sqrt{1+y'^2}dx$</li>
+</ul>
+<blockquote>
+<p>推导：$x,x+\Delta x为函数f(x)上(a,b)内邻近的两点，曲线上对应M,M',对于x增量\Delta x,弧s的增量为\Delta s$</br>
+$\Delta s = \widehat{MM'}$</br>
+$(\frac{\Delta s}{\Delta x})^2 = (\frac{\widehat{MM'}}{\Delta x})^2 = (\frac{\widehat{MM'}}{|MM'|})^2 \cdot \frac{|MM'|^2}{(\Delta x)^2}$</br>
+$= (\frac{\widehat{MM'}}{|MM'|})^2 \cdot [1 + (\frac{\Delta y}{\Delta x})^2]$</br>
+$$\frac{\Delta s}{\Delta x} = \plusmn\sqrt{(\frac{\widehat{MM'}}{|MM'|})^2 \cdot [1 + (\frac{\Delta y}{\Delta x})^2]}$$
+$$当\Delta x \to 0，时，\lim_{M \to M'}{\frac{|\widehat{MM'}|}{|MM'|}} = 1 \qquad \lim_{\Delta x \to 0}{\frac{\Delta y}{\Delta x}} = y' \qquad \lim_{\Delta x \to 0}{\frac{\Delta s}{\Delta x}} = \frac{ds}{dx}$$
+$$ 因此  \frac{ds}{dx} = \plusmn\sqrt{1+y'^2}$$
+$$ 且s = s(x)为单调增函数, 所以 \frac{ds}{dx} = \sqrt{1+y'^2} \tag{弧微分公式}$$</p>
+</blockquote>
+</li>
+<li>曲率以及计算公式
+<ul>
+<li>
+<p>定义：</p>
+<ul>
+<li>平均曲率：单位弧长上切线转过的角度$K = |\frac{\Delta \alpha}{\Delta s}|,记做\overline{K}$</li>
+<li>曲率：$当 \Delta s \to 0时，平均曲率称为曲线C在M点的曲率，K$</li>
+<li>$$K = \left| \lim_{\Delta x \to 0}{\frac{\Delta \alpha}{\Delta s}} \right| = \left| \frac{d \alpha}{ds} \right|$$</li>
+</ul>
+</li>
+<li>
+<p>曲率表达式：</p>
+<ul>
+<li>$$ K = \frac{|y''|}{(1+y'^2)^{\frac{3}{2}}} $$</li>
+</ul>
+<blockquote>
+<p>$$ 对于参数方程 \begin{cases}
+x = \phi(t)
+\y = \psi(t)
+\end{cases} \ K = \frac{|\phi'(t)\psi''(t) - \phi''(t)\psi'(t)|}{[\phi'^2(t) + \psi'^2(t)]^{\frac{3}{2}}} $$
+</br></p>
+</blockquote>
+<blockquote>
+<p>$$ \begin{aligned}
+&amp; y = f(x) \
+&amp; \tan \alpha = y' \
+&amp; \sec^2 \alpha \frac{d\alpha}{dx}= y'' \
+&amp; \frac{d\alpha}{dx}=  \frac{y''}{1 + \tan^2 \alpha} = \frac{y''}{1 + y'^2} \
+&amp; d\alpha = \frac{y''}{1 + y'^2} dx \
+&amp; ds = \sqrt{1 + y'^2}dx \
+&amp; 从而\ K = \frac{|y''|}{(1+y'^2)^{\frac{3}{2}}} \
+\end{aligned} $$</p>
+</blockquote>
+</li>
+<li>
+<p>近似曲率：</p>
+<ul>
+<li>当$1 + y'' \approx 1$时，$K \approx |y''|$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>曲率圆与曲率半径
+<ul>
+<li>定义：曲率园，曲率中心，曲率半径</li>
+<li>$$ \rho = \frac{1}{K},K = \frac{1}{\rho} $$</li>
+<li>曲线上一点处的曲率半径与曲线在该点的曲率互为倒数.</li>
+</ul>
+</li>
+<li>曲率中心计算 渐屈线 渐伸线
+<ul>
+<li>曲率中心$D(\alpha,\beta)坐标：$</li>
+</ul>
+<blockquote>
+<p>$$ \begin{cases} &amp; \alpha  = x - \frac{y'(1+y'^2)}{y''} \[2ex]
+&amp; \beta = y + \frac{1+y'^2}{y''}\[2ex] \end{cases} $$</p>
+</blockquote>
+<ul>
+<li>$曲率圆方程为：(\xi - \alpha)^2 + (\eta - \beta)^2 = \rho ^2$</li>
+<li>定义：渐屈线 渐伸线</li>
+</ul>
+</li>
+</ul>
+<h2 id="%E7%AC%AC%E5%85%AB%E8%8A%82-%E6%96%B9%E7%A8%8B%E7%9A%84%E8%BF%91%E4%BC%BC%E8%A7%A3">第八节 方程的近似解</h2>
+<ul>
+<li>求解过程：
+<ul>
+<li>1.确定根的大致范围：根的隔离；</li>
+<li>2.以根隔离区间为根初始值，逐渐改善精度；</li>
+</ul>
+</li>
+<li>二分法
+<ul>
+<li>1.$找出f(x)的一个隔离区间[a,b],设实根为\xi$</li>
+<li>2.$去a,b中点\xi_1 = \frac{a+b}{2}$</li>
+<li>3.$若f(\xi_1) = 0,则\xi = \xi_1$</li>
+<li>4.$若f(\xi_1)与f(a)同号，取a_1 = \xi_1,b_1 = b,由f(a_1)\cdot f(b_1)&lt;0，知a_1&lt;\xi&lt;b_1,且a_1 - b_1 = \frac{1}{2}(a + b)$</li>
+<li>5.$若f(\xi_1)与f(b)同号，取a_1 = a ,b_1 = \xi_1,由f(a_1)\cdot f(b_1)&lt;0，知a_1&lt;\xi&lt;b_1,且a_1 - b_1 = \frac{1}{2}(b - a)$</li>
+<li>6.$总之，求得a_1&lt;\xi&lt;b_1,且a_1 - b_1 = \frac{1}{2}(b - a)$</li>
+<li>7.$如此重复2-6，可得到a_n &lt;\xi&lt; b_n ,且a_n - b_n = \frac{1}{2^n}(b - a),因此以a_n或b_n作为\xi近似值，误差小于\frac{1}{2^n}(b - a)$</li>
+</ul>
+</li>
+<li>切线法 - 用弧一端的切线代替曲线弧
+<ul>
+<li>条件：$f(x)在[a,b]内具有2阶导数,f(a) \cdot f(b) &lt; 0,且f'(x),f''(x)在[a,b]内保持定号，f(x) = 0，在[a,b]内有唯一实根$</li>
+<li>1.$取纵坐标与f''(x)同号的端点x_0记为(x_0,f(x_0)),作切线，该切线与x轴交与x_1，x_1相比x_0更接近\xi$</li>
+<li>2.$由已知端点切线方程：y-f(x_0) = f'(x_0)(x - x_0)$</li>
+<li>3.$从而x_1 = x_0 - \frac{f(x_0)}{f'(x_0)}$</li>
+<li>4.$在点(x_1,f(x_1))作切线交x轴于x_2,则x_2 = x_1 - \frac{f(x_1)}{f'(x_1)}$</li>
+<li>5.$因此：知道(x_n,f(x_n)),x_n = x_{n-1} - \frac{f(x_{n-1})}{f'(x_{n-1})}$</li>
+</ul>
+</li>
+</ul>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({ tex2jax: {inlineMath: [['$', '$']]}, messageStyle: "none" });
+</script>
+</body>
+</html>

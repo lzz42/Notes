@@ -17,10 +17,10 @@ namespace UseIntrinsics
     {
         static void Main()
         {
-            Console.WriteLine("Sse.IsSupported：\t"+Sse.IsSupported);
-            Console.WriteLine("Sse.X64.IsSupported：\t"+Sse.X64.IsSupported);
-            Console.WriteLine("Sse2.IsSupported：\t"+Sse2.IsSupported);
-            Console.WriteLine("Sse2.X64.IsSupported：\t"+Sse2.X64.IsSupported);
+            Console.WriteLine("Sse.IsSupported"+Sse.IsSupported);
+            Console.WriteLine("Sse.X64.IsSupported"+Sse.X64.IsSupported);
+            Console.WriteLine("Sse2.IsSupported"+Sse2.IsSupported);
+            Console.WriteLine("Sse2.X64.IsSupported"+Sse2.X64.IsSupported);
             int[] arry = new int[10000*1];
             var random = new Random(17);
             for (int i = 0; i < arry.Length; i++)

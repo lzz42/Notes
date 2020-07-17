@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>01.高数 函数与极限.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6-%E7%AC%AC%E4%B8%80%E7%AB%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E6%9E%81%E9%99%90">高等数学 第一章函数与极限</h1>
+<h2 id="%E5%9F%BA%E6%9C%AC%E5%87%BD%E6%95%B0%E4%B8%8E%E5%B8%B8%E7%94%A8%E5%85%AC%E5%BC%8F">基本函数与常用公式</h2>
+<ul>
+<li>指数函数</li>
+</ul>
+<p>$$
+a^x\times a^y=a^{x+y}\\
+\frac{a^x}{a^y}=a^{x-y}\\
+(a^x)^y=a^{xy}\\
+$$</p>
+<ul>
+<li>对数函数</li>
+</ul>
+<p>$$
+y=\log_a{x}\quad (a&gt;0\ and\ a\neq1)\\
+\log_a{b}\times\log_b{a}=1\\
+n\log_a{m}=log_a{m^n}\\
+\log_a{mn}=\log_a{m}+\log_a{n}\\
+\log_a{\frac{m}{n}}=\log_a{m}-\log_a{n}\\
+a^{\log_aN}=N\\
+\log_{a^b}{m^n}=\frac{n}{b}\log_a{m}\\
+换底公式：\log_a{b}=\frac{\log_m{b}}{\log_m{a}}\quad (b&gt;0\ and \ b\neq1)
+$$</p>
+<ul>
+<li>三角函数</li>
+</ul>
+<p>$$
+y=\sin{x} \quad y=\cos{x} \quad y=\tan{x}=\frac{\sin{x}}{\cos{x}}\\
+余切:\cot{x}=\frac{1}{\tan{x}} \\
+正割:\sec{x}=\frac{1}{\cos{x}} \\
+余割:\csc{x}=\frac{1}{\sin{x}} \\
+倒数：\tan{x} \cdot \cot{x}=1 \quad \sin{x} \cdot \csc{x}=1 \quad \cos{x} \cdot \sec{x}=1\\
+平方和：(\sin{x})^2+(\cos{x})^2=1 \quad (\sec{x})^2-(\tan{x})^2=1 \quad (\csc{x})^2-(\cot{x})^2=1\\
+$$</p>
+<ul>
+<li>两角和差：</li>
+</ul>
+<p>$$
+\sin{(\alpha \pm \beta)}=\sin{\alpha}\cos{\beta} \pm \cos{\alpha}\sin{\beta}\\
+\cos{(\alpha \pm \beta)}=\cos{\alpha}\cos{\beta}\mp\sin{\alpha}\sin{\beta}\\
+和差化积：\\
+\sin \alpha + \sin \beta = 2\sin{\frac{\alpha + \beta}{2}}\cos{\frac{\alpha - \beta}{2}}\\
+\sin \alpha - \sin \beta = 2\cos{\frac{\alpha + \beta}{2}}\sin{\frac{\alpha - \beta}{2}}\\
+\cos \alpha + \cos \beta = 2\cos{\frac{\alpha + \beta}{2}}\cos{\frac{\alpha - \beta}{2}}\\
+\cos \alpha - \cos \beta =-2\sin{\frac{\alpha + \beta}{2}}\sin{\frac{\alpha - \beta}{2}}\\
+积化和差：\\
+\cos \alpha \sin \beta = \frac{1}{2}[\sin(\alpha + \beta) - \sin(\alpha - \beta)]\\
+\sin \alpha \cos \beta = \frac{1}{2}[\sin(\alpha + \beta) + \sin(\alpha - \beta)]\\
+\cos \alpha \cos \beta = \frac{1}{2}[\cos(\alpha + \beta) + \cos(\alpha - \beta)]\\
+\sin \alpha \sin \beta = \frac{1}{2}[\cos(\alpha + \beta) - \cos(\alpha - \beta)]\\
+二倍角公式：\\
+\sin{2\alpha} = 2\sin{\alpha}\cos{\alpha}\\
+\cos{2\alpha} = (\cos{\alpha})^2 - (\sin{\alpha})^2 = 2(\cos{\alpha})^2-1 =1-2(\sin{\alpha})^2\\
+$$</p>
+<ul>
+<li>特殊函数值：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>$\alpha$</th>
+<th>0</th>
+<th>$\frac{\pi}{6}$</th>
+<th>$\frac{\pi}{4}$</th>
+<th>$\frac{\pi}{3}$</th>
+<th>$\frac{\pi}{2}$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\sin{\alpha}$</td>
+<td>0</td>
+<td>$\frac{1}{2}$</td>
+<td>$\frac{\sqrt{2}}{2}$</td>
+<td>$\frac{\sqrt{3}}{2}$</td>
+<td>1</td>
+</tr>
+<tr>
+<td>$\cos{\alpha}$</td>
+<td>1</td>
+<td>$\frac{\sqrt{3}}{2}$</td>
+<td>$\frac{\sqrt{2}}{2}$</td>
+<td>$\frac{1}{2}$</td>
+<td>0</td>
+</tr>
+<tr>
+<td>$\tan{\alpha}$</td>
+<td>0</td>
+<td>$\frac{\sqrt{3}}{3}$</td>
+<td>1</td>
+<td>$\sqrt{3}$</td>
+<td>$\infty$</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>双曲函数：
+<ul>
+<li>双曲正弦：$\sh x = \frac{1}{2}(e^x-e^{-x}) \quad  D\in(-\infty,+\infty),D_f\in(-\infty,+\infty)$ ,奇函数,单调增加, $当x \to \pm\infty 时, f(x) \rightarrow y= \pm \frac{1}{2}e^{\pm x}$</li>
+<li>双曲余弦： $\ch x = \frac{1}{2}(e^x+e^{-x}) \quad D \in (-\infty,+\infty),D_f \in [1,+\infty)$,偶函数，在 $(0,+\infty)$ 单调递增, $当 x \to \infty 时,f(x) \to y=\frac{1}{2}e^{\pm x}$</li>
+<li>双曲正切： $\th x = \frac{\sh x}{\ch x}=\frac{e^x-e^{-x}}{e^x+e^{-x}},D \in (-\infty,+\infty),D_f \in (-1,1)$,奇函数，在定义域内单调递增，$当x \to \pm \infty 时，f(x) \to \pm 1$</li>
+<li>公式：
+<ul>
+<li>$\sh(x \pm y) = \sh x \ch x \pm \ch x \sh y$</li>
+<li>$\ch(x \pm y) = \ch x \ch y \pm \sh x \sh y$</li>
+<li>$(\ch x)^2 - (\sh x)^2 = 1$</li>
+<li>$\sh 2x = 2 \sh x \ch x$</li>
+<li>$\ch 2x = (\ch x)^2 + (\sh x)^2$</li>
+</ul>
+</li>
+<li>反函数：
+<ul>
+<li>反双曲正弦：$y = arsh x = \ln(x+\sqrt{x^2 + 1}),D \in (-\infty,+\infty),D_f \in (-\infty,+\infty)$,奇函数,在定义域内单调递增</li>
+<li>反双曲余弦：$y = arch x = \ln(x + \sqrt{x^2 - 1}),D \in [1,+\infty),D_f \in [0,+\infty)$，在定义域内单调递增</li>
+<li>反双曲正切：$y= arth x = \frac{1}{2} \ln\frac{1 + x}{1 - x},D \in (-1,1),D_f \in (-\infty,+\infty)$,奇函数,在定义域内单调增加</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>牛顿二项公式：
+<ul>
+<li>$$(a + b)^n = \sum_{r=0}^nC_n^ra^{n-r}b^r$$</li>
+<li>$$C_n^r = \frac{n!}{r!(n-r)!},记为：\left( \frac{n}{r} \right),其中：n!=1 \times 2 \times 3 \times \dots \times (n-1) \times n$$</li>
+</ul>
+</li>
+<li>三次方差公式：
+<ul>
+<li>$$a^3 - b^3 = (a - b)(a^2 + ab + b^2)$$</li>
+</ul>
+</li>
+<li>点到直线距离公式：
+<ul>
+<li>$$点(x_0,y_0),直线Ax+By+C=0,距离D=\left|\frac{Ax_0+By_0+C}{\sqrt{A^2+B^2}} \right|$$</li>
+</ul>
+</li>
+<li>一元二次方程通解：
+<ul>
+<li>$$ax^2+bx+c=0,(a,b,c \in R,a \neq 0),通解：x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$</li>
+</ul>
+</li>
+</ul>
+<h2 id="ch1-%E5%87%BD%E6%95%B0%E4%B8%8E%E6%9E%81%E9%99%90">CH1 函数与极限</h2>
+<h3 id="%E5%B8%B8%E7%94%A8%E6%9E%81%E9%99%90">常用极限</h3>
+<ul>
+<li>$$\lim_{x\to 0}{\frac{\sin{x}}{x}}=1$$</li>
+<li>$$\lim_{x\to \infty}{(1+\frac{1}{x})^{x}}=e$$</li>
+<li>推导：
+<ul>
+<li>$$\lim_{x\to \infty}{(1+\frac{1}{x})^x}=e$$</li>
+<li>$$\lim_{x\to \infty}{(1-\frac{1}{x})^x}=\frac{1}{e}$$</li>
+<li>$$\lim_{x \to 0}(1+\frac{1}{x})^x =e$$</li>
+<li>$$\lim_{x \to 0}(1-\frac{1}{x})^x =\frac{1}{e}$$</li>
+<li>$$\lim_{x\to 0} \frac{a^x-1}{x}=\ln{a}$$</li>
+<li>$$\lim_{x\to 0}{\sqrt[n]{(1+x)^m}}=1 \quad (m=n-1,n-2,\cdots,1)$$</li>
+</ul>
+</li>
+</ul>
+<h3 id="%E7%AD%89%E4%BB%B7%E6%97%A0%E7%A9%B7%E5%B0%8F">等价无穷小：</h3>
+<ul>
+<li>$(x \rightarrow 0 \ and \ x \neq 0) \quad x \sim \sin{x} \sim \tan{x} \sim \arcsin{x} \sim \arctan{x}$</li>
+<li>$(x \rightarrow 0 ) \quad (1-\cos{x}) \sim \frac{1}{2}x^2$</li>
+<li>$(x \rightarrow 0 ) \quad \ln{(1+x)} \sim x$</li>
+<li>$(x \rightarrow 0 ) \quad e^x-1 \sim x$</li>
+<li>$(x \rightarrow 0 ) \quad (1+x)^\alpha-1 \sim \alpha x$</li>
+<li>$(x \rightarrow 0 \ and \ x \neq 0) \quad \log_a{(1+x)} \sim \frac{x}{\ln{a}} \quad x^a \sim x\ln{a}$</li>
+</ul>
+<h3 id="%E6%95%B0%E5%AD%A6%E5%AE%9A%E4%B9%89">数学定义</h3>
+<ul>
+<li>函数定义：
+<ul>
+<li>设数集$D \subset R$，则称映射：$f:D \rightarrow \mathtt{R}$为定义在D上的函数，记为：$y=f(x),x \in D$,x为自变量，y为因变量，D为定义域，记作:$D_f$,即$D_f=D$,值域记作:$R_f或f(D)$</li>
+</ul>
+</li>
+<li>函数的特性：
+<ul>
+<li>有界性：
+<ul>
+<li>定义：设函数$f(x)$的定义域为D，数集$X \Subset D$</li>
+<li>若存在数$K_1$，使得:$f(x)\leq K_1$,对于任一$x \in X$都成立，则称函数$f(x)$有上界（$K_1$为其中一个上界）;</li>
+<li>若存在数$K_2$，使得:$f(x)\geq K_2$,对于任一$x \in X$都成立，则称函数$f(x)$有下界（$K_2$为其中一个下界）;</li>
+<li>若存在正数M，使得:$|f(x)|\leq M$,对于任一$x \in X$都成立，则称函数$f(x)$在X上有界</li>
+</ul>
+</li>
+<li>单调性</li>
+<li>周期性</li>
+</ul>
+</li>
+</ul>
+<h4 id="%E6%95%B0%E5%88%97%E7%9A%84%E6%9E%81%E9%99%90">数列的极限</h4>
+<ul>
+<li>定义：$设{x_n} 为一数列，若存在常数a，对于任意给定的正数 \epsilon,总存在正整数N，使得当n&gt;N时，不等式 |x_n - a|&lt; \epsilon 都成立，则称常数啊是数列{x_n}的极限,或称数列{x_n}收敛于a,即$
+<blockquote>
+<p>$$ \lim_{n \to \infty}{x_n}=a$$
+$$\lim_{n \to \infty}{x_n} = a \Leftrightarrow \forall \  \epsilon &gt; 0 \quad \exists 正整数N,当n&gt;N时，有|x_n - a| &lt; \epsilon$$</p>
+</blockquote>
+</li>
+<li>收敛数列的性质：
+<ul>
+<li>定理1 极限的唯一性</li>
+<li>定理2 收敛数列的有界性</li>
+<li>定理3 收敛数列的保号性 - 推论</li>
+<li>定理4 收敛数列与子数列关系</li>
+</ul>
+</li>
+</ul>
+<h4 id="%E5%87%BD%E6%95%B0%E7%9A%84%E6%9E%81%E9%99%90">函数的极限</h4>
+<ul>
+<li>定义
+<ul>
+<li>1.自变量趋于有限值时函数的极限
+<blockquote>
+<p>$$\lim_{x \to x_0}f(x) = A \Leftrightarrow \forall \epsilon &gt;0,\exists \delta &gt; 0 ,当 |x - x_0| &lt; \delta 时,有 | f(x) - A | &lt; \epsilon$$</p>
+</blockquote>
+</li>
+<li>2.自变量趋于无穷大时函数的极限
+<blockquote>
+<p>$$\lim_{x \to \infty}f(x) = A \Leftrightarrow \forall \epsilon &gt;0, \exists X &gt; 0,当|x| &gt; X 时,有 |f(x) - A| &lt; \epsilon$$
+几何含义：y=A 是x趋于无穷时，f(x)极限为A的 <code>水平渐近线</code></p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>函数极限的性质
+<ul>
+<li>定理1 函数极限的唯一性</li>
+<li>定理2 函数极限的局部有界性</li>
+<li>定理3 函数极限的局部保号性 - 推论</li>
+<li>定理4 函数极限与数列极限的关系</li>
+</ul>
+</li>
+</ul>
+<h4 id="%E6%97%A0%E7%A9%B7%E5%A4%A7%E4%B8%8E%E6%97%A0%E7%A9%B7%E5%B0%8F">无穷大与无穷小</h4>
+<ul>
+<li>
+<p>无穷小定义:</p>
+</li>
+<li>
+<p>无穷大定义:</p>
+<blockquote>
+<p><code>定理1</code> :$x \to x_0(x \to \infty),f(x)具有极限A的充分必要条件：f(x)=A + \alpha ,其中\alpha 是无穷小$</p>
+</blockquote>
+<blockquote>
+<p><code>定理2</code> :$若f(x)为无穷大，则\frac{1}{f(x)}为无穷小，反之，若f(x)为无穷小，则\frac{1}{f(x)}为无穷大$</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="%E6%9E%81%E9%99%90%E8%BF%90%E7%AE%97%E6%B3%95%E5%88%99">极限运算法则</h4>
+<ul>
+<li>定理1：两个无穷小的和是无穷小 - 推论</li>
+<li>定理2：有界函数与无穷小的乘积是无穷小 - 推论1 2 3</li>
+<li>定理3：(函数极限运算)若lim f(x)=A,lim g(x)=B,则
+<ul>
+<li>(1) $\lim[f(x) \pm g(x)] = \lim{f(x)} \pm \lim{g(x)} = A \pm B$</li>
+<li>(2) $\lim{[f(x) \cdot g(x)]}=\lim{f(x)} \cdot \lim {g(x)} = A \cdot B$</li>
+<li>(3) $若B \neq 0,则  \lim {\frac{f(x)}{g(x)}} = \frac{\lim{f(x)}}{\lim{g(x)}} = \frac{A}{B}$</li>
+<li>推论1 2</li>
+</ul>
+</li>
+<li>定理4（数列的极限运算）</li>
+<li>定理5（函数极限的比较）</li>
+<li>定理6 (复合函数的极限运算法则)</li>
+</ul>
+<h4 id="%E6%9E%81%E9%99%90%E7%9A%84%E5%AD%98%E5%9C%A8%E5%87%86%E5%88%99-%E4%B8%A4%E4%B8%AA%E9%87%8D%E8%A6%81%E6%9E%81%E9%99%90">极限的存在准则 两个重要极限</h4>
+<ul>
+<li><code>准则1</code> （数列 函数 <code>夹逼准则</code>）
+<blockquote>
+<p>$$\lim_{x \to 0}\frac{\sin x}{x} = 1$$</p>
+</blockquote>
+</li>
+<li><code>准则2</code> 单调有界数列必有极限,函数在x0左极限存在...
+<blockquote>
+<p>$$\lim_{x \to \infty} (1 + \frac{1}{x})^x = e = 2.718 281 828$$</p>
+</blockquote>
+</li>
+<li>柯西（Cauchy）极限存在准则（柯西审敛原理）：数列收敛的充分必要条件...</li>
+</ul>
+<h4 id="%E6%97%A0%E7%A9%B7%E5%B0%8F%E7%9A%84%E6%AF%94%E8%BE%83">无穷小的比较</h4>
+<ul>
+<li>定义
+<blockquote>
+<p>高阶无穷小、低阶无穷小、同阶无穷小、k阶无穷小、等价无穷小</p>
+</blockquote>
+</li>
+<li>定理1 等价无穷小的充分必要条件</li>
+<li>定理2 等价无穷小的之比的极限</li>
+</ul>
+<h4 id="%E5%87%BD%E6%95%B0%E7%9A%84%E8%BF%9E%E7%BB%AD%E6%80%A7%E4%B8%8E%E9%97%B4%E6%96%AD%E7%82%B9">函数的连续性与间断点</h4>
+<ul>
+<li>函数连续性定义</li>
+<li>函数间断点定义、间断点类型</li>
+</ul>
+<h4 id="%E8%BF%9E%E7%BB%AD%E5%87%BD%E6%95%B0%E7%9A%84%E8%BF%90%E7%AE%97%E4%B8%8E%E5%88%9D%E7%AD%89%E5%87%BD%E6%95%B0%E7%9A%84%E8%BF%9E%E7%BB%AD%E6%80%A7">连续函数的运算与初等函数的连续性</h4>
+<ul>
+<li>
+<p>连续函数的和、差、积、商的连续性</p>
+<blockquote>
+<p>定理1</p>
+</blockquote>
+</li>
+<li>
+<p>反函数与复合函数的连续性</p>
+<blockquote>
+<p>定理2 (反函数的连续性)</p>
+</blockquote>
+<blockquote>
+<p>定理3 (复合函数的连续性 内层函数极限存在的情况)</p>
+</blockquote>
+<blockquote>
+<p>定理4 (复合函数的连续性 内层函数连续的情况)</p>
+</blockquote>
+</li>
+<li>
+<p>初等函数的连续性</p>
+<blockquote>
+<p>基本初等函数在其定义域内都是连续的</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="%E9%97%AD%E5%8C%BA%E9%97%B4%E4%B8%8A%E8%BF%9E%E7%BB%AD%E5%87%BD%E6%95%B0%E6%98%AF%E6%80%A7%E8%B4%A8">闭区间上连续函数是性质</h4>
+<ul>
+<li>有界性与最大值最小值定理
+<blockquote>
+<p>定理1 (有界性与最大值最小值定理)</p>
+</blockquote>
+</li>
+<li>零点定理与介值定理
+<blockquote>
+<p>定理2 (零点定理)
+定理3 (介值定理) - 推论</p>
+</blockquote>
+</li>
+<li>一致连续性
+<ul>
+<li>一直连续性定义：自变量接近到一定程度，一定可使函数值接近到指定程度</li>
+</ul>
+</li>
+<li>定理4 (一致连续性定理 连续与一致性连续关系) 函数在闭区间上连续则函数在该区间一定一致性连续</li>
+</ul>
+<h2 id="%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98">课后习题</h2>
+<ul>
+<li>1-1
+<ul>
+<li>5.$f(x)d定义域为(-l,l)的奇函数，若f(x)在(0,l)内单调增加,则f(x)在(0,l)内也单调增加$</li>
+<li>6.$定义域为(-l,l)的函数,奇函数+奇函数=奇函数，偶函数+偶函数=偶函数，偶函数 \times 偶函数=偶函数，奇函数\times 奇函数=偶函数，奇函数\times 偶函数=奇函数$</li>
+</ul>
+</li>
+<li>1-2
+<ul>
+<li>2.数列有界性是数列收敛的必要非充分条件；无界数列一定发散；有界数列不一定收敛，EG：周期函数：$\sin{x}$；</li>
+</ul>
+</li>
+<li>1-6
+<ul>
+<li>4.(3)证明:$数列\sqrt{2},\sqrt{2+\sqrt{2}},\sqrt{2+\sqrt{2+\sqrt{2}}}\cdots的极限存在。$</li>
+</ul>
+</li>
+<li>1-10
+<ul>
+<li>4.证明:$任一最高次幂的指数为奇数的代数方程：a_0x^{2n+1}+a_1x^{2n}+\cdots+a_{2n}x+a_{2n+1}=0\ 至少有一实根，其中a_0,a_1,\cdots,a_{2n+1}均为常数,n\in N$</li>
+<li>5.$若f(x)在[a,b]上连续,a&lt;x_1&lt;x_2&lt;\cdots&lt;x_n&lt;b \quad (n\geq 3),则在(x-1，x_n)至少存在一点\xi,使f(\xi)=\frac{f(x_1)+f(x_2)+\cdots+f(x_n)}{n}.$</li>
+<li>6.$函数f(x)对于闭区间[a,b]上任意两点x,y恒有|f(x)-f(y)| = L|x-y|,L为常数，且f(a)\cdot f(b) &lt;0.证明：至少有一点\xi \in (a,b),使得f(\xi) = 0.$</li>
+<li>7.证明：$若f(x)在(-\infty,+\infty)内连续，且\lim_{x \to \infty}{f(x)}存在，则f(x)必在(-\infty,+\infty)内有界.$</li>
+</ul>
+</li>
+<li>总习题一
+<ul>
+<li>14.渐近线与斜渐进线定义：</li>
+</ul>
+<blockquote>
+<p>$若存在直线L:y=kx+b,使得当x\to \infty (或x\to +\infty,x\to-\infty)时，曲线：y=f(x)上的点M到直线L的距离d(M,L)\to 0,则称L为曲线y=f(x)的渐近线.当直线L的斜率k\neq 0 时，称L为斜渐进线.$</p>
+</blockquote>
+</li>
+</ul>
+<p>$(1)证明：直线L:y=kx+b为曲线y=f(x)的渐进线的充分必要条件是：$
+$$
+k=\lim_{x \to \infty}{\frac{f(x)}{x}} \\[1ex]
+\left(
+\begin{aligned}
+&amp; x \to +\infty\\
+&amp; x \to -\infty
+\end{aligned}
+\right)\\
+b=\lim_{x\to \infty}{[f(x)x]} \\
+\left(
+\begin{aligned}
+&amp; x \to +\infty\\
+&amp; x \to -\infty
+\end{aligned}
+\right)
+$$
+$$k=\lim_{x\to \infty}{\frac{f(x)}{x}},\quad b=\lim_{x\to \infty}{[f(x)-kx]}$$
+$(2)求曲线y=(2x-1)e^{\frac{1}{x}}的斜渐近线.$</p>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({ tex2jax: {inlineMath: [['$', '$']]}, messageStyle: "none" });
+</script>
+<!-- <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+      onload='renderMathInElement(document.body, {delimiters: [{ left: "$$", right: "$$", display: true },{ left: "$", right: "$", display: false },{ left: "\\[", right: "\\]", display: true }]});'>
+</script> -->
+</body>
+</html>
