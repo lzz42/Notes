@@ -109,6 +109,22 @@ __declspec(allocate(SEC_NAME_AFTER_MAIN)) _PVFV dummy2[] ={init_after_main_msvc}
 
 #endif
 
+//人工调用系统调用
+
+void call_syscall(){
+    int ret;
+    char msg[]="Hello System Call \n";
+    __asm__ volatile (
+        "call *%%esi"
+        : "=a" (ret)
+        : "a" (4),
+        "S" (0xffffe400),
+        "b" ((long) 1),
+        "c" ((long) msg),
+        "d" ((long) sizeof(msg))
+    );
+    return;
+}
 
 void main(int argc, int *argv[])
 {
@@ -116,4 +132,5 @@ void main(int argc, int *argv[])
     args_main();
     jmp_main();
     jmp_main();
+    call_syscall();
 }
