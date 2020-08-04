@@ -24,10 +24,6 @@ from System.Collections import *
 from System.Windows import Forms
 from System.Drawing import *
 
-# DLL_Path = 'D:\\output'
-# DLL_Name = 'TestAutoIt.dll'
-
-
 def loadAssembly():
     # clr.AddReference("System.Collections")
     # from System.Windows.Forms import Form
@@ -105,33 +101,35 @@ def assembly_load_handler(source, args):
 #     btn.PerformClick()
 #     pass
 
-def test_UI():
-    DLL_Path = 'D:\\output'
-    DLL_Name = 'TestAutoIt.dll'
-    # 导入Button命名空间
-    file = "D:\\output\\AutoIt_Client.dll"
-    print(file)
-    clr.FindAssembly(file)     # 添加DLL
-    sys.path.append(DLL_Path)  # 加载c#dll文件路径
-    clr.AddReference("AutoIt_Client")  # 添加DLL命名空间
-    from AutoIt_Client import *  # 导入命名空间
-    
-    # 测按钮
-    btn = PY_Call.GetButton()
-    btn.Text = Environment.MachineName
-    btn.BackColor = Color.Red
-    btn.PerformClick()
-    # 测试Form
-    form = PY_Call.GetForm()
-    form.Size = Size(600, 600)
-    form.Location = Point(100, 100)
-    # 测试TextBox
-    tb = PY_Call.GetControl()
-    tb.Text = "Done"
+def demonstrate_invoke_csharp():
+    # 指定DLL路径
+    sys.path.append('D:\\test\\bin')
+    # 查找并加载DLL
+    clr.FindAssembly('text.dll')
+    # 添加引用
+    clr.AddReference('text')
+    # 导入类
+    from text import tClass
+    # ------------------
+    # 函数调用演示 out参数
+    str=""
+    ret = tClass.GetLastError(str)
+    # 返回值：0无错误 非0有错误
+    print(ret[0])
+    # out参数值 错误信息
+    print(ret[1])
+    # str不变
+    print(str)
+    # ------------------
+    # 函数调用演示 默认值参数
+    ret = tClass.IsConnected(2000)
+    print(ret)
+    ret = tClass.IsConnected()
+    print(ret)
+    # -----------------
     pass
-
 
 if __name__ == "__main__":
     # assembly_call_button()
-    test_UI()
+    demonstrate_invoke_csharp()
     pass

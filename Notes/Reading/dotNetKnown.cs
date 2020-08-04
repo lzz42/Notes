@@ -112,7 +112,6 @@ namespace dotNetKnown
         {
             return this.GetType().Name;
         }
-
     }
 
     public class SSub : Sub
