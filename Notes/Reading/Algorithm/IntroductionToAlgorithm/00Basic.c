@@ -50,7 +50,7 @@ int* Matrix_Malloc(int row,int col)
     return (int*)malloc(row*col*sizeof(int));
 }
 
-int main(int argc, char *argv[])
+int main00(int argc, char *argv[])
 {
     int a[8] = {12, 23, 34, 45, 56, 67, 78, 89};
     printArray("Helle", a, 8);

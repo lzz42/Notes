@@ -2,75 +2,7 @@
 #include <stdlib.h>
 #include <limits.h>
 #include <math.h>
-
-void printLageArray(int *a)
-{
-    int i = 0;
-    while (a[i] != '\0')
-    {
-        printf("%3d\t", a[i]);
-        i++;
-        if (i == 100)
-        {
-            printf("\n");
-        }
-    }
-}
-
-//打印数组
-void printArray(char c[], int a[])
-{
-    int i = 0;
-    while (c[i] != '\0')
-    {
-        printf("%c", c[i]);
-        i++;
-    }
-    i = 0;
-    printf("%c", '\t');
-    printf("%c", '=');
-    while (a[i] != '\0')
-    {
-        if (i == 0)
-        {
-            printf("%3d", a[i]);
-        }
-        else
-        {
-            printf(",%3d", a[i]);
-        }
-        i++;
-    }
-    printf(".\n");
-}
-
-//打印数组
-void printArrayEx(char c[], int *a, int len)
-{
-    int i = 0;
-    while (c[i] != '\0')
-    {
-        printf("%c", c[i]);
-        i++;
-    }
-    i = 0;
-    printf("%c", '\t');
-    printf("%c", '=');
-    i = 0;
-    while (i < len)
-    {
-        if (i == 0)
-        {
-            printf("%3d", a[i]);
-        }
-        else
-        {
-            printf(",%3d", a[i]);
-        }
-        i++;
-    }
-    printf(".\n");
-}
+#include "00Basic.c"
 
 //插入排序算法
 void InsertSort(int a[])
