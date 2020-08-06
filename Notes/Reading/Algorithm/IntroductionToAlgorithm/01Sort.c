@@ -1,5 +1,4 @@
 #include <stdio.h>
-// #include <math.h>
 #include "00Basic.c"
 
 /*
@@ -25,7 +24,7 @@ void InsertSort(int *a, int len)
 /* 合并数组nlgn
 p<=q<r
 合并子数组a[p,q],a[p+1,r]
-没有哨兵
+没有哨兵元素
 */
 void Merge(int *a, int p, int q, int r)
 {
@@ -79,6 +78,26 @@ void MergeSortIn(int *a, int len)
     MergeSort(a, 0, len - 1);
 }
 
+void BubbleSort(int *a, int len)
+{
+    if (len < 2)
+        return;
+    for (int i = 0; i < len; i++)
+    {
+        for (int j = i + 1; j < len; j++)
+        {
+            if (a[i] > a[j])
+            {
+                a[i] = a[i] ^ a[j];
+                a[j] = a[i] ^ a[j];
+                a[i] = a[i] ^ a[j];
+            }
+        }
+    }
+}
+
+#include "02Practise.c"
+
 void main()
 {
     int a0[] = {12, 14, 18, 6, 10, 8, 16};
@@ -98,14 +117,31 @@ void main()
 
     printf("---------------------\n");
 
-    printArray("Org", a1, 7);
+    printArray("A1", a1, 7);
+    printArray("B1", b1, 8);
     // Merge(a1, 1, 2, 3);
     // printArray("MergeSort", a1, 7);
-    MergeSortIn(a1, 7);
-    printArray("Merge", a1, 7);
-    printArray("org", b1, 8);
-    MergeSortIn(b1, 8);
-    printArray("Merge", b1, 8);
+    // MergeSortIn(a1, 7);
+    // BubbleSort(a1, 7);
+    // InsertSort_Desc(a1,7);
+    // MergeSortIn(b1, 8);
+    // BubbleSort(b1, 8);
+    // InsertSort_Desc(b1,8);
+    InsertSort_Recursion(a1, 7);
+    InsertSort_Recursion(b1, 7);
+    printArray("SortedA1", a1, 7);
+    printArray("SortedB1", b1, 8);
+
+    printf("Binary Search:\t %3d \n", Binary_Search(a1, 0, 6, 6));
+    printf("Binary Search:\t %3d \n", Binary_Search(a1, 0, 6, 8));
+    printf("Binary Search:\t %3d \n", Binary_Search(a1, 0, 6, 16));
+
+    printf("Binary Search:\t %3d \n", Binary_Search(b1, 0, 6, 8));
+    printf("Binary Search:\t %3d \n", Binary_Search(b1, 0, 7, 14));
+    printf("Binary Search:\t %3d \n", Binary_Search(b1, 0, 7, 18));
+
+    printf("Binary Search:\t %3d \n", Binary_Search(a1, 0, 6, 96));
+    printf("Binary Search:\t %3d \n", Binary_Search(b1, 0, 7, 99));
 
     printf("Sort End.\n");
 }

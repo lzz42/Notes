@@ -4,9 +4,9 @@
 #include <math.h>
 
 //打印一维数组
-void printArray(char* c, const int *a, const int len)
+void printArray(char *c, const int *a, const int len)
 {
-    printf("%s (%d)= \t", c,len);
+    printf("%s (%d)= \t", c, len);
     int i = 0;
     while (i < len)
     {
@@ -28,7 +28,7 @@ void printArray(char* c, const int *a, const int len)
     int A[2][2] = {{1, 2}, {3, 4}};
     printMatrix('A', (int *)A, 2, 2);
 */
-void printMatrix(char* c, int *a, int row, int col)
+void printMatrix(char *c, int *a, int row, int col)
 {
     int i = row - 1, j = col - 1;
     printf("%s (%dx%d):\n", c, row, col);
@@ -37,7 +37,7 @@ void printMatrix(char* c, int *a, int row, int col)
     {
         for (int jj = 0; jj <= j; jj++)
         {
-            printf("%5d(%d)\t", a[t],&a[t]);
+            printf("%5d(%d)\t", a[t], &a[t]);
             t++;
         }
         printf("\n");
@@ -45,9 +45,16 @@ void printMatrix(char* c, int *a, int row, int col)
 }
 
 //构建指定行列的二维矩阵
-int* Matrix_Malloc(int row,int col)
+int *Matrix_Malloc(int row, int col)
 {
-    return (int*)malloc(row*col*sizeof(int));
+    return (int *)malloc(row * col * sizeof(int));
+}
+
+void Swap(int *a, int *b)
+{
+    *a = *a ^ *b;
+    *b = *a ^ *b;
+    *a = *a ^ *b;
 }
 
 int main00(int argc, char *argv[])
@@ -60,20 +67,20 @@ int main00(int argc, char *argv[])
             {210, 220, 230},
         };
     printMatrix("Normal", *pa, 2, 3);
-    
+
     for (int i = 0; i < argc; i++)
     {
         printf("%s \n", argv[i]);
     }
 
     int *pptr;
-    pptr= Matrix_Malloc(2, 5);
-    int**ptr= (int**)&pptr[0];
+    pptr = Matrix_Malloc(2, 5);
+    int **ptr = (int **)&pptr[0];
     printf("this' OK.\n");
-    printf("%8X --- %8X \n",&pptr[0],&pptr[1]);
-    printf("%8X --- %8X \n",pptr[0],pptr[1]);
-    printf("%8X --- %8X \n",&ptr[0][0],&ptr[0][1]);
-    printf("%8X --- %8X \n",&ptr[0][4],&ptr[1][0]);
+    printf("%8X --- %8X \n", &pptr[0], &pptr[1]);
+    printf("%8X --- %8X \n", pptr[0], pptr[1]);
+    printf("%8X --- %8X \n", &ptr[0][0], &ptr[0][1]);
+    printf("%8X --- %8X \n", &ptr[0][4], &ptr[1][0]);
     ptr[0][0] = 11;
     ptr[0][1] = 12;
     ptr[0][2] = 13;
