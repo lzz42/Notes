@@ -1,6 +1,8 @@
 /*
 02 算法入门 Practise
 */
+
+#include <stdio.h>
 /*
 2.1-1 插入排序在<31,41,59,26,41,58>执行过程
 非降序
@@ -112,7 +114,6 @@ SelectSort(A):
 递归开始条件为：数组元素数量>1
 递归终止条件为：数组元素数量=1
 */
-
 void InsertToSortedArray(int v, int *a, int len)
 {
     if (len <= 0)
@@ -167,3 +168,135 @@ int Binary_Search(int *a, int p, int q, int v)
 是否可将其时间复杂由n^2改善为nlgn
 */
 
+int Bingary_InsertIndexFind(int *a, int p, int q, int v)
+{
+    if (p > q || p < 0 || q < 0)
+        return -1;
+    if (p == q)
+        return a[p] > v ? p : p + 1;
+    if (q - p == 1)
+    {
+        if (a[p] >= v)
+            return p;
+        else if (a[q] <= v)
+            return q + 1;
+        else
+            return q;
+    }
+    int i = (p + q) / 2;
+    if (a[i] == v)
+        return i;
+    else if (a[i] > v)
+        return Bingary_InsertIndexFind(a, p, i, v);
+    else
+        return Bingary_InsertIndexFind(a, i, q, v);
+}
+
+void InsertSort_BinarySearch(int *a, int len)
+{
+    if (len <= 1)
+        return;
+    int k = 1;
+    int r = 0;
+    for (k = 1; k < len; k++)
+    {
+        r = Bingary_InsertIndexFind(a, 0, k - 1, a[k]);
+        if (r >= 0)
+        {
+            int t = a[k];
+            int i = k - 1;
+            while (i >= r)
+            {
+                a[i + 1] = a[i];
+                i--;
+            }
+            a[r] = t;
+        }
+        else
+        {
+            printf("Error InsertSort_BinarySearch %d  %d \n", r, a[k]);
+            return;
+        }
+    }
+}
+
+int BingarySearch_float(int *a, int p, int q, float v)
+{
+    if (p > q)
+        return -1;
+    if (p == q)
+    {
+        return a[p] > v ? p : p + 1;
+    }
+    if (q - p == 1)
+    {
+        if (a[p] >= v)
+            return p;
+        else if (a[q] <= v)
+            return q + 1;
+        else
+            return q;
+    }
+    int i = (p + q) / 2;
+    if (a[i] == v)
+        return i;
+    else if (a[i] > v)
+        return BingarySearch_float(a, p, i, v);
+    else
+        return BingarySearch_float(a, i, q, v);
+}
+
+/*
+2.3-7 时间复杂度为nlgn的算法
+输入：n个整数构成的集合S,另一个整数x
+输出：boolen:S中是否存在两个整数n1/n2,使x=n1+n2成立
+分析：
+1.首先使用nlgn排序算法对S[0...n]进行排序（非降序）
+2.n1+n2=x，令n1<=n2,则必然n2>=x/2，依据x/2找到划分区间的索引r
+3.根据r初步判断结果,由此将S索引区间[0,n]=>n1属于[0,r],n2属于[r+1,n]
+x = Sp+Sq Sp<=Sq [0 <= p <= q <= n]
+
+S0<x<Sn
+S0<=Sr<(x/2)<=S(r+1)<=Sn
+S0------Sp-------Sr|Sr+1------Sq-------Sn
+
+S0<=Sp<=Sr<(x/2)<=S(r+1)<=Sq<=Sn
+
+S0<=Sr<(x/2)<=S(r+1)<=x<=Sn
+S0<=Sr<(x/2)<=x<=S(r+1)<=Sn
+
+S(r+1)?x
+4.对此进行求和查找
+*/
+
+int Exist_n1n2(int *a, int p, int q, int x)
+{
+    int len = q - p + 1;
+    if (len <= 1)
+        return 0;
+    if (len == 2)
+        return a[p] + a[q] == x;
+    //二分查找到x 在S序列中的位置
+    int r = BingarySearch_float(a, p, q, (float)x / 2.0);
+    //由此判断x=n1+n2存在的可能性
+    if (r < p || r > q)
+        return 0;
+    int rp = BingarySearch_float(a, p, r, (float)x / 4.0);
+    int rq = BingarySearch_float(a, r + 1, q, (float)x / 4.0 * 3.0);
+
+    int mp = a[(p + r) / 2];
+    int mq = a[(q + r) / 2];
+
+    return BingarySearch_float(a, p, q, (float)x / 2) || BingarySearch_float(a, p, q, (float)x / 2);
+}
+
+int ExistN1N2(int *a, int len, int x)
+{
+    if (len <= 1)
+        return 0;
+    if (len == 2)
+        return a[0] + a[1] == x;
+    //nlgn排序
+    InsertSort_Recursion(a, len);
+    return Exist_n1n2(a, 0, len - 1, x);
+}

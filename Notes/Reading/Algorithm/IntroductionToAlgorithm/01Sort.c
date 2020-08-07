@@ -84,13 +84,13 @@ void BubbleSort(int *a, int len)
         return;
     for (int i = 0; i < len; i++)
     {
-        for (int j = i + 1; j < len; j++)
+        for (int j = len-1; j >= i+1;j--)
         {
-            if (a[i] > a[j])
+            if (a[j] < a[j-1])
             {
-                a[i] = a[i] ^ a[j];
-                a[j] = a[i] ^ a[j];
-                a[i] = a[i] ^ a[j];
+                a[j-1] = a[j-1] ^ a[j];
+                a[j] = a[j-1] ^ a[j];
+                a[j-1] = a[j-1] ^ a[j];
             }
         }
     }
@@ -109,10 +109,10 @@ void main()
     printf("Sort Begin:\n");
 
     printArray("Org", a0, 7);
-    InsertSort(a0, 7);
-    printArray("Insert", a0, 7);
     printArray("Org", b0, 8);
+    InsertSort(a0, 7);
     InsertSort(b0, 8);
+    printArray("Insert", a0, 7);
     printArray("Insert", b0, 8);
 
     printf("---------------------\n");
@@ -120,28 +120,33 @@ void main()
     printArray("A1", a1, 7);
     printArray("B1", b1, 8);
     // Merge(a1, 1, 2, 3);
-    // printArray("MergeSort", a1, 7);
+    // 归并排序
     // MergeSortIn(a1, 7);
-    // BubbleSort(a1, 7);
-    // InsertSort_Desc(a1,7);
     // MergeSortIn(b1, 8);
-    // BubbleSort(b1, 8);
+    // 非升序的插入排序
+    // InsertSort_Desc(a1,7);
     // InsertSort_Desc(b1,8);
-    InsertSort_Recursion(a1, 7);
-    InsertSort_Recursion(b1, 7);
+    // 递归的插入排序
+    // InsertSort_Recursion(a1, 7);
+    // InsertSort_Recursion(b1, 8);
+    // 二分查找的插入排序
+    // InsertSort_BinarySearch(a1, 7);
+    // InsertSort_BinarySearch(b1, 8);
+    //冒泡排序测试
+    BubbleSort(a1, 7);
+    BubbleSort(b1, 8);
     printArray("SortedA1", a1, 7);
     printArray("SortedB1", b1, 8);
 
-    printf("Binary Search:\t %3d \n", Binary_Search(a1, 0, 6, 6));
-    printf("Binary Search:\t %3d \n", Binary_Search(a1, 0, 6, 8));
-    printf("Binary Search:\t %3d \n", Binary_Search(a1, 0, 6, 16));
+    // printf("Binary Search:\t %3d \n", Binary_Search(a1, 0, 6, 6));
+    // printf("Binary Search:\t %3d \n", Binary_Search(a1, 0, 6, 8));
+    // printf("Binary Search:\t %3d \n", Binary_Search(a1, 0, 6, 16));
 
-    printf("Binary Search:\t %3d \n", Binary_Search(b1, 0, 6, 8));
-    printf("Binary Search:\t %3d \n", Binary_Search(b1, 0, 7, 14));
-    printf("Binary Search:\t %3d \n", Binary_Search(b1, 0, 7, 18));
-
-    printf("Binary Search:\t %3d \n", Binary_Search(a1, 0, 6, 96));
-    printf("Binary Search:\t %3d \n", Binary_Search(b1, 0, 7, 99));
+    // printf("Binary Search:\t %3d \n", Binary_Search(b1, 0, 6, 8));
+    // printf("Binary Search:\t %3d \n", Binary_Search(b1, 0, 7, 14));
+    // printf("Binary Search:\t %3d \n", Binary_Search(b1, 0, 7, 18));
+    // printf("Binary Search:\t %3d \n", Binary_Search(a1, 0, 6, 96));
+    // printf("Binary Search:\t %3d \n", Binary_Search(b1, 0, 7, 99));
 
     printf("Sort End.\n");
 }

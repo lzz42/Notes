@@ -4,46 +4,37 @@
     // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
+        {
+            "name": "(gdb) 启动",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/${fileBasenameNoExtension}.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "/path/to/gdb",
+            "setupCommands": [
+                {
+                    "description": "为 gdb 启用整齐打印",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
         {
             "name": "(Windows) 启动",
             "type": "cppvsdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/Reading/Algorithm/m.exe",
+            "program": "${workspaceFolder}/Notes/Reading/Algorithm/IntroductionToAlgorithm/01s.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false
-        },
-        {
-            "name": "(Windows) Launch gcc",
-            "preLaunchTask": "gccbuild",
-            "type": "cppvsdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}/Reading/Algorithm/算法导论/Part-01 BasicKnowledge.exe",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "externalConsole": false
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Electron Main",
-            "runtimeExecutable": "${workspaceFolder}/MarkMath/node_modules/.bin/electron",
-            "program": "${workspaceFolder}/MarkMath/main.js"
-        },
-        {
-            "name": ".NET Core Launch (console)",
-            "type": "coreclr",
-            "request": "launch",
-            "preLaunchTask": "build",
-            "program": "${workspaceFolder}/DotNetCore/bin/Debug/netcoreapp3.1/DotNetCore.exe",
-            "args": [],
-            "cwd": "${workspaceFolder}",
-            "stopAtEntry": false,
-            "console": "internalConsole"
         },
         {
             "name": "Python: Terminal (integrated)",
