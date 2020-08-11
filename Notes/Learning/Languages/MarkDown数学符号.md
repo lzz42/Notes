@@ -61,6 +61,11 @@
 - 等价无穷小：$\sim$ `\sim`
 - 关系运算符：
 - 偏导：\partial $\partial$
+- 上取整：`\lceil x \rceil `-$\lceil x \rceil$
+- 下取整：`\lfloor x \rfloor `-$\lfloor x \rfloor$
+- 连乘：`\prod (a+b)`-$\prod (a+b)$
+- 连分数：`x1+\cfrac{a}{x2+\cfrac{x3}{\cdots}}` - $x1+\cfrac{a}{x2+\cfrac{x3}{x4+\cdots}}$
+- 模运算：`\mod` - $x \equiv a \pmod z$
 
 ## 格式
 
@@ -102,9 +107,21 @@ $$
 $$
 f(n)=
 \begin{cases}
-n/2,  & \text {if $n$ is even} \\
-3n+1, & \text {if $n$ is odd} \\
+n/2,  & \text {if $n$ is even} \\[2ex]
+3n+1, & \text {if $n$ is odd} \\[4ex]
 \end{cases} \\
+$$
+
+## 方程组
+
+$$
+\left \{
+  \begin{array}{c}
+    ax+by=z\\
+    ax+by=z\\
+    ax+by=z\\
+  \end{array}
+\right.
 $$
 
 ## 其他字符
