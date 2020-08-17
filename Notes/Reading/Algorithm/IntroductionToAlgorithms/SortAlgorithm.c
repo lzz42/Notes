@@ -179,7 +179,7 @@ int BinaryFind(int sa[], int target, int *index)
     int i = 1;
     while (m > 0 && m < len)
     {
-        printf("Fiund Loop:%2d M:%2d \n", i, m);
+        printf("Find Loop:%2d M:%2d \n", i, m);
         i++;
         if (i > 32)
         {

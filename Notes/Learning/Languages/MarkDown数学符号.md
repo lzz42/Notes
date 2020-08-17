@@ -87,8 +87,8 @@ $$
 ⊃ ：\supset \\
 ⊆ ：\subseteq \\
 ⊇ ：\supseteq \\
-⋂ ：\bigcap \\
-⋃ ：\bigcup \\
+⋂ ：\bigcap \cap\\
+⋃ ：\bigcup \cup\\
 ⋁ ：\bigvee \\
 ⋀ ：\bigwedge \\
 ⨄ ：\biguplus \\
@@ -155,3 +155,20 @@ $$
 等线体:{\sf {f(x)dx=\alpha x^3 + bx^2 + cx + d}}\\
 数学斜体: {\mit {f(x)dx=\alpha x^3 + bx^2 + cx + d}}\\
 $$
+
+### MarkDown转HTML
+
+- JS库：
+  - [JS实现的Markdown解析器](https://github.com/markedjs/marked)：将md文件解析为对应的html文件；
+  - [evilstreak/markdown-js](https://github.com/evilstreak/markdown-js)
+  - [markedjs/marked](https://github.com/markedjs/marked)
+- Python库：
+  - [html2text](https://pypi.org/project/html2text/)
+- .Net库：
+  - [marddig](https://github.com/lunet-io/markdig)
+
+### 如何根据Markdown生成静态html网页
+
+- https://walkccc.github.io/CLRS/
+- https://www.mkdocs.org/
+- https://squidfunk.github.io/mkdocs-material/

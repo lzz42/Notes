@@ -110,12 +110,6 @@ venv.bak/
 [Bb]uild/
 [Bb]in/
 [Oo]bj/
-Notes/DotNetCore/.vs
-Notes/DotNetCore/.vs/
-Notes/DotNetCore/MSTest/
-Notes/DotNetCore/DotNetCore.csproj.user
-Notes/MarkMath/node_modules
-Notes/MarkMath/node_modules
 [Oo]ut[Aa]pp
 *.exe
 *.log

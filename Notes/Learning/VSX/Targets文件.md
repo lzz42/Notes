@@ -1,5 +1,7 @@
 # Targets文件
 
+- [Miscrosoft Customize your build](https://docs.microsoft.com/en-us/visualstudio/msbuild/customize-your-build?view=vs-2019)
+
 ## 说明 预定义targets文件说明
 
 - MSBuild包括几个targets文件，这些文件包括：items，properties，targets，tasks等通用的脚本

@@ -4,8 +4,8 @@ import os
 import sys
 import psutil
 
-mProc = 'D:\\xap\\std_dev\\xapclient\\xap.cli.desktop.exe'
-mProcs = 'xap.cli.desktop'
+mProc = 'desktop.exe'
+mProcs = 'desktop'
 mFile = '..\\RX\Record.txt'
 mOutFile = '..\\PY_RXX\\ROut.txt'
 replay = "test?r=replay&file={_file}&outfile={_outfile}"

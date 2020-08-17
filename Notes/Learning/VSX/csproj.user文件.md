@@ -1,6 +1,6 @@
 # csproj.user文件
 
-## 一般文件结构
+## 通常.user文件结构
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>

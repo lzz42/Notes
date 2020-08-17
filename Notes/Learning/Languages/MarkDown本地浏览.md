@@ -13,8 +13,13 @@
 
 ## docfx
 
-- docfx
+- DocFx 是一个dotnetAPI文档生成器，目前支持C#和VB。
 
+## Download DocFx
+
+- [Download](https://github.com/dotnet/docfx/releases)
+- [Getting  Started with DocFx](https://dotnet.github.io/docfx/tutorial/docfx_getting_started.html)
+- MarkDown数学公式转换需要引入的脚本
 ```HTML
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>

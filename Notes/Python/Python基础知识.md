@@ -1,4 +1,4 @@
-# Python
+# Python基础知识
 
 ## 函数与方法的区别 Function Method
 

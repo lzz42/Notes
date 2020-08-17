@@ -141,7 +141,7 @@ void InsertSort_Recursion(int *a, int len)
 }
 
 /*
-2.3-5 二分查找 时间复杂度lgn
+2.3-5 二分查找 时间复杂度O(lgn)
 对已排序的序列A查找某个值v,在A中的索引
 输入：已排序的数组A,查找值v
 输出：返回v在A中的索引值，不存在则返回-1
@@ -248,55 +248,21 @@ int BingarySearch_float(int *a, int p, int q, float v)
 
 /*
 2.3-7 时间复杂度为nlgn的算法
-输入：n个整数构成的集合S,另一个整数x
+输入：n个整数构成的集合S,一个整数x
 输出：boolen:S中是否存在两个整数n1/n2,使x=n1+n2成立
 分析：
 1.首先使用nlgn排序算法对S[0...n]进行排序（非降序）
-2.n1+n2=x，令n1<=n2,则必然n2>=x/2，依据x/2找到划分区间的索引r
-3.根据r初步判断结果,由此将S索引区间[0,n]=>n1属于[0,r],n2属于[r+1,n]
-x = Sp+Sq Sp<=Sq [0 <= p <= q <= n]
-
-S0<x<Sn
-S0<=Sr<(x/2)<=S(r+1)<=Sn
-S0------Sp-------Sr|Sr+1------Sq-------Sn
-
-S0<=Sp<=Sr<(x/2)<=S(r+1)<=Sq<=Sn
-
-S0<=Sr<(x/2)<=S(r+1)<=x<=Sn
-S0<=Sr<(x/2)<=x<=S(r+1)<=Sn
-
-S(r+1)?x
-4.对此进行求和查找
+2.然后利用二分查找遍历0-n查找S[i]-x，其时间复杂度为nlgn
 */
-
-int Exist_n1n2(int *a, int p, int q, int x)
-{
-    int len = q - p + 1;
-    if (len <= 1)
-        return 0;
-    if (len == 2)
-        return a[p] + a[q] == x;
-    //二分查找到x 在S序列中的位置
-    int r = BingarySearch_float(a, p, q, (float)x / 2.0);
-    //由此判断x=n1+n2存在的可能性
-    if (r < p || r > q)
-        return 0;
-    int rp = BingarySearch_float(a, p, r, (float)x / 4.0);
-    int rq = BingarySearch_float(a, r + 1, q, (float)x / 4.0 * 3.0);
-
-    int mp = a[(p + r) / 2];
-    int mq = a[(q + r) / 2];
-
-    return BingarySearch_float(a, p, q, (float)x / 2) || BingarySearch_float(a, p, q, (float)x / 2);
-}
-
-int ExistN1N2(int *a, int len, int x)
-{
-    if (len <= 1)
-        return 0;
-    if (len == 2)
-        return a[0] + a[1] == x;
+int Exist_SumX(int *a,int len,int v){
     //nlgn排序
     InsertSort_Recursion(a, len);
-    return Exist_n1n2(a, 0, len - 1, x);
+    for (int i = 0; i < len; i++)
+    {
+        //二分查找的时间复杂度为lgn
+        if(Binary_Search(a,0,len,a[i]-v)>0){
+            return 1;
+        }
+    }
+    return 0;
 }
