@@ -7,37 +7,6 @@ int removeDuplicates(int *a, int len);
 void printArray(char c[], int *a, int len);
 void rotate(int *nums, int numsSize, int k);
 
-int main(char args[])
-{
-    int a[] = {1, 1, 2};
-    int l1 = removeDuplicates(a, 3);
-    printArray("112", a, l1);
-    int b[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-    int b1[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-    int b2[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-    int b3[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-    int b4[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-    int b5[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-
-    // rotate(b, 9, 2);
-    // printArray("RRR", b, 9);
-
-    int bb[5][9] = {
-        {1, 2, 3, 4, 5, 6, 7, 8, 9},
-        {1, 2, 3, 4, 5, 6, 7, 8, 9},
-        {1, 2, 3, 4, 5, 6, 7, 8, 9},
-        {1, 2, 3, 4, 5, 6, 7, 8, 9},
-        {1, 2, 3, 4, 5, 6, 7, 8, 9}};
-
-    // rotate(bb[0], 9, 2);
-    // printArray("RRR", b, 9);
-    for (int i = 0; i < 5; i++)
-    {
-        rotate(bb[i], 9, i + 1);
-        printArray("RRR", bb[i], 9);
-    }
-}
-
 //打印数组
 void printArray(char c[], int *a, int len)
 {
@@ -148,46 +117,95 @@ int maxProfit(int *prices, int pricesSize)
 尽可能想出更多的解决方案，至少有三种不同的方法可以解决这个问题。
 要求使用空间复杂度为 O(1) 的 原地 算法
 */
-
-void rotate(int *nums, int numsSize, int k)
+void rotate_recursion(int *nums, int numsSize, int k)
 {
-    
+    if (numsSize < 1 || k < 1)
+        return;
+    if (k >= numsSize)
+        k = k % numsSize;
+    if (k < 1)
+        return;
+    while (k > 0)
+    {
+        int l = numsSize - 1;
+        int key = nums[l];
+        while (l > 0)
+        {
+            nums[l] = nums[l - 1];
+            l--;
+        }
+        nums[0] = key;
+        k--;
+    }
 }
 
-void rotateLeft(int *nums, int numsSize, int k)
+void rotate_jump(int *nums, int numsSize, int k)
 {
-    if (nums == NULL || numsSize <= 1 || k == 0)
+    if (numsSize < 1 || k < 1)
         return;
-    k = k % numsSize;
-    if (k == 0)
+    if (k >= numsSize)
+        k = k % numsSize;
+    if (k < 1)
         return;
-    int kk = 0;
-    int tt = 0;
-    while (kk < numsSize)
+    if (k != 1)
     {
-        if (kk < numsSize - k)
+        if (numsSize & 1)
         {
-            tt = kk + k;
-            if (tt >= numsSize)
+            if (k & 1 == 0)
             {
-                tt = tt % numsSize;
+                rotate(nums, numsSize, 1);
+                k--;
             }
         }
         else
         {
-            if (kk  == numsSize-1)
+            if (k & 1 == 0)
             {
-               kk++;
-               continue;
-            }
-            else
-            {
-                tt = numsSize - 1;
+                rotate(nums, numsSize, 1);
+                k--;
             }
         }
-        nums[kk] = nums[kk] ^ nums[tt];
-        nums[tt] = nums[kk] ^ nums[tt];
-        nums[kk] = nums[kk] ^ nums[tt];
-        kk++;
+    }
+    int i = 0, l = 0, t = nums[0], tt = 0;
+    while (i < numsSize)
+    {
+        l += k;
+        if (l >= numsSize)
+            l -= numsSize;
+        tt = nums[l];
+        nums[l] = t;
+        t = tt;
+        i++;
+    }
+}
+
+int main(char args[])
+{
+    int a[] = {1, 1, 2};
+    int l1 = removeDuplicates(a, 3);
+    printArray("112", a, l1);
+    int b[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    int b1[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    int b2[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    int b3[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    int b4[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    int b5[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+    // rotate(b, 9, 2);
+    // printArray("RRR", b, 9);
+
+    int bb[5][9] = {
+        {1, 2, 3, 4, 5, 6, 7, 8, 9},
+        {1, 2, 3, 4, 5, 6, 7, 8, 9},
+        {1, 2, 3, 4, 5, 6, 7, 8, 9},
+        {1, 2, 3, 4, 5, 6, 7, 8, 9},
+        {1, 2, 3, 4, 5, 6, 7, 8, 9}};
+
+    // rotate(bb[0], 9, 2);
+    // printArray("RRR", b, 9);
+    for (int i = 0; i < 5; i++)
+    {
+        rotate(bb[i], 9, i + 1);
+        printArray("RRR", bb[i], 9);
     }
 }
