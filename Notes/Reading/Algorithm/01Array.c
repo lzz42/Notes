@@ -4,22 +4,14 @@
 #include <math.h>
 
 int removeDuplicates(int *a, int len);
-void printArray(char c[], int *a, int len);
+void printArray(char c[],const int *a,const int len);
 void rotate(int *nums, int numsSize, int k);
 
-//打印数组
-void printArray(char c[], int *a, int len)
+//打印一维数组
+void printArray(char *c, const int *a, const int len)
 {
+    printf("%s (%d)= \t", c, len);
     int i = 0;
-    while (c[i] != '\0')
-    {
-        printf("%c", c[i]);
-        i++;
-    }
-    i = 0;
-    printf("%c", '\t');
-    printf("%c", '=');
-    i = 0;
     while (i < len)
     {
         if (i == 0)
@@ -94,92 +86,9 @@ int maxProfit(int *prices, int pricesSize)
     return profit;
 }
 
-/*
-给定一个数组，将数组中的元素向右移动 k 个位置，其中 k 是非负数。
 
-示例 1:
 
-输入: [1,2,3,4,5,6,7] 和 k = 3
-输出: [5,6,7,1,2,3,4]
-解释:
-向右旋转 1 步: [7,1,2,3,4,5,6]
-向右旋转 2 步: [6,7,1,2,3,4,5]
-向右旋转 3 步: [5,6,7,1,2,3,4]
-示例 2:
-
-输入: [-1,-100,3,99] 和 k = 2
-输出: [3,99,-1,-100]
-解释: 
-向右旋转 1 步: [99,-1,-100,3]
-向右旋转 2 步: [3,99,-1,-100]
-说明:
-
-尽可能想出更多的解决方案，至少有三种不同的方法可以解决这个问题。
-要求使用空间复杂度为 O(1) 的 原地 算法
-*/
-void rotate_recursion(int *nums, int numsSize, int k)
-{
-    if (numsSize < 1 || k < 1)
-        return;
-    if (k >= numsSize)
-        k = k % numsSize;
-    if (k < 1)
-        return;
-    while (k > 0)
-    {
-        int l = numsSize - 1;
-        int key = nums[l];
-        while (l > 0)
-        {
-            nums[l] = nums[l - 1];
-            l--;
-        }
-        nums[0] = key;
-        k--;
-    }
-}
-
-void rotate_jump(int *nums, int numsSize, int k)
-{
-    if (numsSize < 1 || k < 1)
-        return;
-    if (k >= numsSize)
-        k = k % numsSize;
-    if (k < 1)
-        return;
-    if (k != 1)
-    {
-        if (numsSize & 1)
-        {
-            if (k & 1 == 0)
-            {
-                rotate(nums, numsSize, 1);
-                k--;
-            }
-        }
-        else
-        {
-            if (k & 1 == 0)
-            {
-                rotate(nums, numsSize, 1);
-                k--;
-            }
-        }
-    }
-    int i = 0, l = 0, t = nums[0], tt = 0;
-    while (i < numsSize)
-    {
-        l += k;
-        if (l >= numsSize)
-            l -= numsSize;
-        tt = nums[l];
-        nums[l] = t;
-        t = tt;
-        i++;
-    }
-}
-
-int main(char args[])
+int mainEx(char args[])
 {
     int a[] = {1, 1, 2};
     int l1 = removeDuplicates(a, 3);
@@ -190,17 +99,12 @@ int main(char args[])
     int b3[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     int b4[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     int b5[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-
-    // rotate(b, 9, 2);
-    // printArray("RRR", b, 9);
-
     int bb[5][9] = {
         {1, 2, 3, 4, 5, 6, 7, 8, 9},
         {1, 2, 3, 4, 5, 6, 7, 8, 9},
         {1, 2, 3, 4, 5, 6, 7, 8, 9},
         {1, 2, 3, 4, 5, 6, 7, 8, 9},
         {1, 2, 3, 4, 5, 6, 7, 8, 9}};
-
     // rotate(bb[0], 9, 2);
     // printArray("RRR", b, 9);
     for (int i = 0; i < 5; i++)

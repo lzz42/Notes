@@ -36,3 +36,8 @@
 ## 打标签
 
 ## 压缩
+
+
+## TortoiseSVN
+
+- TortoiseProc.exe /command:update /path:"D:\xap\std_dev\demo_full\" /closeonend:0
