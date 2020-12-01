@@ -40,4 +40,4 @@
 
 ## TortoiseSVN
 
-- TortoiseProc.exe /command:update /path:"D:\xap\std_dev\demo_full\" /closeonend:0
+- TortoiseProc.exe /command:update /path:"D:\code\std_dev\demo_full\" /closeonend:0
