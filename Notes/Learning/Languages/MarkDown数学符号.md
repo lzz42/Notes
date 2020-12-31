@@ -101,6 +101,7 @@ $$
 - $\tilde{ab}$  - `\tilde{ab}`
 - $\check{ab}$  - `\check{ab}`
 - $\grave{ab}$  - `\grave{ab}`
+- $\bar{ab}$  - `\bar{ab}`
 
 ## 分段函数
 
