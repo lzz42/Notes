@@ -1,0 +1,116 @@
+# E.Architectural Sytles and the Design of Network-based Software Architectures
+
+## Words
+
+- architectural adj 建筑学的
+- Architectures n 体系结构 建筑学 建筑风格
+- dissertation n 学位论文
+- philosophy n 哲学 思想体系
+- microfilm n 微缩胶卷
+- dedication n 题词 贡献 忠诚
+- collaborative adj 合作的
+- buffalo n 水牛
+- wintertime n 冬天
+- orator n 演说者
+- figure n 数字
+- diagram n 图表
+- uniform n 制服、校服 adj 统一的，一致的
+- derivation n 推导
+- constraints n 限制 约束
+- evaluation n 评估 估价 评价
+- hypermedia n 超媒体
+- replication n 回答
+- hierarchial adj 分层的 体系的 等级的
+- peer n 身份 同龄人 同辈 v 仔细看 端详
+- acknowledgment n 致谢
+- faculty n 全体教职员 才能 能力 科，系
+- staff n 全体职工 职员 
+- tenure n 任期 保有 财产 
+- pursue v 追求 致力于
+- mentoring n 指导 辅导
+- Likewise adv 同样的
+- convinced adj 坚信 深信 v 使相信 说服
+- iteratively adv 迭代的 反复的
+- regarding prep 关于
+- insight n 洞察 领悟 洞悉 了解
+- trailblazing adj 先驱的 开创性的
+- pioneering adj 开创性的
+- commercial adj 商业性的 贸易的
+- recognition n 识别 认可
+- doctor n 博士
+- master n 硕士
+- bachelor n 学士
+- conference n 会议
+- formal adj 正式的
+- presentation n 演示文稿 演讲 演示
+- partition n v 分割 隔断
+- evolve v 进化 演化
+- notation n 记号 标记法
+- coordinate v 使协调 协调 n 坐标 套装
+- induce v 劝说 引起 产生 催生
+- representational adj 代表性的 具象的
+- REST ： Representational State Tranfer
+- scalability n 可扩展性 可伸缩性
+- generality n 概况性 一般性
+- deployment n 部署
+- intermediary n 中间人 调解人 adj 中间人的 调解人的
+- latency n 延迟 潜伏
+- encapsulate v 封装 概括 压缩
+- legacy n 遗产 遗留
+- focal adj 焦点的
+- componentized adv 组件化地
+- vacuum n 真空
+- practitioner n 专业人员 从业者
+- sketch n 素描 描述
+- absurd adj 荒谬的 荒诞的
+- slaughterhouse n 屠宰场
+- prospective adj 预期的 可能的
+- tenant n 房客 租户
+- whisk v 搅打 搅动 n 打蛋器 搅拌器
+- hallway n 走廊 过道
+- hyperbole n 夸张
+- adoption n 采用 收养
+- fad n 时尚
+- occurrence n 发生 发生的事情
+- apparent adj 显然的
+- junction n 结合 汇合点
+- categorization n 分类
+- methodology n 方法论 方法 原则
+- in contrast adv 相反
+- geographical adj 地理的
+- dispersion n 分散
+- cope v 处理
+- anarchic adj  无政府主义的 无秩序的
+- architecture n 建筑学 
+- therefore adv 因此 所以
+- elaborate v 详细阐述 精心制作 adj 复杂的 详细的
+- retain v 保留 保持
+- conjunction n 结合 联合
+- mismatch v 不匹配 n 误配 错误匹配
+- ignorance n 忽视 无知
+- oversight n 疏忽 监督
+- implementation n 实施 执行 生效 工具 仪器
+- violate v 违反
+- deviate v 偏离 背离 违背
+- terminology n 术语
+- novel n 小说 adj 新颖的 与众不同的
+- spite v 怨恨 n 恶意 怨恨
+- in spite of 尽管 不管
+- self-consistent adj 自洽的 自相容的
+- 
+
+## Contents
+
+- 软件构建的方法研究
+  - 1.如何分割系统
+  - 2.组件如何定义和互相通信
+  - 3.信息如何流通
+  - 4.组成系统的元素如何独立进化
+  - 5.如何使用正式和非正式的符号进行描述以上问题
+- 该论文在信息和计算机科学领域的贡献：
+  - 1.一个通过架构风格理解软件架构的框架，包括一系列一直的描述软件架构的术语
+  - 2.一种对于网络应用程序的分类的架构风格，对于分布式的超媒体系统将通过应该该架构将产生架构属性
+  - 3.REST,一种新颖的分布式的超媒体系统的架构风格
+  - 4.在当代万维网架构的设计和部署中，REST架构风格的应用和演化
+
+## 
