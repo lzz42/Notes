@@ -97,6 +97,59 @@
 - spite v 怨恨 n 恶意 怨恨
 - in spite of 尽管 不管
 - self-consistent adj 自洽的 自相容的
+- literature n 文学 文学作品 文献 著作 资料
+- phase n 阶段 时期 v 分阶段进行 逐步做
+- encapsulation n 封装
+- sustain v 维持
+- identify v 识别 确认 认出 说明身份
+- delineate v 描绘 描述 解释
+- overall adj 总体的 全面的 综合的 
+- transformer n 变压器
+- clarify v 澄清
+- modular adj 模块化的
+- comprehensive adj 综合的
+- scope n 范围
+- intellectual adj 智力的
+- rationale n 理论基础 基本原理 根本原因
+- motivation n 动机
+- illustration n 插图 图示 实例 示例
+- collapse n v 崩溃 坍塌
+- exceed v 超过
+- gradual adj 逐渐的
+- decay n v 腐朽 衰退
+- degradation n 退化 堕落
+- prevalent adj 流行的
+- topology n 拓扑学 拓扑结构
+- elaboration n 精细 细节
+- incapable adj 无能的 不能自理的
+- adequately adv 充分地 适当地
+- instruction n 指令 用法说明 命令
+- insofar prep 到目前为止
+- discern v 辨别 识别 了解 察觉
+- assumption n 假设 假定
+- mediate v 调解
+- coordination n 协调
+- vaguely adv 模糊地
+- representation n 代表 表现 描述
+- perspective n 观点 态度 思考方法
+- datum n 数据 资料
+- transfer n v 转移 搬迁 调动
+- presence n 存在 出现 出席
+- transformation n 转型 转换 转化
+- evident adj 明显的
+- paradigm n 范式 样式
+- syntactic adj 句法的
+- locus n 核心 中心
+- concrete n 混凝土 adj 具体的 有形的
+- facilitate v 促进
+- equivalent adj 相等的 n 等量 相等的东西
+- legitimate adj 合法的
+- arrangement n 安排 约定 商定
+- reusability n 可重用性
+- essence n 本质
+- in contrast 想反
+- hybrid adj 混合的 杂交的 n 杂交植物 杂交动物
+- thereby prep 由此 因此
 - 
 
 ## Contents
@@ -113,4 +166,32 @@
   - 3.REST,一种新颖的分布式的超媒体系统的架构风格
   - 4.在当代万维网架构的设计和部署中，REST架构风格的应用和演化
 
-## 
+## 01 软件架构
+
+- 运行时抽象 Run-time Abstraction
+  - 分层的架构
+    - 软件架构就是抽象的原理：通过封装隐藏细节、维持系统属性
+    - 复杂的系统包含多个层级的抽象，每层抽象都有其自身的软件架构
+    - 一种架构即表现了系统在某层抽象的行为，因此架构元素可以通过该元素为其他元素提供的抽象的接口进行描述
+    - 架构元素内部也可能存在其他的架构，该架构为其子元素为实现父元素的功能而存在
+  - 分阶段的架构
+    - 不同的软件运行接口，其架构也是不同的
+  - 软件架构与软件结构的区别
+    - 软件架构：软件系统的运行时的行为的抽象
+    - 软件结构：静态软件软代码的一个属性
+- 元素 Elements
+  - 软件架构通过配置的架构元素定义(组件、连接器、数据)
+- 组件 Components
+  - 组件是一个软件指令和内部状态的抽象单元，他通过其接口提供转换数据功能
+  - 组件的定义由其接口和为其他组件所能提供的服务决定
+- 连接器 Connectors
+  - 连接器是一种组件之间调解沟通、协调、合作的抽象机制
+- 数据 Data
+  - 数据是一种通过连接器传递的组件间传递或者接收的信息元素
+- 配置 Configurations
+  - 配置是一种系统运行期间的组件、连接器、数据间关系的架构结构
+- 属性 Properties
+  - 软件架构的架构属性指所有的属性，以及派生自：系统内所有的组件、连接器、数据的约定和特定项
+- 样式 Styles
+  - 架构样式是一个协调的架构约束的集合，它限制 架构元素的角色/特点 以及元素间的合法的关系
+  - 
