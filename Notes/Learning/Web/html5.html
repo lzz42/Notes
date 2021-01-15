@@ -35,7 +35,8 @@
         border-radius: 50%;
         width: 50px;
         height: 50px;
-        animation: donut-spin 1.0s linear infinite;
+        /* animation: donut-spin 1.0s linear infinite; */
+        animation: donut-spin 1.0s linear 3;
     }
 </style>
 
@@ -65,7 +66,7 @@
     <a href="https://www.baidu.com/">this is link to baidu </a>
     <!-- 换行 -->
     <br />
-    <div>
+    <div id="SpecDiv">
         <img src="svg.svg" alt="no image"></img>
         <embed src="svg.svg" alt="no embed" pluginspage="url"></embed>
         <object src="svg.svg" alt="no object" codebase=""></object>
@@ -78,6 +79,10 @@
             frameborder="0">
         </iframe>
     </div>
+
+    <button>
+    .up，.down 类，让它实现展开、合上的动画
+    </button>
 </body>
 
 </html>

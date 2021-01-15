@@ -1,7 +1,89 @@
-
-#SpecDiv
-{
+/* 指定id="SpecDiv" */
+#SpecDiv {
     margin: 10px;
-    background-color: red;
+    background-color: lightgray;
 }
 
+/* 指定具体类型样式 */
+div {
+    background-color: lightskyblue;
+}
+
+/* 指定类 class="div" */
+.div {
+    animation: mymove 5s infinite;
+    /*Safari 和 Chrome:*/
+    -webkit-animation: mymove 5s infinite;
+}
+
+@keyframes mymove {
+    from {
+        background-color: red;
+    }
+
+    to {
+        background-color: blue;
+    }
+}
+
+/*Safari 和 Chrome:*/
+@-webkit-keyframes mymove {
+    from {
+        background-color: red;
+    }
+
+    to {
+        background-color: blue;
+    }
+}
+
+@keyframes expandTxt {
+    height: unset;
+    transition: all 0.3s linear;
+    will-change: height;
+
+    &.up {
+        height: 0;
+    }
+
+    &.down {
+        height: unset;
+    }
+}
+
+button {
+    transition: max-height 0.5s linear;
+    background-color: lightcoral;
+
+    &.up {
+        max-height: 0px;
+    }
+
+    &.down {
+        max-height: 1000px;
+    }
+}
+
+@keyframes expandTxt2 {
+    &.up {
+        height: 0;
+    }
+
+    &.down {
+        - height: unset;
+        +height: 500px;
+    }
+}
+
+@keyframes expandTxt3 {
+    max-height: 0;
+    transition: max-height 0.3s linear;
+
+    &.up {
+        max-height: 0;
+    }
+
+    &.down {
+        max-height: 1000px;
+    }
+}

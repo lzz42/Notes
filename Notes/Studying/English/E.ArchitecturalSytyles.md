@@ -150,6 +150,43 @@
 - in contrast 想反
 - hybrid adj 混合的 杂交的 n 杂交植物 杂交动物
 - thereby prep 由此 因此
+- anticipate v 预期 预见 预计 期盼
+- sensitivity n 敏感 觉悟 体贴
+- confusion n 混乱 困惑
+- substantially adv 大体上 基本上
+- etymology n 词源学 词源
+- devote v 致力于 投入到
+- denigrate v 诋毁 诽谤 贬低
+- notion n 概念 观念 信念
+- ego n 自我
+- indicator n 指示器 迹象 标记
+- inheritance n 继承 遗产
+- deviate v 偏离 背离
+- inherent adj 固有的 内在的
+- safeguard v 保护 防卫 捍卫 n 安全措施 保护措施
+- temporal adj 世俗的 世间的 时间的
+- refinement n 改良品 精益求精 改进 精炼 提纯
+- elicit v 引出 探出 诱出
+- handbook n 手册 指南
+- advocate v 倡议 提议 用户 n 倡议者 提议者 拥护者
+- dimensional adj 维度的 空间的 尺寸的
+- chunk n 块 厚块 大块 组块
+- avionics n 航空电子设备
+- declarative adj 声明的 陈述的
+- assumption n 假设
+- formalism n 形式主义
+- propagate v 传播 宣传 繁殖
+- dimension n 尺寸 规模 大小
+- candidate n 候选人 申请人 应试者
+- sprung adj 装有弹簧的 v 跳 蹦 突然说
+- rationale n 基础理论 基本原理 根本原因
+- moot adj 无考虑意义的 v 提出..供讨论 n 大会 辩论
+- cumulative adj 累积的
+- derive v 得到 获得 产生
+- derivation n 起源 推导
+- nevertheless 尽管如此
+- consistency n 一致性
+- 
 - 
 
 ## Contents
@@ -194,4 +231,21 @@
   - 软件架构的架构属性指所有的属性，以及派生自：系统内所有的组件、连接器、数据的约定和特定项
 - 样式 Styles
   - 架构样式是一个协调的架构约束的集合，它限制 架构元素的角色/特点 以及元素间的合法的关系
+- 模式和模式语言 Patterns and Pattern Languanges
+  - 面向对象编程设计出的基于对象的设计模式和模式语言，eg:类的继承、接口的组合
+- 视图 Views
+  - 处理视图、数据视图、连接视图
+- 相关工作 Related Works
+  - 设计方法论 Design Methodologies
+  - 设计、设计模式、模式语言
+  - 引用模型与特定域的软件架构 Reference Models and Domain-specific Software Architectures DSSA
+  - 框架描述语言Architecture Description Languanges ADL
+  - 正式的框架模型 Formal Architectural Models
+
+## 02 网络应用程序框架
+
+- 范围
+  - 基于网络的系统与分布式系统
+  - 应用软件与网络软件
+- 评估应用程序框架的设计
   - 

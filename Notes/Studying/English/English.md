@@ -126,3 +126,5 @@
 * deploy 部署
 * duplicate v 重复 复制
 * side-by-side 并行
+* circumstance n 环境 条件 状况
+* 
