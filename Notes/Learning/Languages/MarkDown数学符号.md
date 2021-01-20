@@ -157,6 +157,21 @@ $$
 数学斜体: {\mit {f(x)dx=\alpha x^3 + bx^2 + cx + d}}\\
 $$
 
+### 流程图
+
+```flow
+st=>start:开始
+io=>inputoutput:输入变量
+op=>operation:操作
+cond=>condition:条件判断
+sub=>subroutine:子程序处理
+e=>end:结束
+
+st->io->op->cond
+cond(yes)->e
+cond(no)->sub->io
+```
+
 ### MarkDown转HTML
 
 - JS库：
